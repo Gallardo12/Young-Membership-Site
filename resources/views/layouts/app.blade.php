@@ -1,80 +1,121 @@
 <!DOCTYPE html>
+
 <html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <head>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+        <noscript>
+            <link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" />
+        </noscript>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+    </head>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+    <body class="is-loading">
 
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+        <!-- Wrapper -->
+        <div id="wrapper" class="fade-in">
+            <!-- Header -->
+            <header id="header">
+                <a href="/" class="logo">Young Mentorship</a>
+            </header>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+            <!-- Nav -->
+            <nav id="nav">
+                <ul class="links">
+                    <li class="active">
+                        <a href="/">Young Mentorship</a>
+                    </li>
+                    <li>
+                        <a href="/services">Servicios</a>
+                    </li>
+                    <li>
+                        <a href="/contact">Contáctanos</a>
+                    </li>
+                    <!-- Authentication Links -->
+                    @guest
+                        <li>
+                            <a href="{{ route('login') }}">Ingresar</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('register') }}">Registrarse</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="/home">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    @endguest
+                </ul>
+                <ul class="icons">
+                    <li>
+                        <a href="https://www.twitter.com/youngmentorship/" class="icon fa-twitter" target="_blank">
+                            <span class="label">Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/YOUNGMEXIC0/" class="icon fa-facebook" target="_blank">
+                            <span class="label">Facebook</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/youngmentorship/" class="icon fa-instagram" target="_blank">
+                            <span class="label">Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main -->
+            <div id="main">
+                @yield('content')
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <section class="split contact">
+                        <section class="alt">
+                            <p>
+                                <strong>CONTÁCTANOS</strong>
+                                : Si tienes dudas contactanos, estamos a para servirte.
+                            </p>
+                        </section>
+                    </section>
+                </footer>
+
             </div>
-        </nav>
 
-        @yield('content')
-    </div>
+        </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-</body>
+        <!-- Scripts -->
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.scrollex.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.scrolly.min.js') }}"></script>
+        <script src="{{ asset('assets/js/skel.min.js') }}"></script>
+        <script src="{{ asset('assets/js/util.js') }}"></script>
+        <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    </body>
+
 </html>
