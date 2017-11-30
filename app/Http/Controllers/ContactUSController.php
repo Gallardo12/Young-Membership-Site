@@ -27,6 +27,6 @@ class ContactUSController extends Controller {
 				$message->to('contacto@youngmentorship.com', 'Contacto')->subject('Contacto - Young mentorship');
 			});
 
-		return back()->with('success', 'Gracias por contactarnos, en breve nos comunicaremos con usted!');
+		return view("emails/contactus");
 	}
 }
