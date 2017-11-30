@@ -108,7 +108,10 @@
 					<!-- Form -->
 					<h2>Afiliate a Young Mentorship</h2>
 
-					<form method="post" action="#" class="alt">
+					<form class="alt" method="POST" action="{{ route('contact-us.store') }}">
+
+                        {{ csrf_field() }}
+
 						<div class="row uniform">
 
 							<div class="6u 12u$(xsmall)">

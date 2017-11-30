@@ -11,6 +11,18 @@
 |
  */
 
+/*
+use App\Mail\ContactUS;
+
+Route::get('/contact-us', function () {
+
+Mail::to('contacto@youngmentorship.com')->send(new ContactUS);
+
+return view('emails.contactus');
+
+});
+ */
+
 Route::get('/', function () {
 	return view('welcome');
 });
@@ -22,6 +34,10 @@ Route::get('/services', function () {
 Route::get('/contact', function () {
 	return view('contact');
 });
+
+Route::get('contact-us', 'ContactUSController@contactUS');
+
+Route::post('contact-us', ['as' => 'contact-us.store', 'uses' => 'ContactUSController@contactUSPost']);
 
 Auth::routes();
 
