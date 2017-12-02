@@ -42,3 +42,5 @@ Route::post('contact-us', ['as' => 'contact-us.store', 'uses' => 'ContactUSContr
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('admin', 'AdminController@index');
