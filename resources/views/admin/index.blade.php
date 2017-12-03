@@ -2,14 +2,32 @@
 
 @section('content')
 
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
+	<h2>Panel de Administrador</h2>
 
-    <h2>Panel de Administrador</h2>
+    <p>
+    	<strong>Bienvenido</strong>
+    	<em> {{ Auth::user()->name }}</em>
+    </p>
 
-    <p><strong>Bienvenido</strong><em> {{ Auth::user()->name }}</em>
+
+    <ul class="actions">
+    	<h3>Noticias</h3>
+    	<li>
+    		<a href="/blog/create" class="button">Nuevo</a>
+    	</li>
+    	<li>
+    		<a href="/blog/bin" class="button">Papelera</a>
+    	</li>
+    </ul>
+
+    <ul class="actions">
+    	<h3>Servicios</h3>
+    	<li>
+    		<a href="/services/create" class="button">Nuevo</a>
+    	</li>
+    	<li>
+    		<a href="/services/bin" class="button">Papelera</a>
+    	</li>
+    </ul>
 
 @endsection

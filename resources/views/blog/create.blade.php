@@ -6,7 +6,7 @@
 
 	<h2>Nuevo Post</h2>
 
-	<form class="alt" method="POST" action="{{ route('blog.store') }}">
+	<form class="alt" method="POST" action="/blog/store">
 
 		{{ csrf_field() }}
 
