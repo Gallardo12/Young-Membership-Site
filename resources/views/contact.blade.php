@@ -35,6 +35,9 @@
                     <li>
                     	<a href="/services">Servicios</a>
                     </li>
+                    <li>
+                        <a href="/blog">Noticias</a>
+                    </li>
                     <li class="active">
                     	<a href="/contact">Contáctanos</a>
                     </li>

@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Laravel') }} - Contacto</title>
+        <title>{{ config('app.name', 'Laravel') }} - Servicios</title>
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
@@ -34,6 +34,9 @@
                     </li>
                     <li class="active">
                     	<a href="/services">Servicios</a>
+                    </li>
+                    <li>
+                        <a href="/blog">Noticias</a>
                     </li>
                     <li>
                     	<a href="/contact">Contáctanos</a>
