@@ -27,6 +27,10 @@ Route::get('/blog/bin', 'BlogController@bin');
 Route::get('/blog/bin/{id}/restore', 'BlogController@restore');
 Route::get('/blog/bin/{id}/destroyblog', 'BlogController@destroyBlog');
 
+Route::get('/services/bin', 'ServiceController@bin');
+Route::get('/services/bin/{id}/restore', 'ServiceController@restore');
+Route::get('/services/bin/{id}/destroyservice', 'ServiceController@destroyService');
+
 Route::get('/', function () {
 	return view('welcome');
 });
@@ -56,3 +60,11 @@ Route::get('/blog/{id}', 'BlogController@show');
 Route::get('/blog/{id}/edit', 'BlogController@edit');
 Route::patch('/blog/{id}', 'BlogController@update');
 Route::delete('/blog/{id}', 'BlogController@destroy');
+
+Route::get('/services', 'ServiceController@index');
+Route::get('/services/create', 'ServiceController@create');
+Route::post('/services/store', 'ServiceController@store');
+Route::get('/services/{id}', 'ServiceController@show');
+Route::get('/services/{id}/edit', 'ServiceController@edit');
+Route::patch('/services/{id}', 'ServiceController@update');
+Route::delete('/services/{id}', 'ServiceController@destroy');

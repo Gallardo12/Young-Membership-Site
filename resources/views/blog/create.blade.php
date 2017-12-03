@@ -27,7 +27,7 @@
 			<div class="12u$">
 				<ul class="actions">
 					<li>
-						<input type="submit" value="Enviar Mensaje" class="special" name="submit" />
+						<input type="submit" value="Guardar" class="special" name="submit" />
 					</li>
 				</ul>
 			</div>

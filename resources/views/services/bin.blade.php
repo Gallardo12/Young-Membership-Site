@@ -12,7 +12,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
         <noscript>
-        	<link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" />
+            <link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" />
         </noscript>
     </head>
 
@@ -30,16 +30,16 @@
             <nav id="nav">
                 <ul class="links">
                     <li>
-                    	<a href="/">Young Mentorship</a>
+                        <a href="/">Young Mentorship</a>
                     </li>
                     <li class="active">
-                    	<a href="/services">Servicios</a>
+                        <a href="/services">Servicios</a>
                     </li>
                     <li>
                         <a href="/blog">Noticias</a>
                     </li>
                     <li>
-                    	<a href="/contact">Contáctanos</a>
+                        <a href="/contact">Contáctanos</a>
                     </li>
                     <!-- Authentication Links -->
                     @guest
@@ -70,19 +70,19 @@
                 </ul>
                 <ul class="icons">
                     <li>
-                    	<a href="https://www.twitter.com/youngmentorship/" class="icon fa-twitter" target="_blank">
-                    		<span class="label">Twitter</span>
-                    	</a>
+                        <a href="https://www.twitter.com/youngmentorship/" class="icon fa-twitter" target="_blank">
+                            <span class="label">Twitter</span>
+                        </a>
                     </li>
                     <li>
-                    	<a href="https://www.facebook.com/YOUNGMEXIC0/" class="icon fa-facebook" target="_blank">
-                    		<span class="label">Facebook</span>
-                    	</a>
+                        <a href="https://www.facebook.com/YOUNGMEXIC0/" class="icon fa-facebook" target="_blank">
+                            <span class="label">Facebook</span>
+                        </a>
                     </li>
                     <li>
-                    	<a href="https://www.instagram.com/youngmentorship/" class="icon fa-instagram" target="_blank">
-                    		<span class="label">Instagram</span>
-                    	</a>
+                        <a href="https://www.instagram.com/youngmentorship/" class="icon fa-instagram" target="_blank">
+                            <span class="label">Instagram</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -90,23 +90,49 @@
             <!-- Main -->
             <div id="main">
 
-                <h2>Servicios</h2>
+            	<h2>Servicios (Papelera)</h2>
 
-			</div>
+                <!-- Posts -->
+                <section class="posts">
 
-			<!-- Footer -->
-			<footer id="footer">
-				<section class="split contact">
-					<section class="alt">
-						<h3>
-							<a href="/contact">Contáctanos</a>
-						</h3>
-						</br>
-						<p>: Si tienes dudas contáctanos, estamos aquí para servirte.</p>
-					</section>
-				</section>
-			</footer>
-		</div>
+                    @foreach ($deletedServices as $service)
+
+                        <article>
+                            <header>
+                                <h3>{{ $service->title }}</a></h3>
+                                <span class="date">{{ $service->updated_at }}</span>
+                                <p>{{ $service->description }}</p>
+                                <p>${{ $service->cost }} MXN</p>
+                                <ul class="actions">
+                                    <li>
+                                        <a href="{{ action('ServiceController@restore', [$service->id]) }}" class="button">Restaurar</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ action('ServiceController@destroyService', [$service->id]) }}" class="button">Eliminar</a>
+                                    </li>
+                                </ul>
+                            </header>
+                        </article>
+
+                    @endforeach
+
+                </section>
+
+            </div>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <section class="split contact">
+                    <section class="alt">
+                        <h3>
+                            <a href="/contact">Contáctanos</a>
+                        </h3>
+                        </br>
+                        <p>: Si tienes dudas contáctanos, estamos aquí para servirte.</p>
+                    </section>
+                </section>
+            </footer>
+        </div>
 
         <!-- Scripts -->
         <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -117,4 +143,5 @@
         <script src="{{ asset('assets/js/main.js') }}"></script>
 
     </body>
+
 </html>
