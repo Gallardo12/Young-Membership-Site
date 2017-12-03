@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 
 <html lang="{{ app()->getLocale() }}">
 
@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Laravel') }} - Noticias</title>
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
@@ -21,18 +21,6 @@
         <!-- Wrapper -->
         <div id="wrapper" class="fade-in">
 
-            <!-- Intro -->
-            <div id="intro" style="padding: 8rem 4rem 16rem 4rem !important;">
-                <h1>Bienvenido a<br/>Young Mentorship</h1>
-                <p>Encuentra el servicio que necesites y contacta con los emprendedores.<br/>
-                Tenemos la solución a lo que estas buscando.</p>
-                <ul class="actions">
-                    <li>
-                        <a href="#header" class="button icon solo fa-arrow-down scrolly">Continuar</a>
-                    </li>
-                </ul>
-            </div>
-
             <!-- Header -->
             <header id="header">
                 <a href="/" class="logo">Young Mentorship</a>
@@ -41,13 +29,13 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul class="links">
-                    <li class="active">
+                    <li>
                         <a href="/">Young Mentorship</a>
                     </li>
                     <li>
                         <a href="/services">Servicios</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="/blog">Noticias</a>
                     </li>
                     <li>
@@ -102,54 +90,31 @@
             <!-- Main -->
             <div id="main">
 
-                <!-- Featured Post -->
-                <article class="post featured">
-                    <header class="major">
-                        <h2>¿Qué es Young Mentorship?</h2>
-                        <p>Un servicio de emprendedores para emprendedores</p>
-                    </header>
-                    <a disabled class="image main">
-                        <img src="images/pic01.jpg" class="image main"/>
-                    </a>
-                    <p>Young Mentorship es un servicio web el cual apoya a las personas emprendedoras y freelancers que desean destacar en el ambito laboral, esta herramienta te permitirá encontrar el servicio que buscas a los mejores precios por nuestros propios emprendedores. Incluso puedes ser uno de ellos y promocionar tu servicio en este sitio.</p>
-                </article>
-
                 <!-- Posts -->
                 <section class="posts">
-                    <article>
-                        <header>
-                            <span class="date">6 de Noviembre del 2017</span>
-                            <h2>
-                                <a href="#">Busca lo que<br/>Necesitas</a>
-                            </h2>
-                        </header>
-                        <a disabled class="image fit">
-                            <img src="images/pic02.jpg" />
-                        </a>
-                        <p>¿Estas buscando un fotografo para una sesión de fotos? ¿Un diseñador para tu marca personal? ¿Algun servicio en especifico? Ve a a la sección de Servicios y descubre lo que Young Mentorship tiene para tí.</p>
-                        <ul class="actions">
-                            <li>
-                                <a href="/services" class="button">Ir a Servicios</a>
-                            </li>
-                        </ul>
-                    </article>
-                    <article>
-                        <header>
-                            <span class="date">6 de Noviembre del 2017</span>
-                            <h2>
-                                <a href="#">Unete al equipo<br/>Young Mentorship</a>
-                            </h2>
-                        </header>
-                        <a disabled class="image fit">
-                            <img src="images/pic03.jpg" alt="" />
-                        </a>
-                        <p>Ser emprendedor y vender tus servicios no es una tarea facil. Unete al equipo de trabajo y promociona tus servicios en Young Mentorship de una forma mas facil y sencilla.</p>
-                        <ul class="actions">
-                            <li>
-                                <a href="/contact" class="button">Se un Young Mentorship</a>
-                            </li>
-                        </ul>
-                    </article>
+
+                    @foreach ($blogs as $blog)
+
+                        <article>
+                            <header>
+                                <h3>
+                                    <a href="{{ action('BlogController@show', [$blog->id]) }}">{{ $blog->title }}</a>
+                                </h3>
+                                <span class="date">{{ $blog->updated_at }}</span>
+                                <a disabled class="image fit">
+                                        <img src="images/pic02.jpg" />
+                                    </a>
+                                <p>{{ $blog->body }}</p>
+                                <ul class="actions">
+                                    <li>
+                                        <a href="{{ action('BlogController@show', [$blog->id]) }}" class="button">Leer</a>
+                                    </li>
+                                </ul>
+                            </header>
+                        </article>
+
+                    @endforeach
+
                 </section>
 
             </div>
@@ -159,14 +124,13 @@
                 <section class="split contact">
                     <section class="alt">
                         <h3>
-                            <a href="/contact">Contactanos</a>
+                            <a href="/contact">Contáctanos</a>
                         </h3>
                         </br>
-                        <p>: Si tienes dudas contactanos, estamos a para servirte.</p>
+                        <p>: Si tienes dudas contáctanos, estamos aquí para servirte.</p>
                     </section>
                 </section>
             </footer>
-
         </div>
 
         <!-- Scripts -->
