@@ -11,6 +11,13 @@ class BlogController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
+
+	public function __construct() {
+		$this->middleware('auth')->except('index', 'show');
+		$this->middleware('entrepreneur')->except('index', 'show', 'edit', 'create', 'destroy');
+		$this->middleware('admin')->except('index', 'show', 'edit', 'create', 'destroy', 'bin');
+	}
+
 	public function index() {
 		$blogs = Blog::latest()->get();
 		return view('blog.index', compact('blogs'));
