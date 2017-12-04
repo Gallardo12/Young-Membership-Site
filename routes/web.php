@@ -68,3 +68,11 @@ Route::get('/services/{id}', 'ServiceController@show');
 Route::get('/services/{id}/edit', 'ServiceController@edit');
 Route::patch('/services/{id}', 'ServiceController@update');
 Route::delete('/services/{id}', 'ServiceController@destroy');
+
+Route::get('/categories', 'CategoryController@index');
+Route::get('/categories/create', 'CategoryController@create');
+Route::post('/categories/store', 'CategoryController@store');
+Route::get('/categories/{id}', 'CategoryController@show');
+Route::get('/categories/{id}/edit', 'CategoryController@edit');
+Route::patch('/categories/{id}', 'CategoryController@update');
+Route::delete('/categories/{id}', 'CategoryController@destroy');

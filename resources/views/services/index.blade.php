@@ -102,9 +102,10 @@
                                 </h3>
                                 <span class="date">{{ $service->updated_at }}</span>
                                 <a disabled class="image fit">
-                                        <img src="images/pic02.jpg" />
-                                    </a>
+                                    <img src="../images/pic02.jpg" />
+                                </a>
                                 <p>{{ $service->description }}</p>
+                                <p>{{ $service->location }}</p>
                                 <ul class="actions">
                                     <li>
                                         <a href="{{ action('ServiceController@show', [$service->id]) }}" class="button">Más</a>

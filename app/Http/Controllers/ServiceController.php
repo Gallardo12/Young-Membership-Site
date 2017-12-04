@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Service;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,13 @@ class ServiceController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
+
+	public function __construct() {
+		$this->middleware('auth')->except('index', 'show');
+		// $this->middleware('entrepreneur')->except('index', 'show', 'edit', 'create', 'destroy');
+		// $this->middleware('admin')->except('index', 'show', 'edit', 'create', 'destroy', 'bin');
+	}
+
 	public function index() {
 		$services = Service::latest()->get();
 		return view('services.index', compact('services'));
@@ -22,7 +30,8 @@ class ServiceController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
-		return view('services.create');
+		$category = Category::pluck('name', 'id');
+		return view('services.create', compact('category'));
 	}
 
 	/**
@@ -33,8 +42,11 @@ class ServiceController extends Controller {
 	 */
 	public function store(Request $request) {
 		$input = $request->all();
-		Service::create($input);
-		return back();
+		$service = Service::create($input);
+		if ($categoryIds = $request->category_id) {
+			$service->category()->sync($categoryIds);
+		}
+		return redirect('/services');
 	}
 
 	/**
@@ -55,8 +67,9 @@ class ServiceController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id) {
+		$category = Category::pluck('name', 'id');
 		$service = Service::findOrFail($id);
-		return view('services.edit', compact('service'));
+		return view('services.edit', compact('service', 'category'));
 	}
 
 	/**
@@ -70,6 +83,9 @@ class ServiceController extends Controller {
 		$input = $request->all();
 		$service = Service::findOrFail($id);
 		$service->update($input);
+		if ($categoryIds = $request->category_id) {
+			$service->category()->sync($categoryIds);
+		}
 		return redirect('/services');
 	}
 
@@ -81,6 +97,8 @@ class ServiceController extends Controller {
 	 */
 	public function destroy(Request $request, $id) {
 		$service = Service::findOrFail($id);
+		$categoryIds = $request->category_id;
+		$service->category()->detach($categoryIds);
 		$service->delete($request->all());
 		return redirect('/services/bin');
 	}
