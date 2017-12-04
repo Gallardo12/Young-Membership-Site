@@ -14,6 +14,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Styles -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
         <noscript>
             <link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" />
@@ -117,7 +118,11 @@
         <script src="{{ asset('assets/js/jquery.scrolly.min.js') }}"></script>
         <script src="{{ asset('assets/js/skel.min.js') }}"></script>
         <script src="{{ asset('assets/js/util.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script src="{{ asset('assets/js/main.js') }}"></script>
+        <script type="text/javascript">
+            $('#tag_list').select2();
+        </script>
 
     </body>
 

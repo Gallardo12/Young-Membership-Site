@@ -15,6 +15,12 @@
 				<span class="date">{{ $service->updated_at }}</span>
 				<h1>{{ $service->title }}</h1>
 				<p>{{ $service->description }}</p>
+				<p>{{ $service->location }}</p>
+				<p>
+					@foreach ($service->category as $category)
+						<a href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
+					@endforeach
+				</p>
 				<p>${{ $service->cost }} MXN</p>
 
 			</header>

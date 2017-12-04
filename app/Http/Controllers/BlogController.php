@@ -14,8 +14,8 @@ class BlogController extends Controller {
 
 	public function __construct() {
 		$this->middleware('auth')->except('index', 'show');
-		$this->middleware('entrepreneur')->except('index', 'show', 'edit', 'create', 'destroy');
-		$this->middleware('admin')->except('index', 'show', 'edit', 'create', 'destroy', 'bin');
+		// $this->middleware('entrepreneur')->except('index', 'show', 'edit', 'create', 'destroy');
+		// $this->middleware('admin')->except('index', 'show', 'edit', 'create', 'destroy', 'bin');
 	}
 
 	public function index() {
@@ -41,7 +41,7 @@ class BlogController extends Controller {
 	public function store(Request $request) {
 		$input = $request->all();
 		Blog::create($input);
-		return back();
+		return redirect('/blog');
 	}
 
 	/**
