@@ -30,4 +30,14 @@
     	</li>
     </ul>
 
+    <ul class="actions">
+        <h3>Categorias</h3>
+        <li>
+            <a href="/categories/create" class="button">Nuevo</a>
+        </li>
+        <li>
+            <a href="/categories" class="button">Todas</a>
+        </li>
+    </ul>
+
 @endsection
