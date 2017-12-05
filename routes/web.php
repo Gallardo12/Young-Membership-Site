@@ -23,6 +23,8 @@ return view('emails.contactus');
 });
  */
 
+// Route::view('service', App\Service::all());
+
 Route::get('/blog/bin', 'BlogController@bin');
 Route::get('/blog/bin/{id}/restore', 'BlogController@restore');
 Route::get('/blog/bin/{id}/destroyblog', 'BlogController@destroyBlog');

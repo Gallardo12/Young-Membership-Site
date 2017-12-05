@@ -64,15 +64,20 @@
 				</select>
 			</div>
 
+			<!-- Break -->
+			<div class="12u$">
+				<label for="cost">Precio</label>
+				<input type="number" name="cost" id="cost" step="any" />
+			</div>
+
 			<div class="12u$">
 				<label for="category_id">Categoría</label>
 				{!! Form::select("category_id[]", $category, null, ['id' => 'tag_list', 'class' => '', 'multiple']) !!}
 			</div>
 
-			<!-- Break -->
 			<div class="12u$">
-				<label for="cost">Precio</label>
-				<input type="number" name="cost" id="cost" step="any" />
+				<label for="meta_desc">Meta Descripción</label>
+				<input type="text" name="meta_desc" id="meta_desc" value="" />
 			</div>
 
 			<input type="hidden" name="approved" id="approved" value="0" />

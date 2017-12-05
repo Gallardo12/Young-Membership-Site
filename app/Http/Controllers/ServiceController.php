@@ -44,6 +44,8 @@ class ServiceController extends Controller {
 	 */
 	public function store(Request $request) {
 		$input = $request->all();
+		$input['slug'] = str_slug($request->title);
+		$input['meta_title'] = $request->title;
 		if ($file = $request->file('photo_id')) {
 			$name = Carbon::now() . '.' . $file->getClientOriginalName();
 			$file->move('images', $name);

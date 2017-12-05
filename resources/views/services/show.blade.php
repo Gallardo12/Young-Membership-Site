@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Young Mentorship - Servicios')
-
 @section('content')
+
+	@include('partials.meta-dynamic')
 
 	<!-- Main -->
 	<div id="main">

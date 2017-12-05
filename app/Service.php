@@ -11,7 +11,7 @@ class Service extends Model {
 
 	protected $dates = ['deleted_at'];
 
-	protected $fillable = ['title', 'description', 'photo_id', 'cost', 'location', 'approved'];
+	protected $fillable = ['title', 'description', 'photo_id', 'cost', 'location', 'approved', 'slug', 'meta_title', 'meta_desc'];
 
 	public function category() {
 		return $this->belongsToMany(Category::class);
