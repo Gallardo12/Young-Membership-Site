@@ -24,8 +24,13 @@
 				<p>${{ $service->cost }} MXN</p>
 
 			</header>
+			@if ($service->photo)
 
-			<div class="image main"><img src="../images/pic02.jpg" alt="" /></div>
+				<div class="image main">
+					<img src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
+				</div>
+
+			@endif
 
 		</section>
 

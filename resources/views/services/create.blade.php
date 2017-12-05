@@ -6,9 +6,7 @@
 
 	<h2>Nuevo Servicio</h2>
 
-	<form class="alt" method="POST" action="/services/store">
-
-		{{ csrf_field() }}
+	{!! Form::open(['method' => 'POST', 'action' => 'ServiceController@store', 'files' => 'true', 'class' => 'alt']) !!}
 
 		<div class="row uniform">
 
@@ -21,6 +19,11 @@
 			<div class="12u$">
 				<label for="description">Descripción</label>
 				<textarea name="description" id="description" rows="6"></textarea>
+			</div>
+
+			<div class="12u$">
+				{!! Form::label('photo_id', 'Imágen Principal') !!}
+				{!! Form::file('photo_id', ['class' => '']) !!}
 			</div>
 
 			<div class="12u$">
@@ -85,7 +88,7 @@
 
 		</div>
 
-	</form>
+	{!! Form::close() !!}
 
 @endsection
 

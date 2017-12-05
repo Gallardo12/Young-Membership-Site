@@ -101,10 +101,12 @@
                                     <a href="{{ action('ServiceController@show', [$service->id]) }}">{{ $service->title }}</a>
                                 </h3>
                                 <span class="date">{{ $service->updated_at }}</span>
-                                <a disabled class="image fit">
-                                    <img src="../images/pic02.jpg" />
-                                </a>
-                                <p>{{ $service->description }}</p>
+                                @if ($service->photo)
+                                    <a disabled class="image fit">
+                                        <img src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
+                                    </a>
+                                @endif
+                                <p>{{ str_limit($service->description, 100) }}</p>
                                 <p>{{ $service->location }}</p>
                                 <ul class="actions">
                                     <li>

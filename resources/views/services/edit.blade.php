@@ -6,7 +6,7 @@
 
 	<h2>Modificar Servicio</h2>
 
-	<form class="alt" method="POST" action="/services/{{ $service->id }}">
+	<form class="alt" accept-charset="UTF-8" enctype="multipart/form-data" method="POST" action="/services/{{ $service->id }}">
 
 		{{ csrf_field() }}
 		{{ method_field('PATCH') }}
@@ -22,6 +22,11 @@
 			<div class="12u$">
 				<label for="description">Descripción</label>
 				<textarea name="description" id="description" rows="6">{{ $service->description }}</textarea>
+			</div>
+
+			<div class="12u$">
+				{!! Form::label('photo_id', 'Imágen Principal') !!}
+				{!! Form::file('photo_id', ['class' => '']) !!}
 			</div>
 
 			<div class="12u$">
