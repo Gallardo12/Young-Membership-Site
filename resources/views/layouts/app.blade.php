@@ -128,7 +128,7 @@
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=gmj1jv1638sjykft68o27iey1t7mz5ashkad2cqwvbe653vq"></script>
         <script>
             var editor_config = {
-                path_absolute : "{{ URL::to('/') }}/",
+                path_absolute : "/",
                 selector: "textarea",
                 plugins: [
                   "advlist autolink lists link image charmap print preview hr anchor pagebreak",
