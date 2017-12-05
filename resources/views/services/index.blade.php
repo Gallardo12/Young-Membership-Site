@@ -108,8 +108,15 @@
                                         <img src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
                                     </a>
                                 @endif
-                                <p>{{ str_limit($service->description, 100) }}</p>
-                                <p>{{ $service->location }}</p>
+                                <p>
+                                    @foreach ($service->category as $category)
+                                        <a href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
+                                    @endforeach
+                                </p>
+                                <p>
+                                    <b>Costo: </b>${{ $service->cost }} MXN <br>
+                                    <b>Ubicación: </b>{{ $service->location }}
+                                </p>
                                 <ul class="actions">
                                     <li>
                                         <a href="{{ action('ServiceController@show', [$service->id]) }}" class="button">Más</a>

@@ -78,3 +78,5 @@ Route::get('/categories/{id}', 'CategoryController@show');
 Route::get('/categories/{id}/edit', 'CategoryController@edit');
 Route::patch('/categories/{id}', 'CategoryController@update');
 Route::delete('/categories/{id}', 'CategoryController@destroy');
+
+Route::resource('media', 'PhotosController');
