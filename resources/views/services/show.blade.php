@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Young Mentorship - Servicios')
-
 @section('content')
+
+	@include('partials.meta-dynamic')
 
 	<!-- Main -->
 	<div id="main">
@@ -13,19 +13,24 @@
 			<header class="major">
 
 				<span class="date">{{ $service->updated_at }}</span>
-				<h1>{{ $service->title }}</h1>
-				<p>{{ $service->description }}</p>
-				<p>{{ $service->location }}</p>
+				@if ($service->photo)
+
+					<div class="image main">
+						<img src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
+					</div>
+
+				@endif
+				<h3>{{ $service->title }}</h3>
+				<p>{!! $service->description !!}</p>
 				<p>
 					@foreach ($service->category as $category)
 						<a href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
-					@endforeach
+					@endforeach <br>
+					<b>Ubicación: </b>{{ $service->location }} <br>
+					<b>Costo: </b>${{ $service->cost }} MXN
 				</p>
-				<p>${{ $service->cost }} MXN</p>
 
 			</header>
-
-			<div class="image main"><img src="../images/pic02.jpg" alt="" /></div>
 
 		</section>
 

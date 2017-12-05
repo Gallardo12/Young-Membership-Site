@@ -7,7 +7,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        @include('partials.meta-static')
+
+        <title>Young Mentorship - @yield('meta-title')</title>
+        <meta name="description" content="@yield('meta-desc')">
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />

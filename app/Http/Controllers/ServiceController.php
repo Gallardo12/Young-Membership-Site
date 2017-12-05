@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Photo;
 use App\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller {
@@ -42,6 +44,15 @@ class ServiceController extends Controller {
 	 */
 	public function store(Request $request) {
 		$input = $request->all();
+		$input['slug'] = str_slug($request->title);
+		$input['meta_title'] = $request->title;
+		if ($file = $request->file('photo_id')) {
+			$name = Carbon::now() . '.' . $file->getClientOriginalName();
+			$file->move('images', $name);
+			$photo = Photo::create(['photo' => $name, 'title' => $name]);
+			$input['photo_id'] = $photo->id;
+
+		}
 		$service = Service::create($input);
 		if ($categoryIds = $request->category_id) {
 			$service->category()->sync($categoryIds);
@@ -82,6 +93,17 @@ class ServiceController extends Controller {
 	public function update(Request $request, $id) {
 		$input = $request->all();
 		$service = Service::findOrFail($id);
+		if ($file = $request->file('photo_id')) {
+			if ($service->photo) {
+				unlink('images/' . $service->photo->photo);
+				$service->photo()->delete('photo');
+			}
+			$name = Carbon::now() . '.' . $file->getClientOriginalName();
+			$file->move('images', $name);
+			$photo = Photo::create(['photo' => $name, 'title' => $name]);
+			$input['photo_id'] = $photo->id;
+
+		}
 		$service->update($input);
 		if ($categoryIds = $request->category_id) {
 			$service->category()->sync($categoryIds);
@@ -116,6 +138,10 @@ class ServiceController extends Controller {
 
 	public function destroyService($id) {
 		$destroyService = Service::onlyTrashed()->findOrFail($id);
+		if ($destroyService->photo) {
+			unlink('images/' . $destroyService->photo->photo);
+			$destroyService->photo()->delete('photo');
+		}
 		$destroyService->forceDelete($destroyService);
 		return back();
 	}

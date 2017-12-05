@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="{{ app()->getLocale() }}">
 
@@ -6,8 +6,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        @include('partials.meta-static')
 
-        <title>{{ config('app.name', 'Laravel') }} - Servicios</title>
+        <title>Young Mentorship - @yield('meta-title')</title>
+        <meta name="description" content="@yield('meta-desc')">
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
@@ -101,11 +103,20 @@
                                     <a href="{{ action('ServiceController@show', [$service->id]) }}">{{ $service->title }}</a>
                                 </h3>
                                 <span class="date">{{ $service->updated_at }}</span>
-                                <a disabled class="image fit">
-                                    <img src="../images/pic02.jpg" />
-                                </a>
-                                <p>{{ $service->description }}</p>
-                                <p>{{ $service->location }}</p>
+                                @if ($service->photo)
+                                    <a disabled class="image fit">
+                                        <img src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
+                                    </a>
+                                @endif
+                                <p>
+                                    @foreach ($service->category as $category)
+                                        <a href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
+                                    @endforeach
+                                </p>
+                                <p>
+                                    <b>Costo: </b>${{ $service->cost }} MXN <br>
+                                    <b>Ubicación: </b>{{ $service->location }}
+                                </p>
                                 <ul class="actions">
                                     <li>
                                         <a href="{{ action('ServiceController@show', [$service->id]) }}" class="button">Más</a>

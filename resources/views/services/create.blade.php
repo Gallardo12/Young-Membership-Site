@@ -6,9 +6,7 @@
 
 	<h2>Nuevo Servicio</h2>
 
-	<form class="alt" method="POST" action="/services/store">
-
-		{{ csrf_field() }}
+	{!! Form::open(['method' => 'POST', 'action' => 'ServiceController@store', 'files' => 'true', 'class' => 'alt']) !!}
 
 		<div class="row uniform">
 
@@ -20,7 +18,12 @@
 			<!-- Break -->
 			<div class="12u$">
 				<label for="description">Descripción</label>
-				<textarea name="description" id="description" rows="6"></textarea>
+				<textarea name="description" class="my-editor" id="description" rows="6"></textarea>
+			</div>
+
+			<div class="12u$">
+				{!! Form::label('photo_id', 'Imágen Principal') !!}
+				{!! Form::file('photo_id', ['class' => '']) !!}
 			</div>
 
 			<div class="12u$">
@@ -61,15 +64,20 @@
 				</select>
 			</div>
 
+			<!-- Break -->
+			<div class="12u$">
+				<label for="cost">Precio</label>
+				<input type="number" name="cost" id="cost" step="any" />
+			</div>
+
 			<div class="12u$">
 				<label for="category_id">Categoría</label>
 				{!! Form::select("category_id[]", $category, null, ['id' => 'tag_list', 'class' => '', 'multiple']) !!}
 			</div>
 
-			<!-- Break -->
 			<div class="12u$">
-				<label for="cost">Precio</label>
-				<input type="number" name="cost" id="cost" step="any" />
+				<label for="meta_desc">Meta Descripción</label>
+				<input type="text" name="meta_desc" id="meta_desc" value="" />
 			</div>
 
 			<input type="hidden" name="approved" id="approved" value="0" />
@@ -85,7 +93,7 @@
 
 		</div>
 
-	</form>
+	{!! Form::close() !!}
 
 @endsection
 
