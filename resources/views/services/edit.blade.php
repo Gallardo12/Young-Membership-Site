@@ -21,7 +21,7 @@
 			<!-- Break -->
 			<div class="12u$">
 				<label for="description">Descripción</label>
-				<textarea name="description" id="description" rows="6">{{ $service->description }}</textarea>
+				<textarea name="description" class="my-editor" id="description" rows="6">{{ $service->description }}</textarea>
 			</div>
 
 			<div class="12u$">

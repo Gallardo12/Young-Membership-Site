@@ -125,11 +125,11 @@
         <script type="text/javascript">
             $('#tag_list').select2();
         </script>
-        <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=gmj1jv1638sjykft68o27iey1t7mz5ashkad2cqwvbe653vq"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.6.6/tinymce.min.js"></script>
         <script>
             var editor_config = {
                 path_absolute : "/",
-                selector: "textarea",
+                selector: "textarea.my-editor",
                 plugins: [
                   "advlist autolink lists link image charmap print preview hr anchor pagebreak",
                   "searchreplace wordcount visualblocks visualchars code fullscreen",
