@@ -1,146 +1,37 @@
-!DOCTYPE html>
+@extends('layouts.app')
 
-<html lang="{{ app()->getLocale() }}">
+@section('content')
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@include('partials.meta-static')
 
-        <title>{{ config('app.name', 'Laravel') }} - Noticias</title>
+    <div class="container">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
-        <noscript>
-            <link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" />
-        </noscript>
-    </head>
+        <h2 class="center">Noticias</h2>
 
-    <body class="is-loading">
+        <div class="row">
 
-        <!-- Wrapper -->
-        <div id="wrapper" class="fade-in">
+            @foreach ($blogs as $blog)
 
-            <!-- Header -->
-            <header id="header">
-                <a href="/" class="logo">Young Mentorship</a>
-            </header>
+                <div class="col s12 m6">
+                    <div class="card large">
+                        <div class="card-image">
+                            <img src="{{ asset('images/pic01.jpg') }}">
+                            <span class="card-title">{{ $blog->title }}</span>
+                        </div>
+                        <div class="card-content">
+                            <p><b>Creado el: </b>{{ $blog->updated_at }}</p>
+                            <p>{{ str_limit($blog->body, 200) }}</p>
+                        </div>
+                        <div class="card-action text-teal">
+                            <a class="teal-text" href="{{ action('BlogController@show', [$blog->id]) }}">Leer</a>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Nav -->
-            <nav id="nav">
-                <ul class="links">
-                    <li>
-                        <a href="/">Young Mentorship</a>
-                    </li>
-                    <li>
-                        <a href="/services">Servicios</a>
-                    </li>
-                    <li class="active">
-                        <a href="/blog">Noticias</a>
-                    </li>
-                    <li>
-                        <a href="/contact">Contáctanos</a>
-                    </li>
-                    <!-- Authentication Links -->
-                    @guest
-                        <li>
-                            <a href="{{ route('login') }}">Ingresar</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('register') }}">Registrarse</a>
-                        </li>
-                    @else
-                        <li>
-                            <a href="/home">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
+            @endforeach
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    @endguest
-                </ul>
-                <ul class="icons">
-                    <li>
-                        <a href="https://www.twitter.com/youngmentorship/" class="icon fa-twitter" target="_blank">
-                            <span class="label">Twitter</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/YOUNGMEXIC0/" class="icon fa-facebook" target="_blank">
-                            <span class="label">Facebook</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/youngmentorship/" class="icon fa-instagram" target="_blank">
-                            <span class="label">Instagram</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- Main -->
-            <div id="main">
-
-                <!-- Posts -->
-                <section class="posts">
-
-                    @foreach ($blogs as $blog)
-
-                        <article>
-                            <header>
-                                <h3>
-                                    <a href="{{ action('BlogController@show', [$blog->id]) }}">{{ $blog->title }}</a>
-                                </h3>
-                                <span class="date">{{ $blog->updated_at }}</span>
-                                <a disabled class="image fit">
-                                        <img src="images/pic02.jpg" />
-                                    </a>
-                                <p>{{ $blog->body }}</p>
-                                <ul class="actions">
-                                    <li>
-                                        <a href="{{ action('BlogController@show', [$blog->id]) }}" class="button">Leer</a>
-                                    </li>
-                                </ul>
-                            </header>
-                        </article>
-
-                    @endforeach
-
-                </section>
-
-            </div>
-
-            <!-- Footer -->
-            <footer id="footer">
-                <section class="split contact">
-                    <section class="alt">
-                        <h3>
-                            <a href="/contact">Contáctanos</a>
-                        </h3>
-                        </br>
-                        <p>: Si tienes dudas contáctanos, estamos aquí para servirte.</p>
-                    </section>
-                </section>
-            </footer>
         </div>
 
-        <!-- Scripts -->
-        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('assets/js/jquery.scrollex.min.js') }}"></script>
-        <script src="{{ asset('assets/js/jquery.scrolly.min.js') }}"></script>
-        <script src="{{ asset('assets/js/skel.min.js') }}"></script>
-        <script src="{{ asset('assets/js/util.js') }}"></script>
-        <script src="{{ asset('assets/js/main.js') }}"></script>
+    </div>
 
-    </body>
-
-</html>
+@endsection

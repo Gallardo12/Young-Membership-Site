@@ -11,117 +11,124 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>@yield('meta-title') - Young Mentorship</title>
+        <title>@yield('meta-title') - Young México</title>
         <meta name="description" content="@yield('meta-desc')">
         <meta name="author" content="@yield('meta-author')">
 
         <!-- Styles -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
-        <noscript>
-            <link rel="stylesheet" href="{{ asset('assets/css/noscript.css') }}" />
-        </noscript>
-
+        <!-- Compiled and minified CSS -->
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}"/>
     </head>
 
-    <body class="is-loading">
+    <body>
+        <header>
+            <div class="navbar-fixed">
+                <nav class="white">
+                    <div class="nav-wrapper">
+                        <a href="/" class="brand-logo">Young<span class="textoTeal">México</span></a>
+                        <a href="#" data-activates="mobile-demo" class="button-collapse grey-text text-darken-4"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="/">Young<span class="textoTeal">México</span></a></li>
+                            <li><a href="/services">Servicios</a></li>
+                            <li><a href="/blog">Noticias</a></li>
+                            <li><a href="/contact">Contáctanos</a></li>
+                            <!-- Authentication Links -->
+                            @guest
+                                <li>
+                                    <a href="{{ route('login') }}">Ingresar</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('register') }}">Registrarse</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="/home">{{ Auth::user()->name }} </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
 
-        <!-- Wrapper -->
-        <div id="wrapper" class="fade-in">
-            <!-- Header -->
-            <header id="header">
-                <a href="/" class="logo">Young Mentorship</a>
-            </header>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            @endguest
+                        </ul>
+                        <ul class="side-nav" id="mobile-demo">
+                            <li><a href="/">Young<span class="textoTeal">México</span></a></li>
+                            <li><a href="/services">Servicios</a></li>
+                            <li><a href="/blog">Noticias</a></li>
+                            <li><a href="/contact">Contáctanos</a></li>
+                            <!-- Authentication Links -->
+                            @guest
+                                <li>
+                                    <a href="{{ route('login') }}">Ingresar</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('register') }}">Registrarse</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="/home">{{ Auth::user()->name }} </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
 
-            <!-- Nav -->
-            <nav id="nav">
-                <ul class="links">
-                    <li class="active">
-                        <a href="/">Young Mentorship</a>
-                    </li>
-                    <li>
-                        <a href="/services">Servicios</a>
-                    </li>
-                    <li>
-                        <a href="/blog">Noticias</a>
-                    </li>
-                    <li>
-                        <a href="/contact">Contáctanos</a>
-                    </li>
-                    <!-- Authentication Links -->
-                    @guest
-                        <li>
-                            <a href="{{ route('login') }}">Ingresar</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('register') }}">Registrarse</a>
-                        </li>
-                    @else
-                        <li>
-                            <a href="/home">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    @endguest
-                </ul>
-                <ul class="icons">
-                    <li>
-                        <a href="https://www.twitter.com/youngmentorship/" class="icon fa-twitter" target="_blank">
-                            <span class="label">Twitter</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/YOUNGMEXIC0/" class="icon fa-facebook" target="_blank">
-                            <span class="label">Facebook</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/youngmentorship/" class="icon fa-instagram" target="_blank">
-                            <span class="label">Instagram</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- Main -->
-            <div id="main">
-                @yield('content')
-
-                <!-- Footer -->
-                <footer id="footer">
-                    <section class="split contact">
-                        <section class="alt">
-                            <p>
-                                <strong>CONTÁCTANOS</strong>
-                                : Si tienes dudas contactanos, estamos a para servirte.
-                            </p>
-                        </section>
-                    </section>
-                </footer>
-
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            @endguest
+                        </ul>
+                    </div>
+                </nav>
             </div>
+        </header>
+        <main>
+            @yield('content')
+        </main>
+        <footer class="page-footer white z-depth-5">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="textoColor">Contáctanos!!</h5>
+                <p class="grey-text text-darken-4">Si tienes dudas contactanos, estamos a para servirte.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="textoColor">Búscanos en las Redes Sociales...</h5>
+                <ul>
+                  <li><a class="grey-text text-darken-4" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-darken-4" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-darken-4" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-darken-4" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container textoColor">
+            © 2017 Young<span class="textoTeal">México</span>
+            <a class="grey-text text-darken-4 right" href="#!">by Hex<span class="textoTeal">Code</span></a>
+            </div>
+          </div>
+        </footer>
 
-        </div>
-
-        <!-- Scripts -->
-        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('assets/js/jquery.scrollex.min.js') }}"></script>
-        <script src="{{ asset('assets/js/jquery.scrolly.min.js') }}"></script>
-        <script src="{{ asset('assets/js/skel.min.js') }}"></script>
-        <script src="{{ asset('assets/js/util.js') }}"></script>
+        <!--Import jQuery before materialize.js-->
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-        <script src="{{ asset('assets/js/main.js') }}"></script>
         <script type="text/javascript">
             $('#tag_list').select2();
         </script>
@@ -161,6 +168,7 @@
               };
             tinymce.init(editor_config);
         </script>
+        <script src="{{asset('/js/app.js') }}" type="text/javascript" charset="utf-8" async defer></script>
 
     </body>
 

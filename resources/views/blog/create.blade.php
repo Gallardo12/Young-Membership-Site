@@ -20,7 +20,7 @@
 			<!-- Break -->
 			<div class="12u$">
 				<label for="body">Contenido</label>
-				<textarea name="body" id="body" rows="6"></textarea>
+				<textarea name="body" class="my-editor" id="body" rows="6"></textarea>
 			</div>
 
 			<!-- Break -->
