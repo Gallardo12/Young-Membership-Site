@@ -4,37 +4,38 @@
 
 @section('content')
 
-	<h2>Nuevo Post</h2>
+@include('partials.meta-static')
 
-	<form class="alt" method="POST" action="/blog/store">
+	<div class="container">
 
-		{{ csrf_field() }}
+		<h2>Nuevo Post</h2>
 
-		<div class="row uniform">
+		<div class="row">
+			<form class="alt" method="POST" action="/blog/store">
 
-			<div class="12u$">
-				<label for="title">Título</label>
-				<input type="text" name="title" id="title" value="" />
-			</div>
+				{{ csrf_field() }}
 
-			<!-- Break -->
-			<div class="12u$">
-				<label for="body">Contenido</label>
-				<textarea name="body" class="my-editor" id="body" rows="6"></textarea>
-			</div>
-
-			<!-- Break -->
-			<div class="12u$">
-				<ul class="actions">
-					<li>
-						<input type="submit" value="Guardar" class="special" name="submit" />
-					</li>
-				</ul>
-			</div>
-
+				<div class="row">
+					<div class="input-field col s12 m6">
+						<label for="title">Título</label>
+						<input type="text" name="title" id="title" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 m6">
+						<label for="body">Contenido</label>
+						<textarea name="body" class="my-editor" id="body" rows="6"></textarea>
+					</div>
+				</div>
+				<div class="row">
+	                <div class="input-field col s12 m6">
+	                    <input type="submit" value="Guardar" class="waves-effect waves-light btn" />
+	                </div>
+	            </div>
+			</form>
 		</div>
 
-	</form>
+	</div>
 
 @endsection
 
