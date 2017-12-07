@@ -4,51 +4,46 @@
 
 @section('content')
 
-	<h2>Modificar Post</h2>
+@include('partials.meta-static')
 
-	<form class="alt" method="POST" action="/blog/{{ $blog->id }}">
+	<div class="container">
 
-		{{ csrf_field() }}
-		{{ method_field('PATCH') }}
+		<h2>Modificar Post</h2>
 
-		<div class="row uniform">
+		<div class="row">
+			<form class="alt" method="POST" action="/blog/{{ $blog->id }}">
 
-			<div class="12u$">
-				<label for="title">Título</label>
-				<input type="text" name="title" id="title" value="{{ $blog->title }}" />
-			</div>
+				{{ csrf_field() }}
+				{{ method_field('PATCH') }}
 
-			<!-- Break -->
-			<div class="12u$">
-				<label for="body">Contenido</label>
-				<textarea name="body" class="my-editor" id="body" rows="6">{{ $blog->body }}</textarea>
-			</div>
-
-			<!-- Break -->
-			<div class="6u 12u$">
-				<ul class="actions">
-					<li>
-						<input type="submit" value="Editar" class="special" name="submit" />
-					</li>
-				</ul>
-			</div>
-
+				<div class="row">
+					<div class="input-field col s12 m6">
+						<label for="title">Título</label>
+					<input type="text" name="title" id="title" value="{{ $blog->title }}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12 m6">
+						<label for="body">Contenido</label>
+					<textarea name="body" class="my-editor" id="body" rows="6">{{ $blog->body }}</textarea>
+					</div>
+				</div>
+				<div class="row">
+	                <div class="input-field col s12 m6">
+	                    <input type="submit" value="Editar" class="waves-effect waves-light btn" />
+	                </div>
+	            </div>
+			</form>
+		</div>
+		<div class="row">
+			<form class="alt" method="POST" action="{{ action('BlogController@destroy', [$blog->id]) }}">
+				{{ csrf_field() }}
+				{{ method_field('DELETE') }}
+				<input type="submit" value="Eliminar" class="waves-effect waves-light btn red" />
+			</form>
 		</div>
 
-	</form>
-
-	<form class="alt" method="POST" action="{{ action('BlogController@destroy', [$blog->id]) }}">
-
-		{{ csrf_field() }}
-		{{ method_field('DELETE') }}
-
-		<h3>Acciones</h3>
-		<div class="6u 12u$">
-			<input type="submit" value="Eliminar" class="special" name="submit" />
-		</div>
-
-	</form>
-
+	</div>
 
 @endsection
 

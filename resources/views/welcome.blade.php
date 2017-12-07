@@ -17,7 +17,7 @@
                     <div class="nav-wrapper">
                         <form>
                             <div class="input-field teal">
-                                <input id="search" type="search" required>
+                                <input id="search" type="search" placeholder="Todo lo que necesitas al alcance de un click..." required>
                                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                 <i class="material-icons">close</i>
                             </div>
@@ -32,6 +32,7 @@
     <div class="container">
         <div class="row">
             <h2 class="center">¿Qué es Young<span class="textoTeal">México</span>?</h2>
+            <div class="divider"></div>
             <h4 class="center">
                 Un servicio de emprendedores para emprendedores.
             </h4>

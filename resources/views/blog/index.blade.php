@@ -7,6 +7,7 @@
     <div class="container">
 
         <h2 class="center">Noticias</h2>
+        <div class="divider"></div>
 
         <div class="row">
 

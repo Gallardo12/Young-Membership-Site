@@ -12,9 +12,9 @@
             {{ csrf_field() }}
             <div class="row">
                 <div class="input-field col s12 m6" form-group{{ $errors->has('email') ? ' has-error' : '' }}>
-                    <i class="material-icons prefix">account_circle</i>
+                    <i class="material-icons prefix">email</i>
                     <label for="email">Correo Electrónico</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                    <input id="email" type="email" data-error="wrong" data-success="right" name="email" value="{{ old('email') }}" required autofocus>
                     @if ($errors->has('email'))
                         <span>
                             <strong>{{ $errors->first('email') }}</strong>
