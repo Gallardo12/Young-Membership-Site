@@ -4,31 +4,36 @@
 
 @section('content')
 
-	<h2>Nueva Categoría</h2>
+@include('partials.meta-static')
 
-	<form class="alt" method="POST" action="/categories/store">
+	<div class="container">
 
-		{{ csrf_field() }}
+		<h2 class="center">Nueva Categoría</h2>
+		<div class="divider"></div>
 
-		<div class="row uniform">
+		<div class="row">
+			<form class="alt" method="POST" action="/categories/store">
 
-			<div class="12u$">
-				<label for="name">Nombre</label>
-				<input type="text" name="name" id="name" value="" />
-			</div>
+				{{ csrf_field() }}
 
-			<!-- Break -->
-			<div class="12u$">
-				<ul class="actions">
-					<li>
-						<input type="submit" value="Guardar" class="special" name="submit" />
-					</li>
-				</ul>
-			</div>
+				<div class="row">
+					<div style="margin-top: 2em;" class="input-field col s12">
+						<i class="material-icons prefix">featured_play_list</i>
+						<label for="name">Nombre</label>
+						<input type="text" name="name" id="name" value="" />
+					</div>
+				</div>
+
+				<div class="row">
+	                <div class="input-field col s12 m6">
+	                    <input type="submit" value="Guardar" class="waves-effect waves-light btn" />
+	                </div>
+	            </div>
+
+			</form>
 
 		</div>
-
-	</form>
+	</div>
 
 @endsection
 

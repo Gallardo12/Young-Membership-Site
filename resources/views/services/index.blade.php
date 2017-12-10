@@ -29,7 +29,7 @@
                     <div class="card large">
                         <div class="card-image">
                             @if ($service->photo)
-                                <img class="materialboxed responsive-img" src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
+                                <img class="materialboxed responsive-img" data-caption="{{ $service->title }}" src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
                                 <a href="{{ action('ServiceController@show', [$service->id]) }}"><span class="card-title">{{ $service->title }}</span></a>
                             @else
                                 <img src="{{ asset('images/bg.jpg') }}">
@@ -41,12 +41,10 @@
                                 <b>Costo: </b>${{ $service->cost }} MXN <br>
                                 <b>Ubicación: </b>{{ $service->location }}
                             </p>
-                            <br>
-                            <div class="divider"></div>
                         </div>
-                        <div class="card-action">
-                            <a href="{{ action('ServiceController@show', [$service->id]) }}">Más</a>
-                            <a href="#" class="btn-flat disabled"><b>{{ $service->updated_at }}</b></a>
+                        <div class="card-action valign-wrapper">
+                            <a class="flow-text btn-large" href="{{ action('ServiceController@show', [$service->id]) }}">Más</a>
+                            <p style="margin-left: 2em;" class="right-align"><b>Creado el: </b><em>{{ $service->updated_at }}</em></p>
                         </div>
                     </div>
                 </div>
