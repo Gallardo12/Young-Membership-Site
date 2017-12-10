@@ -29,10 +29,11 @@
                     <div class="card large">
                         <div class="card-image">
                             @if ($service->photo)
-                                <img class="materialboxed" src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
-                                <span class="card-title">{{ $service->title }}</span>
+                                <img class="materialboxed responsive-img" src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
+                                <a href="{{ action('ServiceController@show', [$service->id]) }}"><span class="card-title">{{ $service->title }}</span></a>
                             @else
                                 <img src="{{ asset('images/bg.jpg') }}">
+                                <a href="{{ action('ServiceController@show', [$service->id]) }}"><span class="card-title">{{ $service->title }}</span></a>
                             @endif
                         </div>
                         <div class="card-content">
@@ -40,12 +41,7 @@
                                 <b>Costo: </b>${{ $service->cost }} MXN <br>
                                 <b>Ubicación: </b>{{ $service->location }}
                             </p>
-                            <div class="divider"></div>
-                            <p class="flow-text" align="center">
-                                @foreach ($service->category as $category)
-                                    <a href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
-                                @endforeach
-                            </p>
+                            <br>
                             <div class="divider"></div>
                         </div>
                         <div class="card-action">
