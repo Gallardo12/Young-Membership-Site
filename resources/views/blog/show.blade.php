@@ -9,8 +9,9 @@
 	<div class="container">
 
 		<h2 class="center">{{ $blog->title }}</h2>
+		<div class="divider"></div>
 
-		<p class="flow-text" align="center">
+		<p style="margin-top: 2em;" class="flow-text" align="center">
 			<b>Creado el: {{ $blog->updated_at }}</b>
 		</p>
 		<p>{!! $blog->body !!}</p>
