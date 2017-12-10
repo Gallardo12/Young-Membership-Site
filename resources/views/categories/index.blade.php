@@ -4,38 +4,42 @@
 
 @section('content')
 
-	<h2>Categorías</h2>
+@include('partials.meta-static')
 
-	<div class="table-wrapper">
+	<div class="container">
+		<h2>Categorías</h2>
 
-		<table>
+		<div class="table-wrapper">
 
-			<thead>
+			<table>
 
-				<tr>
-					<th>Nombre</th>
-					<th>Acciones</th>
-				</tr>
-
-			</thead>
-
-			<tbody>
-
-				@foreach ($categories as $category)
+				<thead>
 
 					<tr>
-						<td><a href="{{ action('CategoryController@show', [$category->slug]) }}">{{ $category->name }}</a></td>
-						<td>
-							<a href="{{ action('CategoryController@edit', [$category->id]) }}" class="button">Editar</a>
-						</td>
+						<th>Nombre</th>
+						<th>Acciones</th>
 					</tr>
 
-				@endforeach
+				</thead>
 
-			</tbody>
+				<tbody>
 
-		</table>
+					@foreach ($categories as $category)
 
+						<tr>
+							<td><a href="{{ action('CategoryController@show', [$category->slug]) }}">{{ $category->name }}</a></td>
+							<td>
+								<a href="{{ action('CategoryController@edit', [$category->id]) }}" class="button">Editar</a>
+							</td>
+						</tr>
+
+					@endforeach
+
+				</tbody>
+
+			</table>
+
+		</div>
 	</div>
 
 @endsection

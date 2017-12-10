@@ -16,12 +16,12 @@
                 <div class="col s12 m6">
                     <div class="card large">
                         <div class="card-image">
-                            <img src="{{ asset('images/pic01.jpg') }}">
-                            <span class="card-title">{{ $blog->title }}</span>
+                            <img class="materialboxed responsive-img" src="{{ asset('images/pic01.jpg') }}">
+                            <a href="{{ action('BlogController@show', [$blog->id]) }}"><span class="card-title">{{ $blog->title }}</span></a>
                         </div>
                         <div class="card-content">
                             <p><b>Creado el: </b>{{ $blog->updated_at }}</p>
-                            <p>{{ str_limit($blog->body, 200) }}</p>
+                            <p class="flow-text">{!! str_limit($blog->body, 75) !!}</p>
                         </div>
                         <div class="card-action text-teal">
                             <a class="teal-text" href="{{ action('BlogController@show', [$blog->id]) }}">Leer</a>
