@@ -34,10 +34,10 @@
 		</div>
 		<div class="row">
 			<div class="divider"></div>
-			<p class="center flow-text">{{ $service->updated_at }}</p>
-			<div class="divider"></div>
 			<h4 class="center">Descripción</h4>
 			<p class="flow-text">{!! $service->description !!}</p>
+			<div class="divider"></div>
+			<p class="center flow-text">{{ $service->updated_at }}</p>
 		</div>
 		<div class="row">
 			<div class="divider"></div>

@@ -1,4 +1,3 @@
-
 Haz recibido un mensaje de : {{ $email }}
 
 <p>

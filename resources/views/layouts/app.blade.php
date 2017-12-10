@@ -62,12 +62,12 @@
                             @endguest
                         </ul>
                         <ul class="side-nav" id="mobile-demo">
-                            <li><a href="/">Young<span class="textoTeal">México</span></a></li>
-                            <li><a href="/services">Servicios</a></li>
-                            <li><a href="/blog">Noticias</a></li>
-                            <li><a href="/contact">Contáctanos</a></li>
                             <!-- Authentication Links -->
                             @guest
+                                <li><a href="/">Young<span class="textoTeal">México</span></a></li>
+                                <li><a href="/services">Servicios</a></li>
+                                <li><a href="/blog">Noticias</a></li>
+                                <li><a href="/contact">Contáctanos</a></li>
                                 <li>
                                     <a href="{{ route('login') }}">Ingresar</a>
                                 </li>
@@ -75,20 +75,29 @@
                                     <a href="{{ route('register') }}">Registrarse</a>
                                 </li>
                             @else
-                                <li>
-                                    <a href="/home">{{ Auth::user()->name }} </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
+                                <div class="row teal valign-wrapper">
+                                    <div class="col s3">
+                                        <img src="{{ asset('images/user.png') }}" class="responsive-img circle">
+                                    </div>
+                                    <div class="col s9">
+                                        <p>
+                                            <a href="/home" class="flow-text white-text">{{ Auth::user()->name }} </a>
+                                            <a href="{{ route('logout') }}" class="white-text" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Salir
+                                            </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <li><a href="/">Young<span class="textoTeal">México</span></a></li>
+                                <div class="divider"></div>
+                                <li><a href="/services">Servicios</a></li>
+                                <li><a href="/blog">Noticias</a></li>
+                                <li><a href="/contact">Contáctanos</a></li>
                             @endguest
                         </ul>
                     </div>
@@ -102,16 +111,15 @@
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="textoColor">Contáctanos!!</h5>
-                <p class="grey-text text-darken-4">Si tienes dudas contactanos, estamos a para servirte.</p>
+                <h5 class="textoColor center">Contáctanos!!</h5>
+                <p class="grey-text text-darken-4" align="center">Si tienes dudas contactanos, estamos a para servirte.</p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="textoColor">Búscanos en las Redes Sociales...</h5>
-                <ul>
-                  <li><a class="grey-text text-darken-4" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-darken-4" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-darken-4" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-darken-4" href="#!">Link 4</a></li>
+                <h5 class="textoColor center">Búscanos en las Redes Sociales...</h5>
+                <ul class="center">
+                  <li><a class="grey-text text-darken-4" href="https://www.twitter.com/youngmentorship/" target="_blank">Twitter</a></li>
+                  <li><a class="grey-text text-darken-4" href="https://www.facebook.com/YOUNGMEXIC0/" target="_blank">Facebook</a></li>
+                  <li><a class="grey-text text-darken-4" href="https://www.instagram.com/youngmentorship/" target="_blank">Instagram</a></li>
                 </ul>
               </div>
             </div>
