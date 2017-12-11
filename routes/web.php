@@ -80,3 +80,4 @@ Route::patch('/categories/{id}', 'CategoryController@update');
 Route::delete('/categories/{id}', 'CategoryController@destroy');
 
 Route::resource('media', 'PhotosController');
+Route::resource('media2', 'PhotobsController');
