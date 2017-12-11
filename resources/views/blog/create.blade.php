@@ -12,9 +12,7 @@
 		<div class="divider"></div>
 
 		<div class="row">
-			<form class="alt" method="POST" action="/blog/store">
-
-				{{ csrf_field() }}
+			{!! Form::open(['method' => 'POST', 'action' => 'BlogController@store', 'files' => 'true', 'class' => 'alt']) !!}
 
 				<div class="row">
 					<div style="margin-top: 2em;" class="input-field col s12">
@@ -34,7 +32,7 @@
 					<div class="file-field input-field col s12">
 				      	<div class="btn">
 				        	<span>Foto</span>
-				        	{!! Form::file('photo_id', ['class' => '', 'type' => 'file']) !!}
+				        	{!! Form::file('photob_id', ['class' => '', 'type' => 'file']) !!}
 				      	</div>
 				      	<div class="file-path-wrapper">
 				      		<input class="file-path validate" type="text">
@@ -47,7 +45,7 @@
 	                    <input type="submit" value="Guardar" class="waves-effect waves-light btn" />
 	                </div>
 	            </div>
-			</form>
+			{!! Form::close() !!}
 		</div>
 
 	</div>
