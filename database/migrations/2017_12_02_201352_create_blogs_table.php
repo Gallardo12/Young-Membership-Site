@@ -13,7 +13,7 @@ class CreateBlogsTable extends Migration {
 	public function up() {
 		Schema::create('blogs', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('photob_id');
+			$table->integer('photob_id')->nullable();
 			$table->string('title');
 			$table->text('body');
 			$table->timestamps();

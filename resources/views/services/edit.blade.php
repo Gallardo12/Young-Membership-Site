@@ -104,7 +104,7 @@
 					<div style="margin-top: 2em;" class="input-field col s12">
 						<i class="material-icons prefix">room_service</i>
 						<label for="meta_desc">Meta Descripción</label>
-						<input type="text" name="meta_desc" id="meta_desc" />
+						<input type="text" name="meta_desc" id="meta_desc" value="{{ $service->meta_desc }}" />
 					</div>
 				</div>
 

@@ -12,7 +12,7 @@
 		<div class="divider"></div>
 
 		<div class="row">
-			<form class="alt" method="POST" action="/blog/{{ $blog->id }}">
+			<form class="alt" accept-charset="UTF-8" enctype="multipart/form-data" method="POST" action="/blog/{{ $blog->id }}">
 
 				{{ csrf_field() }}
 				{{ method_field('PATCH') }}
@@ -35,7 +35,7 @@
 					<div class="file-field input-field col s12">
 				      	<div class="btn">
 				        	<span>Foto</span>
-				        	{!! Form::file('photo_id', ['class' => '', 'type' => 'file']) !!}
+				        	{!! Form::file('photob_id', ['class' => '', 'type' => 'file']) !!}
 				      	</div>
 				      	<div class="file-path-wrapper">
 				      		<input class="file-path validate" type="text">

@@ -51,7 +51,6 @@ class ServiceController extends Controller {
 			$file->move('images', $name);
 			$photo = Photo::create(['photo' => $name, 'title' => $name]);
 			$input['photo_id'] = $photo->id;
-
 		}
 		$service = Service::create($input);
 		if ($categoryIds = $request->category_id) {
