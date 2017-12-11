@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Blog;
+use App\Photob;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller {
@@ -40,6 +42,13 @@ class BlogController extends Controller {
 	 */
 	public function store(Request $request) {
 		$input = $request->all();
+		if ($file = $request->file('photob_id')) {
+			$name = Carbon::now() . '.' . $file->getClientOriginalName();
+			$file->move('images', $name);
+			$photo = Photob::create(['photob' => $name, 'title' => $name]);
+			var_dump($photo);
+			$input['photob_id'] = $photo->id;
+		}
 		Blog::create($input);
 		return redirect('/blog');
 	}
@@ -76,6 +85,16 @@ class BlogController extends Controller {
 	public function update(Request $request, $id) {
 		$input = $request->all();
 		$blog = Blog::findOrFail($id);
+		if ($file = $request->file('photob_id')) {
+			if ($blog->photob) {
+				unlink('images/' . $blog->photob->photob);
+				$blog->photob()->delete('photob');
+			}
+			$name = Carbon::now() . '.' . $file->getClientOriginalName();
+			$file->move('images', $name);
+			$photo = Photob::create(['photob' => $name, 'title' => $name]);
+			$input['photob_id'] = $photo->id;
+		}
 		$blog->update($input);
 		return redirect('/blog');
 	}
@@ -105,6 +124,10 @@ class BlogController extends Controller {
 
 	public function destroyBlog($id) {
 		$destroyBlog = Blog::onlyTrashed()->findOrFail($id);
+		if ($destroyBlog->photob) {
+			unlink('images/' . $destroyBlog->photob->photob);
+			$destroyBlog->photob()->delete('photob');
+		}
 		$destroyBlog->forceDelete($destroyBlog);
 		return back();
 	}

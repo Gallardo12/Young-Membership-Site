@@ -4,14 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePhotoBsTable extends Migration {
+class CreatePhotobsTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('photo_bs', function (Blueprint $table) {
+		Schema::create('photobs', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('title');
 			$table->string('photob')->nullable();
@@ -25,6 +25,6 @@ class CreatePhotoBsTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('photo_bs');
+		Schema::dropIfExists('photobs');
 	}
 }
