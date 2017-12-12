@@ -6,6 +6,7 @@
 
     <div class="container">
         <h2 class="center">Panel de Administrador</h2>
+        <div class="divider"></div>
         <div class="row">
             <p class="flow-text" align="center">
                 <strong>Bienvenido</strong>
@@ -27,6 +28,56 @@
                             <div class="col s12 m4 center">
                                 <a href="/services/bin" class="waves-effect waves-light btn-large"><i class="material-icons left">delete</i>Papelera</a>
                             </div>
+                        </div>
+                        <div class="row">
+                            <h5 style="margin-top: 2em;" class="center">Servicios Recientes</h5>
+                            <table class="centered responsive-table bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Servicio</th>
+                                        <th>Autor</th>
+                                        <th>Status</th>
+                                        <th>Publicar</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach ($service as $service)
+                                        <tr>
+                                            <th class="center flow-text">{{ $service->title }}</th>
+                                            <th class="center flow-text">Admin</th>
+                                            <th class="center flow-text">
+                                                @if($service->status == 0)
+                                                        Borrador
+                                                    @else
+                                                        Publicado
+                                                    @endif
+                                            </th>
+                                            <th class="center">
+                                                <div class="container">
+                                                    @if($service->status == 0)
+                                                        {{ Form::model($service, ['method' => 'PATCH', 'action' => ['ServiceController@publish', $service->id]]) }}
+                                                            {{ Form::select('status', ['0' => 'Borrador', '1' => 'Publicado'], null, ['class' => '']) }}
+                                                            {{ Form::submit('Aplicar', ['class' => 'waves-effect waves-light btn']) }}
+                                                        {{ Form::close() }}
+                                                    @else
+                                                        {{ Form::model($service, ['method' => 'PATCH', 'action' => ['ServiceController@publish', $service->id]]) }}
+                                                            {{ Form::select('status', ['0' => 'Borrador', '1' => 'Publicado'], null, ['class' => '']) }}
+                                                            {{ Form::submit('Aplicar', ['class' => 'waves-effect waves-light btn']) }}
+                                                        {{ Form::close() }}
+                                                    @endif
+                                                </div>
+                                            </th>
+                                            <th class="center flow-text">
+                                                <a href="{{ action('ServiceController@show', [$service->id]) }}" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">remove_red_eye</i></a>
+                                                <a class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">mode_edit</i></a>
+                                                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></a>
+                                            </th>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </li>

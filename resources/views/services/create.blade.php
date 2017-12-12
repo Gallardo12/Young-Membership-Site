@@ -105,11 +105,9 @@
 					</div>
 				</div>
 
-					<input type="hidden" name="approved" id="approved" value="0" />
-
 				<div class="row">
 	                <div class="input-field col s12 m6">
-	                    <input type="submit" value="Guardar" class="waves-effect waves-light btn" />
+	                    <input type="submit" value="Enviar para autorización" class="waves-effect waves-light btn" />
 	                </div>
 	            </div>
 
