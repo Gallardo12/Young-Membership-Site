@@ -22,7 +22,7 @@ class ServiceController extends Controller {
 	}
 
 	public function index() {
-		$services = Service::latest()->get();
+		$services = Service::where('status', 1)->latest()->get();
 		return view('services.index', compact('services'));
 	}
 
@@ -108,6 +108,13 @@ class ServiceController extends Controller {
 			$service->category()->sync($categoryIds);
 		}
 		return redirect('/services');
+	}
+
+	public function publish(Request $request, $id) {
+		$input = $request->all();
+		$service = Service::findOrFail($id);
+		$service->update($input);
+		return redirect('admin');
 	}
 
 	/**

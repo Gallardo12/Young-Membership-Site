@@ -21,7 +21,7 @@ class CreateServicesTable extends Migration {
 			$table->text('description');
 			$table->string('location');
 			$table->float('cost');
-			$table->boolean('approved');
+			$table->integer('status')->default(0);
 			$table->timestamps();
 		});
 	}
