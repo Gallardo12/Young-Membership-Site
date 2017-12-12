@@ -23,7 +23,9 @@ return view('emails.contactus');
 });
  */
 
-// Route::view('service', App\Service::all());
+Route::patch('/services/{id}', 'ServiceController@publish');
+
+View::share('service', App\Service::all());
 
 Route::get('/blog/bin', 'BlogController@bin');
 Route::get('/blog/bin/{id}/restore', 'BlogController@restore');
@@ -55,6 +57,36 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController@index');
 
+<<<<<<< HEAD
+// Route::get('/blog', 'BlogController@index');
+// Route::get('/blog/create', 'BlogController@create');
+// Route::post('/blog/store', 'BlogController@store');
+// Route::get('/blog/{id}', 'BlogController@show');
+// Route::get('/blog/{id}/edit', 'BlogController@edit');
+// Route::patch('/blog/{id}', 'BlogController@update');
+// Route::delete('/blog/{id}', 'BlogController@destroy');
+
+// Route::get('/services', 'ServiceController@index');
+// Route::get('/services/create', 'ServiceController@create');
+// Route::post('/services/store', 'ServiceController@store');
+// Route::get('/services/{id}', 'ServiceController@show');
+// Route::get('/services/{id}/edit', 'ServiceController@edit');
+// Route::patch('/services/{id}', 'ServiceController@update');
+// Route::delete('/services/{id}', 'ServiceController@destroy');
+
+// Route::get('/categories', 'CategoryController@index');
+// Route::get('/categories/create', 'CategoryController@create');
+// Route::post('/categories/store', 'CategoryController@store');
+// Route::get('/categories/{id}', 'CategoryController@show');
+// Route::get('/categories/{id}/edit', 'CategoryController@edit');
+// Route::patch('/categories/{id}', 'CategoryController@update');
+// Route::delete('/categories/{id}', 'CategoryController@destroy');
+
+Route::resource('blog', 'BlogController');
+Route::resource('services', 'ServiceController');
+Route::resource('categories', 'CategoryController');
+Route::resource('media', 'PhotosController');
+=======
 Route::get('/blog', 'BlogController@index');
 Route::get('/blog/create', 'BlogController@create');
 Route::post('/blog/store', 'BlogController@store');
@@ -81,3 +113,4 @@ Route::delete('/categories/{id}', 'CategoryController@destroy');
 
 Route::resource('media', 'PhotosController');
 Route::resource('media2', 'PhotobsController');
+>>>>>>> 80f741c9dfee56f56a1e5c61082788bdedbe9198

@@ -45,6 +45,11 @@
                                     <a href="{{ route('register') }}">Registrarse</a>
                                 </li>
                             @else
+                                @if(Auth::user()->role_id == 1)
+                                    <li>
+                                        <a href="/admin">Admin</a>
+                                    </li>
+                                @endif
                                 <li>
                                     <a href="/home">{{ Auth::user()->name }} </a>
                                 </li>
@@ -98,6 +103,12 @@
                                 <li><a href="/services">Servicios</a></li>
                                 <li><a href="/blog">Noticias</a></li>
                                 <li><a href="/contact">Contáctanos</a></li>
+                                @if(Auth::user()->role_id == 1)
+                                    <div class="divider"></div>
+                                    <li>
+                                        <a href="/admin">Admin</a>
+                                    </li>
+                                @endif
                             @endguest
                         </ul>
                     </div>
