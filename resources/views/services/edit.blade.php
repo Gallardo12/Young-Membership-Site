@@ -11,10 +11,7 @@
 		<div class="divider"></div>
 
 		<div class="row">
-			<form class="alt" accept-charset="UTF-8" enctype="multipart/form-data" method="POST" action="/services/{{ $service->id }}">
-
-				{{ csrf_field() }}
-				{{ method_field('PATCH') }}
+			{!! Form::model($service, ['method' => 'PUT', 'action' => ['ServiceController@update', $service->id], 'files' => true ]) !!}
 
 				<div class="row">
 					<div style="margin-top: 2em;" class="input-field col s12">
@@ -35,7 +32,7 @@
 					<div class="file-field input-field col s12">
 				      	<div class="btn">
 				        	<span>Foto</span>
-				        	{!! Form::file('photo_id', ['class' => '', 'type' => 'file']) !!}
+				        	{!! Form::file("photo_id", ['class' => '']) !!}
 				      	</div>
 				      	<div class="file-path-wrapper">
 				      		<input class="file-path validate" type="text">
@@ -88,7 +85,7 @@
 					<div class="input-field col s12">
 						<i class="material-icons prefix">view_list</i>
 						{!! Form::select("category_id[]", $category, null, ['id' => 'category_id', 'class' => 'teal-text', 'multiple']) !!}
-						<label for="category_id">Categoría</label>
+						{!! Form::label("category_id", "Categoría:") !!}
 					</div>
 				</div>
 
@@ -110,19 +107,17 @@
 
 				<div class="row">
 	                <div class="input-field col s12 m6">
-	                    <input type="submit" value="Guardar" class="waves-effect waves-light btn" />
+	                	{!! Form::submit("Editar", ['class' => 'waves-effect waves-light btn']) !!}
 	                </div>
 	            </div>
 
-			</form>
+			{!! Form::close() !!}
 
 		</div>
 		<div class="row">
-			<form class="alt" method="POST" action="{{ action('ServiceController@destroy', [$service->id]) }}">
-				{{ csrf_field() }}
-				{{ method_field('DELETE') }}
+			{!! Form::open(['method' => 'DELETE', 'action' => ['ServiceController@destroy', $service->id]]) !!}
 				<input type="submit" value="Eliminar" class="waves-effect waves-light btn red" />
-			</form>
+			{!! Form::close() !!}
 		</div>
 
 	</div>
