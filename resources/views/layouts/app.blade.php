@@ -117,6 +117,7 @@
         </header>
         <main>
             @yield('content')
+            @yield('javascript')
         </main>
         <footer class="page-footer white z-depth-5">
           <div class="container">

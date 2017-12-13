@@ -43,6 +43,18 @@ class ServiceController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request) {
+
+		$rules = [
+			'title' => ['required', 'min:20', 'max:200', 'unique:services'],
+			'description' => ['required', 'min:200'],
+			'photo_id' => ['mimes:jpeg,jpg,png', 'max:5000'],
+			'location' => ['required'],
+			'category_id' => ['required'],
+			'cost' => ['required', 'numeric'],
+			'meta_desc' => ['required', 'min:10', 'max:300'],
+		];
+		$this->validate($request, $rules);
+
 		$input = $request->all();
 		$input['slug'] = str_slug($request->title);
 		$input['meta_title'] = $request->title;

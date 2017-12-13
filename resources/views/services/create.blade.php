@@ -7,6 +7,7 @@
 @include('partials.meta-static')
 
 	<div class="container">
+
 		<h2 class="center">Nuevo Servicio</h2>
 		<div class="divider"></div>
 
@@ -14,7 +15,9 @@
 			{!! Form::open(['method' => 'POST', 'action' => 'ServiceController@store', 'files' => 'true', 'class' => 'alt']) !!}
 
 				<div class="row">
+					@include('partials.error-message')
 					<div style="margin-top: 2em;" class="input-field col s12">
+
 						<i class="material-icons prefix">room_service</i>
 						<label for="title">Servicio</label>
 						<input type="text" name="title" id="title" />
@@ -106,7 +109,7 @@
 				</div>
 
 				<div class="row">
-	                <div class="input-field col s12 m6">
+	                <div class="input-field col s12 center">
 	                    <input type="submit" value="Enviar para autorización" class="waves-effect waves-light btn" />
 	                </div>
 	            </div>
