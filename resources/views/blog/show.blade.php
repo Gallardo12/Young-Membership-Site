@@ -12,7 +12,7 @@
 		<div class="divider"></div>
 
 		<p style="margin-top: 2em;" class="flow-text" align="center">
-			<b>Creado el: {{ $blog->updated_at }}</b>
+			<b>Creado: </b><em>{{ $blog->updated_at->diffForHumans() }}</em>
 		</p>
 		<p>{!! $blog->body !!}</p>
 		<p>

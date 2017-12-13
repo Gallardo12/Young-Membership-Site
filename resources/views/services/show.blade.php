@@ -37,7 +37,7 @@
 			<h4 class="center">Descripción</h4>
 			<p class="flow-text">{!! $service->description !!}</p>
 			<div class="divider"></div>
-			<p class="center flow-text">{{ $service->updated_at }}</p>
+			<p class="center flow-text"><b>Publicado: </b><em>{{ $service->updated_at->diffForHumans() }}</em></p>
 		</div>
 		<div class="row">
 			<div class="divider"></div>

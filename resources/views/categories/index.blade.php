@@ -10,7 +10,7 @@
 		<h2 class="center">Categorías</h2>
 		<div class="divider"></div>
 
-		<div style="margin-top: 2em;" class="table-wrapper">
+		<div style="margin-top: 2em;" class="row">
 
 			<table>
 

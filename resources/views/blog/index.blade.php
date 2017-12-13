@@ -25,12 +25,11 @@
                             @endif
                         </div>
                         <div class="card-content">
-                            <p><b>Creado el: </b>{{ $blog->updated_at }}</p>
+                            <p><b>Creado: </b>{{ $blog->updated_at->diffForHumans() }}</p>
                             <p class="flow-text">{!! str_limit($blog->body, 75) !!}</p>
                         </div>
                         <div class="card-action valign-wrapper">
                             <a class="flow-text btn-large" href="{{ action('BlogController@show', [$blog->id]) }}">Leer</a>
-                            <p style="margin-left: 2em;" class="right-align"><b>Creado el: </b><em>{{ $blog->updated_at }}</em></p>
                         </div>
                     </div>
                 </div>
