@@ -27,7 +27,8 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
-		return view('categories.create');
+		$categories = Category::latest()->get();
+		return view('categories.create', compact('categories'));
 	}
 
 	/**

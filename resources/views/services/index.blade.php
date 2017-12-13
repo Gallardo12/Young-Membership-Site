@@ -44,7 +44,7 @@
                         </div>
                         <div class="card-action valign-wrapper">
                             <a class="flow-text btn-large" href="{{ action('ServiceController@show', [$service->id]) }}">Más</a>
-                            <p style="margin-left: 2em;" class="right-align"><b>Creado el: </b><em>{{ $service->updated_at }}</em></p>
+                            <p style="margin-left: 2em;" class="right-align"><b>Creado: </b><em>{{ $service->updated_at->diffForHumans() }}</em></p>
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,7 @@
                             @endif
                         </div>
                         <div class="card-content">
-                            <p><b>Creado el: </b>{{ $blog->updated_at }}</p>
+                            <p><b>Creado el: </b>{{ $blog->updated_at->diffForHumans() }}</p>
                             <p class="flow-text">{!! str_limit($blog->body, 75) !!}</p>
                         </div>
                         <div class="card-action text-teal">

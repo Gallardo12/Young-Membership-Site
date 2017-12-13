@@ -26,6 +26,9 @@ return view('emails.contactus');
 Route::patch('/services/{id}', 'ServiceController@publish');
 
 View::share('service', App\Service::all());
+View::share('users', App\User::all());
+View::share('categories', App\Category::all());
+View::share('blog', App\Blog::all());
 
 Route::get('/blog/bin', 'BlogController@bin');
 Route::get('/blog/bin/{id}/restore', 'BlogController@restore');
@@ -86,3 +89,4 @@ Route::resource('services', 'ServiceController');
 Route::resource('categories', 'CategoryController');
 Route::resource('media', 'PhotosController');
 Route::resource('media2', 'PhotobsController');
+Route::resource('users', 'UserController');
