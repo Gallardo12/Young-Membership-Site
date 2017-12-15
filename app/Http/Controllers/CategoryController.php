@@ -38,6 +38,15 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request) {
+		$rules = [
+			'title' => ['required', 'min:20', 'max:200', 'unique:categories'],
+			'name' => ['required', 'min:5', 'max:100'],
+		];
+		$message = [
+
+		];
+		$this->validate($request, $rules, $message);
+
 		$category = new Category;
 		$category->name = $request->name;
 		$category->slug = str_slug($request->name);

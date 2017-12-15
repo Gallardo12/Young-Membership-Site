@@ -15,6 +15,7 @@
 			{!! Form::open(['method' => 'POST', 'action' => 'BlogController@store', 'files' => 'true', 'class' => 'alt']) !!}
 
 				<div class="row">
+					@include('partials.error-message')
 					<div style="margin-top: 2em;" class="input-field col s12">
 						<label for="title">Título</label>
 						<input type="text" name="title" id="title" value="" />
@@ -31,7 +32,7 @@
 				<div class="row">
 					<div class="file-field input-field col s12">
 				      	<div class="btn">
-				        	<span>Foto</span>
+				        	<span>Imagen</span>
 				        	{!! Form::file('photob_id', ['class' => '', 'type' => 'file']) !!}
 				      	</div>
 				      	<div class="file-path-wrapper">

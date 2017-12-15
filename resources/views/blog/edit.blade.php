@@ -18,6 +18,7 @@
 				{{ method_field('PATCH') }}
 
 				<div class="row">
+					@include('partials.error-message')
 					<div style="margin-top: 2em;" class="input-field col s12">
 						<label for="title">Título</label>
 					<input type="text" name="title" id="title" value="{{ $blog->title }}" />
