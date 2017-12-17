@@ -20,7 +20,7 @@
                         <input id="email" type="email" name="email" value="{{ old('email') }}" required>
                         @if ($errors->has('email'))
                             <span>
-                                <strong>{{ $errors->first('email') }}</strong>
+                                <strong class="red-text">{{ $errors->first('email') }}</strong>
                             </span>
                         @endif
                     </div>

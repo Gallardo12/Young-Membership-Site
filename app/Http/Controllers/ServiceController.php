@@ -43,6 +43,34 @@ class ServiceController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request) {
+		$rules = [
+			'title' => ['required', 'min:20', 'max:200', 'unique:services'],
+			'description' => ['required', 'min:200'],
+			'photo_id' => ['required', 'mimes:jpeg,jpg,png', 'max:5000'],
+			'location' => ['required'],
+			'category_id' => ['required'],
+			'cost' => ['required', 'numeric'],
+			'meta_desc' => ['required', 'min:10', 'max:300'],
+		];
+		$message = [
+			'title.required' => 'El título es obligatorio.',
+			'title.min' => 'El título debe contener al menos 20 caracteres.',
+			'title.max' => 'El título debe contener 200 caracteres como máximo.',
+			'title.unique' => 'Ese título ya está en uso.',
+			'description.required' => 'El contenido es obligatorio.',
+			'description.min' => 'El contenido debe contener al menos 200 caracteres.',
+			'photo_id.required' => 'La imagen es obligatoria.',
+			'photo_id.mimes' => 'La imagen debe ser jepg, jpg o png.',
+			'location.required' => 'La ubicación es obligatoria.',
+			'category_id.required' => 'La(s) categoria(s) es/son obligatoria(s).',
+			'cost.required' => 'El costo es obligatorio.',
+			'cost.numeric' => 'El costo debe contener solo números.',
+			'meta_desc.required' => 'La meta descripción es obligatoria.',
+			'meta_desc.min' => 'La meta descripción debe contener al menos 10 caracteres.',
+			'meta_desc.max' => 'La meta descripción debe contener 300 caracteres como máximo.',
+		];
+		$this->validate($request, $rules, $message);
+
 		$input = $request->all();
 		$input['slug'] = str_slug($request->title);
 		$input['meta_title'] = $request->title;
@@ -90,6 +118,33 @@ class ServiceController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, $id) {
+		$rules = [
+			'title' => ['required', 'min:20', 'max:200', 'unique:services'],
+			'description' => ['required', 'min:200'],
+			'photo_id' => ['mimes:jpeg,jpg,png', 'max:5000'],
+			'location' => ['required'],
+			'category_id' => ['required'],
+			'cost' => ['required', 'numeric'],
+			'meta_desc' => ['required', 'min:10', 'max:300'],
+		];
+		$message = [
+			'title.required' => 'El título es obligatorio.',
+			'title.min' => 'El título debe contener al menos 20 caracteres.',
+			'title.max' => 'El título debe contener 200 caracteres como máximo.',
+			'title.unique' => 'Ese título ya está en uso.',
+			'description.required' => 'El contenido es obligatorio.',
+			'description.min' => 'El contenido debe contener al menos 200 caracteres.',
+			'photo_id.required' => 'La imagen es obligatoria.',
+			'photo_id.mimes' => 'La imagen debe ser jepg, jpg o png.',
+			'location.required' => 'La ubicación es obligatoria.',
+			'category_id.required' => 'La(s) categoria(s) es/son obligatoria(s).',
+			'cost.required' => 'El costo es obligatorio.',
+			'cost.numeric' => 'El costo debe contener solo números.',
+			'meta_desc.required' => 'La meta descripción es obligatoria.',
+			'meta_desc.min' => 'La meta descripción debe contener al menos 10 caracteres.',
+			'meta_desc.max' => 'La meta descripción debe contener 300 caracteres como máximo.',
+		];
+		$this->validate($request, $rules, $message);
 		$input = $request->all();
 		$service = Service::findOrFail($id);
 		if ($file = $request->file('photo_id')) {

@@ -78,7 +78,7 @@ return [
 		    |
 	*/
 
-	'locale' => 'en',
+	'locale' => 'es',
 
 	/*
 		    |--------------------------------------------------------------------------
@@ -170,6 +170,7 @@ return [
 		Collective\Html\HtmlServiceProvider::class,
 		Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
+		Laraveles\Spanish\SpanishServiceProvider::class,
 		/*
 			         * Application Service Providers...
 		*/
