@@ -47,14 +47,15 @@ class BlogController extends Controller {
 			'photob_id' => ['required', 'mimes:jpeg,jpg,png', 'max:5000'],
 		];
 		$message = [
-			'title.required' => 'El Título es obligatorio.',
-			'title.min' => 'El Título debe contener al menos 20 caracteres.',
-			'title.max' => 'El Título debe contener 200 caracteres como máximo.',
-			'title.unique' => 'Ese Título ya está en uso.',
-			'body.required' => 'El Contenido es obligatorio.',
-			'body.min' => 'El Contenido debe contener al menos 200 caracteres.',
-			'photob_id.required' => 'Seleccionar una Imagen es obligatorio.',
-			'photob_id.mimes' => 'La Imagen debe ser jepg, jpg o png.',
+			'title.required' => 'El título es obligatorio.',
+			'title.min' => 'El título debe contener al menos 20 caracteres.',
+			'title.max' => 'El título debe contener 200 caracteres como máximo.',
+			'title.unique' => 'Ese título ya está en uso.',
+			'body.required' => 'El contenido es obligatorio.',
+			'body.min' => 'El contenido debe contener al menos 200 caracteres.',
+			'photob_id.required' => 'Seleccionar una imagen es obligatorio.',
+			'photob_id.mimes' => 'La imagen debe ser jepg, jpg o png.',
+			'photob_id.max' => 'El tamaño de la imagen debe ser menor a 1GB.',
 		];
 		$this->validate($request, $rules, $message);
 
@@ -112,7 +113,6 @@ class BlogController extends Controller {
 			'title.unique' => 'Ese Título ya está en uso.',
 			'body.required' => 'El Contenido es obligatorio.',
 			'body.min' => 'El Contenido debe contener al menos 200 caracteres.',
-			'photob_id.required' => 'Seleccionar una Imagen es obligatorio.',
 			'photob_id.mimes' => 'La Imagen debe ser jepg, jpg o png.',
 		];
 		$this->validate($request, $rules, $message);

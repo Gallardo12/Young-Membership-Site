@@ -15,12 +15,15 @@
 			{!! Form::open(['method' => 'POST', 'action' => 'ServiceController@store', 'files' => 'true', 'class' => 'alt']) !!}
 
 				<div class="row">
-					@include('partials.error-message')
 					<div style="margin-top: 2em;" class="input-field col s12">
-
 						<i class="material-icons prefix">room_service</i>
 						<label for="title">Servicio</label>
 						<input type="text" name="title" id="title" />
+						@if ($errors->has('title'))
+	                        <span>
+	                            <strong class="red-text">* {{ $errors->first('title') }}</strong>
+	                        </span>
+	                    @endif
 					</div>
 				</div>
 
@@ -28,6 +31,11 @@
 					<div class="input-field col s12">
 						<label for="description">Descripción</label>
 						<textarea name="description" class="my-editor" id="description" rows="20"></textarea>
+						@if ($errors->has('description'))
+	                        <span>
+	                            <strong class="red-text">* {{ $errors->first('description') }}</strong>
+	                        </span>
+	                    @endif
 					</div>
 				</div>
 
@@ -40,6 +48,11 @@
 				      	<div class="file-path-wrapper">
 				      		<input class="file-path validate" type="text">
 				      	</div>
+				      	@if ($errors->has('photo_id'))
+	                        <span>
+	                            <strong class="red-text">* {{ $errors->first('photo_id') }}</strong>
+	                        </span>
+	                    @endif
 				    </div>
 				</div>
 
@@ -81,6 +94,11 @@
 							<option value="Zacatecas">Zacatecas</option>
 						</select>
 						<label for="location">Ubicación</label>
+						@if ($errors->has('location'))
+	                        <span>
+	                            <strong class="red-text">* {{ $errors->first('location') }}</strong>
+	                        </span>
+	                    @endif
 					</div>
 				</div>
 
@@ -89,6 +107,11 @@
 						<i class="material-icons prefix">view_list</i>
 						{!! Form::select("category_id[]", $category, null, ['id' => 'category_id', 'class' => 'teal-text', 'multiple']) !!}
 						<label for="category_id">Categoría</label>
+						@if ($errors->has('category_id'))
+	                        <span>
+	                            <strong class="red-text">* {{ $errors->first('category_id') }}</strong>
+	                        </span>
+	                    @endif
 					</div>
 				</div>
 
@@ -97,6 +120,11 @@
 						<i class="material-icons prefix">attach_money</i>
 						<label for="cost">$Precio MXN</label>
 						<input type="number" name="cost" id="cost" step="any" />
+						@if ($errors->has('cost'))
+	                        <span>
+	                            <strong class="red-text">* {{ $errors->first('cost') }}</strong>
+	                        </span>
+	                    @endif
 					</div>
 				</div>
 
@@ -105,6 +133,11 @@
 						<i class="material-icons prefix">room_service</i>
 						<label for="meta_desc">Meta Descripción</label>
 						<input type="text" name="meta_desc" id="meta_desc" />
+						@if ($errors->has('meta_desc'))
+	                        <span>
+	                            <strong class="red-text">* {{ $errors->first('meta_desc') }}</strong>
+	                        </span>
+	                    @endif
 					</div>
 				</div>
 

@@ -19,7 +19,7 @@
                     <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
                     @if ($errors->has('name'))
                         <span>
-                            <strong>{{ $errors->first('name') }}</strong>
+                            <strong class="red-text">{{ $errors->first('name') }}</strong>
                         </span>
                     @endif
                 </div>
@@ -31,7 +31,7 @@
                     <input id="email" type="email" data-error="wrong" data-success="right" name="email" value="{{ old('email') }}" required>
                     @if ($errors->has('email'))
                         <span>
-                            <strong>{{ $errors->first('email') }}</strong>
+                            <strong class="red-text">{{ $errors->first('email') }}</strong>
                         </span>
                     @endif
                 </div>
@@ -43,7 +43,7 @@
                     <input id="password" type="password" name="password" required>
                     @if ($errors->has('password'))
                         <span>
-                            <strong>{{ $errors->first('password') }}</strong>
+                            <strong class="red-text">{{ $errors->first('password') }}</strong>
                         </span>
                     @endif
                 </div>

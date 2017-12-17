@@ -40,10 +40,15 @@ class CategoryController extends Controller {
 	public function store(Request $request) {
 		$rules = [
 			'title' => ['required', 'min:20', 'max:200', 'unique:categories'],
-			'name' => ['required', 'min:5', 'max:100'],
+			'name' => ['required', 'max:30'],
 		];
 		$message = [
-
+			'title.required' => 'El Título es obligatorio.',
+			'title.min' => 'El Título debe contener al menos 20 caracteres.',
+			'title.max' => 'El Título debe contener 200 caracteres como máximo.',
+			'title.unique' => 'Ese Título ya está en uso.',
+			'name.required' => 'El Nombre es obligatorio.',
+			'name.max' => 'El Nombre debe contener 30 caracteres como máximo.',
 		];
 		$this->validate($request, $rules, $message);
 

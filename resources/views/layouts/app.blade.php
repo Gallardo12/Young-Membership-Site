@@ -80,24 +80,16 @@
                                     <a href="{{ route('register') }}">Registrarse</a>
                                 </li>
                             @else
-                                <div class="row teal valign-wrapper">
-                                    <div class="col s3">
-                                        <img src="{{ asset('images/user.png') }}" class="responsive-img circle">
+                                <li>
+                                    <div class="user-view">
+                                        <div class="background">
+                                            <img class="responsive-img" src="{{ asset('images/pic04.jpg') }}">
+                                        </div>
+                                        <a href="#!user"><img class="circle" src="{{ asset('images/user.png') }}"></a>
+                                        <a href="#!name"><span class="white-text name">{{ Auth::user()->name }}</span></a>
+                                        <a href="#!email"><span class="white-text email">{{ Auth::user()->email }}</span></a>
                                     </div>
-                                    <div class="col s9">
-                                        <p>
-                                            <a href="/home" class="flow-text white-text">{{ Auth::user()->name }} </a>
-                                            <a href="{{ route('logout') }}" class="white-text" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                Salir
-                                            </a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        </p>
-
-                                    </div>
-                                </div>
+                                </li>
                                 <li><a href="/">Young<span class="textoTeal">México</span></a></li>
                                 <div class="divider"></div>
                                 <li><a href="/services">Servicios</a></li>
@@ -109,6 +101,26 @@
                                         <a href="/admin">Admin</a>
                                     </li>
                                 @endif
+                                <li>
+                                    <a href="#!">
+                                        <i class="material-icons">cloud</i>
+                                        First Link With Icon
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!">
+                                        Second Link
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="divider"></div>
+                                </li>
+                                <li>
+                                    <a class="subheader">Subheader</a>
+                                </li>
+                                <li>
+                                    <a class="waves-effect" href="#!">Third Link With Waves</a>
+                                </li>
                             @endguest
                         </ul>
                     </div>
