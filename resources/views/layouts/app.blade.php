@@ -74,7 +74,7 @@
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        Logout
+                                        Salir
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -104,7 +104,7 @@
                                         </div>
                                         <a href="/users"><img class="circle" src="{{ asset('images/user.png') }}"></a>
                                         <a href="/users"><span class="white-text name">{{ Auth::user()->name }}</span></a>
-                                        <a href="/users"><span class="white-text email">{{ Auth::user()->email }}</span></a>
+                                        <a href="/users"><span class="white-text email">{{ Auth::user()->role->name }}</span></a>
                                     </div>
                                 </li>
                                 <li><a href="/">Young<span class="textoTeal">México</span></a></li>
@@ -115,28 +115,22 @@
                                 @if(Auth::user()->role_id == 1)
                                     <div class="divider"></div>
                                     <li>
-                                        <a href="/admin">Admin</a>
+                                        <a href="/admin">Panel de Administración</a>
                                     </li>
                                 @endif
-                                <li>
-                                    <a href="#!">
-                                        <i class="material-icons">cloud</i>
-                                        First Link With Icon
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#!">
-                                        Second Link
-                                    </a>
-                                </li>
                                 <li>
                                     <div class="divider"></div>
                                 </li>
                                 <li>
-                                    <a class="subheader">Subheader</a>
-                                </li>
-                                <li>
-                                    <a class="waves-effect" href="#!">Third Link With Waves</a>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        <i class="material-icons">exit_to_app</i>Salir
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
                                 </li>
                             @endguest
                         </ul>
