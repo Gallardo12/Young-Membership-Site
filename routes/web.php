@@ -11,7 +11,7 @@
 |
  */
 
-View::share('service', App\Service::all());
+View::share('service', App\Service::latest()->get());
 View::share('users', App\User::all());
 View::share('categories', App\Category::latest()->get());
 View::share('blog', App\Blog::all());
