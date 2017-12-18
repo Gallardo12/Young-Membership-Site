@@ -84,6 +84,12 @@ class ServiceController extends Controller {
 		if ($categoryIds = $request->category_id) {
 			$service->category()->sync($categoryIds);
 		}
+
+		notify()->flash('Tu servicio ha creado con éxito!!', 'success', [
+			'timer' => 6000,
+			'text' => 'Un administrador revisará y publicará tu servicio una vez que este validado.',
+		]);
+
 		return redirect('/services');
 	}
 
@@ -162,7 +168,13 @@ class ServiceController extends Controller {
 		if ($categoryIds = $request->category_id) {
 			$service->category()->sync($categoryIds);
 		}
-		return redirect('/services');
+
+		notify()->flash('Tu servicio se modificó con éxito!!', 'success', [
+			'timer' => 3000,
+			'text' => 'Ya puedes accesar a el desde el panel de Servicios.',
+		]);
+
+		return redirect('/services')->withInput();
 	}
 
 	public function publish(Request $request, $id) {

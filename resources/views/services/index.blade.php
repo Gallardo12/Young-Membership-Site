@@ -2,6 +2,10 @@
 
 @section('content')
 
+@section('assets')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}"/>
+@endsection
+
 @include('partials.meta-static')
 
     <div class="container">
@@ -12,7 +16,7 @@
                     <div class="nav-wrapper">
                         <form>
                             <div class="input-field teal">
-                                <input id="search" type="search" placeholder="Aquí encontraras los servicios que necesites..." required>
+                                <input id="search" type="search" placeholder="Qué servicio estas buscando...??" required>
                                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                 <i class="material-icons">close</i>
                             </div>
@@ -25,31 +29,44 @@
         <h3 class="center">Últimos servicios</h3>
         <div class="row">
             @foreach ($services as $service)
-                <div class="col s12 m6">
-                    <div class="card large">
-                        <div class="card-image">
+                <div class="col s12 m6 l4">
+                    <div class="card medium">
+                        <div class="card-image waves-effect waves-block waves-light">
                             @if ($service->photo)
-                                <img class="materialboxed responsive-img" data-caption="{{ $service->title }}" src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
-                                <a href="{{ action('ServiceController@show', [$service->id]) }}"><span class="card-title">{{ $service->title }}</span></a>
+                                <img class="activator" src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
                             @else
-                                <img src="{{ asset('images/bg.jpg') }}">
-                                <a href="{{ action('ServiceController@show', [$service->id]) }}"><span class="card-title">{{ $service->title }}</span></a>
+                                <img class="activator" src="{{ asset('images/bg.jpg') }}">
                             @endif
                         </div>
                         <div class="card-content">
-                            <p class="flow-text">
-                                <b>Costo: </b>${{ $service->cost }} MXN <br>
-                                <b>Ubicación: </b>{{ $service->location }}
-                            </p>
+                            <span class="card-title activator grey-text text-darken-4">{{ $service->title }}<i class="material-icons right">more_vert</i></span>
+                            <p><a href="{{ action('ServiceController@show', [$service->id]) }}">Más</a></p>
                         </div>
-                        <div class="card-action valign-wrapper">
-                            <a class="flow-text btn-large" href="{{ action('ServiceController@show', [$service->id]) }}">Más</a>
-                            <p style="margin-left: 2em;" class="right-align"><b>Creado: </b><em>{{ $service->updated_at->diffForHumans() }}</em></p>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons right">close</i></span>
+                            <p><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
+                            <b>Costo: </b>${{ $service->cost }} MXN <br>
+                            <b>Ubicación: </b>{{ $service->location }}
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
+
+    <script src="{{asset('/js/sweetalert2.js') }}" type="text/javascript" charset="utf-8"></script>
+    @if (notify()->ready())
+        <script>
+            swal({
+                title: "{!! notify()->message() !!}",
+                text: "{!! notify()->option('text') !!}",
+                type: "{{ notify()->type() }}",
+                @if (notify()->option('timer'))
+                    timer: {{ notify()->option('timer') }},
+                    showConfirmButton: false
+                @endif
+            });
+        </script>
+    @endif
 
 @endsection

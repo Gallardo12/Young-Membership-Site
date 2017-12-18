@@ -21,6 +21,11 @@
 						<i class="material-icons prefix">featured_play_list</i>
 						<label for="name">Nombre</label>
 						<input type="text" name="name" id="name" value="{{ $category->name }}" />
+						@if ($errors->has('name'))
+	                        <span>
+	                            <strong class="red-text">* {{ $errors->first('name') }}</strong>
+	                        </span>
+	                    @endif
 					</div>
 				</div>
 

@@ -31,6 +31,10 @@ class BlogController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
+		notify()->flash('Welcome back!', 'success', [
+			'timer' => 3000,
+			'text' => 'It\'s really great to see you again',
+		]);
 		return view('blog.create');
 	}
 
@@ -68,6 +72,13 @@ class BlogController extends Controller {
 			$input['photob_id'] = $photo->id;
 		}
 		Blog::create($input);
+
+		// Session::flash('flash_message', 'La noticia se ha publicado con éxito!!!');
+		notify()->flash('Tu noticia se ha publicado con éxito!!', 'success', [
+			'timer' => 3000,
+			'text' => 'Ya puedes accesar a ella desde el panel de Noticias.',
+		]);
+
 		return redirect('/blog');
 	}
 
@@ -129,7 +140,13 @@ class BlogController extends Controller {
 			$input['photob_id'] = $photo->id;
 		}
 		$blog->update($input);
-		return redirect('/blog');
+
+		notify()->flash('Tu noticia se modificó con éxito!!', 'success', [
+			'timer' => 3000,
+			'text' => 'Ya puedes accesar a ella desde el panel de Noticias.',
+		]);
+
+		return redirect('/blog')->withInput();
 	}
 
 	/**
