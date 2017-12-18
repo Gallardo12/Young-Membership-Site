@@ -65,7 +65,11 @@
                                             <td class="center">
                                                 <a href="{{ action('ServiceController@show', [$service->slug]) }}" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver Servicio"><i class="material-icons">remove_red_eye</i></a>
                                                 <a href="{{ action('ServiceController@edit', [$service->id]) }}" class="btn-floating btn-large waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Servicio"><i class="material-icons">mode_edit</i></a>
-                                                <a href="{{ action('ServiceController@destroy', [$service->id]) }}" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar Servicio"><i class="material-icons">delete</i></a>
+                                                {!! Form::open(['method' => 'DELETE', 'action' => ['ServiceController@destroy', $service->id]]) !!}
+                                                    <button class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar Servicio" type="submit" name="action">
+                                                        <i class="material-icons">delete</i>
+                                                    </button>
+                                                {!! Form::close() !!}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -109,7 +113,13 @@
                                             <td class="center">
                                                 <a href="{{ action('BlogController@show', [$blog->id]) }}" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver Servicio"><i class="material-icons">remove_red_eye</i></a>
                                                 <a href="{{ action('BlogController@edit', [$blog->id]) }}" class="btn-floating btn-large waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Servicio"><i class="material-icons">mode_edit</i></a>
-                                                <a href="{{ action('BlogController@destroy', [$blog->id]) }}" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar Servicio"><i class="material-icons">delete</i></a>
+                                                <form class="alt" method="POST" action="{{ action('BlogController@destroy', [$blog->id]) }}">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <button class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar Servicio" type="submit" name="action">
+                                                        <i class="material-icons">delete</i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
