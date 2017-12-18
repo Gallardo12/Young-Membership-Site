@@ -2,6 +2,10 @@
 
 @section('content')
 
+@section('assets')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}"/>
+@endsection
+
 @include('partials.meta-static')
 
     <div class="container">
@@ -190,7 +194,7 @@
                         </div>
                         <div class="row">
                             <div class="col s12 center">
-                                <a href="/users" class="waves-effect waves-light btn-large"><i class="material-icons left">list</i>Ver</a>
+                                <a href="/userslist" class="waves-effect waves-light btn-large"><i class="material-icons left">list</i>Ver</a>
                             </div>
                         </div>
                     </div>
@@ -198,5 +202,20 @@
             </ul>
         </div>
     </div>
+
+    <script src="{{asset('/js/sweetalert2.js') }}" type="text/javascript" charset="utf-8"></script>
+    @if (notify()->ready())
+        <script>
+            swal({
+                title: "{!! notify()->message() !!}",
+                text: "{!! notify()->option('text') !!}",
+                type: "{{ notify()->type() }}",
+                @if (notify()->option('timer'))
+                    timer: {{ notify()->option('timer') }},
+                    showConfirmButton: false
+                @endif
+            });
+        </script>
+    @endif
 
 @endsection

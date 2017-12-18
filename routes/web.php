@@ -44,7 +44,7 @@ Route::get('/contact-us', 'ContactUSController@contactUS');
 
 Route::post('/contact-us', ['as' => 'contact-us.store', 'uses' => 'ContactUSController@contactUSPost']);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController@index');
 
@@ -77,4 +77,6 @@ Route::resource('services', 'ServiceController');
 Route::resource('categories', 'CategoryController');
 Route::resource('media', 'PhotosController');
 Route::resource('media2', 'PhotobsController');
+
+Route::get('userslist', 'UserController@userslist');
 Route::resource('users', 'UserController');

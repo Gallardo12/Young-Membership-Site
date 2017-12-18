@@ -181,6 +181,12 @@ class ServiceController extends Controller {
 		$input = $request->all();
 		$service = Service::findOrFail($id);
 		$service->update($input);
+
+		notify()->flash('El status del Servicio ha sido cambiado con éxito!!', 'success', [
+			'timer' => 6000,
+			'text' => 'Se enviará un correo al Emprendedor.',
+		]);
+
 		return redirect('admin');
 	}
 

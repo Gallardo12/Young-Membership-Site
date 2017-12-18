@@ -40,7 +40,8 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">{{ $service->title }}<i class="material-icons right">more_vert</i></span>
-                            <p><a href="{{ action('ServiceController@show', [$service->id]) }}">Más</a></p>
+                            <br>
+                            <p align="center"><a class="btn" href="{{ action('ServiceController@show', [$service->id]) }}">Más</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons right">close</i></span>

@@ -23,6 +23,12 @@ class UserController extends Controller {
 		return view('users.index', compact('users', 'roles'));
 	}
 
+	public function userslist() {
+		$users = User::all();
+		$roles = Role::pluck('name', 'id');
+		return view('users.userslist', compact('users', 'roles'));
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
