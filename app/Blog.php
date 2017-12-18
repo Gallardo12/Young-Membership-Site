@@ -11,9 +11,13 @@ class Blog extends Model {
 
 	protected $dates = ['deleted_at'];
 
-	protected $fillable = ['title', 'body', 'photob_id'];
+	protected $fillable = ['title', 'body', 'photob_id', 'user_id'];
 
 	public function photob() {
 		return $this->belongsTo(Photob::class);
+	}
+
+	public function user() {
+		return $this->belongsTo(User::class);
 	}
 }

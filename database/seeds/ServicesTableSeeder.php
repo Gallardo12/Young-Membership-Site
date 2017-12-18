@@ -12,6 +12,7 @@ class ServicesTableSeeder extends Seeder {
 	public function run() {
 		$service1 = new Service();
 		$service1->photo_id = 1;
+		$service1->user_id = 1;
 		$service1->title = 'Entrega de Paquetes a Domicilio';
 		$service1->slug = 'entrega-de-paquetes-a-domicilio';
 		$service1->meta_title = 'Entrega de Paquetes a Domicilio';
@@ -24,6 +25,7 @@ class ServicesTableSeeder extends Seeder {
 
 		$service2 = new Service();
 		$service2->photo_id = 1;
+		$service2->user_id = 1;
 		$service2->title = 'Reparación de Computadoras';
 		$service2->slug = 'reparacion-de-computadoras';
 		$service2->meta_title = 'Reparación de Computadoras';
@@ -36,6 +38,7 @@ class ServicesTableSeeder extends Seeder {
 
 		$service3 = new Service();
 		$service3->photo_id = 1;
+		$service3->user_id = 1;
 		$service3->title = 'Repartidor de Comida a Domicilio';
 		$service3->slug = 'repartidor-de-comida-a-domicilio';
 		$service3->meta_title = 'Repartidor de Comida a Domicilio';
@@ -43,11 +46,12 @@ class ServicesTableSeeder extends Seeder {
 		$service3->description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 		$service3->location = "Zacatecas";
 		$service3->cost = 200;
-		$service3->status = 0;
+		$service3->status = 1;
 		$service3->save();
 
 		$service4 = new Service();
 		$service4->photo_id = 1;
+		$service4->user_id = 1;
 		$service4->title = 'Creación de Logotipos';
 		$service4->slug = 'creacion-de-logotipos';
 		$service4->meta_title = 'Creación de Logotipos';
@@ -55,11 +59,12 @@ class ServicesTableSeeder extends Seeder {
 		$service4->description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 		$service4->location = "Durango";
 		$service4->cost = 1000;
-		$service4->status = 0;
+		$service4->status = 1;
 		$service4->save();
 
 		$service5 = new Service();
 		$service5->photo_id = 1;
+		$service5->user_id = 1;
 		$service5->title = 'Impresión de Playeras';
 		$service5->slug = 'impresion-de-playeras';
 		$service5->meta_title = 'Impresión de Playeras';

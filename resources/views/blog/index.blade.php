@@ -27,7 +27,7 @@
 
             @foreach ($blogs as $blog)
 
-                <div class="col s12 m6">
+                <div class="col s12 m6 l4">
                     <div class="card medium">
                         <div class="card-image waves-effect waves-block waves-light">
                             @if ($blog->photob)

@@ -17,6 +17,7 @@ class CreateServicesTable extends Migration {
 			$table->string('meta_title');
 			$table->string('meta_desc', 160);
 			$table->integer('photo_id');
+			$table->integer('user_id')->unsigned()->nullable();
 			$table->string('title');
 			$table->text('description');
 			$table->string('location');

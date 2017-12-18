@@ -15,10 +15,10 @@
                         <div class="card-image">
                             @if ($service->photo)
                                 <img class="materialboxed responsive-img" src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
-                                <a href="{{ action('ServiceController@show', [$service->id]) }}"><span class="card-title">{{ $service->title }}</span></a>
+                                <a href="{{ action('ServiceController@show', [$service->slug]) }}"><span class="card-title">{{ $service->title }}</span></a>
                             @else
                                 <img src="{{ asset('images/bg.jpg') }}">
-                                <a href="{{ action('ServiceController@show', [$service->id]) }}"><span class="card-title">{{ $service->title }}</span></a>
+                                <a href="{{ action('ServiceController@show', [$service->slug]) }}"><span class="card-title">{{ $service->title }}</span></a>
                             @endif
                         </div>
                         <div class="card-content">
