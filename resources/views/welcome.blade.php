@@ -17,7 +17,7 @@
                     <div class="nav-wrapper">
                         <form>
                             <div class="input-field teal">
-                                <input id="search" type="search" placeholder="Todo lo que necesitas al alcance de un click..." required>
+                                <input id="search" type="search" placeholder="Todo al alcance de un click..." required>
                                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                 <i class="material-icons">close</i>
                             </div>

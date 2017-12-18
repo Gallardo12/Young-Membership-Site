@@ -39,16 +39,13 @@ class CategoryController extends Controller {
 	 */
 	public function store(Request $request) {
 		$rules = [
-			'title' => ['required', 'min:20', 'max:200', 'unique:categories'],
-			'name' => ['required', 'max:30'],
+			'name' => ['required', 'min:5', 'max:50', 'unique:categories'],
 		];
 		$message = [
-			'title.required' => 'El Título es obligatorio.',
-			'title.min' => 'El Título debe contener al menos 20 caracteres.',
-			'title.max' => 'El Título debe contener 200 caracteres como máximo.',
-			'title.unique' => 'Ese Título ya está en uso.',
-			'name.required' => 'El Nombre es obligatorio.',
-			'name.max' => 'El Nombre debe contener 30 caracteres como máximo.',
+			'name.required' => 'El nombre es obligatorio.',
+			'name.min' => 'El nombre debe contener al menos 5 caracteres.',
+			'name.max' => 'El nombre debe contener 50 caracteres como máximo.',
+			'name.unique' => 'Esa categoría ya está en uso.',
 		];
 		$this->validate($request, $rules, $message);
 
@@ -56,6 +53,12 @@ class CategoryController extends Controller {
 		$category->name = $request->name;
 		$category->slug = str_slug($request->name);
 		$category->save();
+
+		notify()->flash('Tu Categoría se ha creado con éxito!!', 'success', [
+			'timer' => 3000,
+			'text' => 'Ya puedes accesar a ella desde el panel de Categorías.',
+		]);
+
 		return redirect('/categories');
 	}
 
@@ -89,9 +92,25 @@ class CategoryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, $id) {
+		$rules = [
+			'name' => ['required', 'min:5', 'max:50', 'unique:categories'],
+		];
+		$message = [
+			'name.required' => 'El nombre es obligatorio.',
+			'name.min' => 'El nombre debe contener al menos 5 caracteres.',
+			'name.max' => 'El nombre debe contener 50 caracteres como máximo.',
+			'name.unique' => 'Esa categoría ya está en uso.',
+		];
+		$this->validate($request, $rules, $message);
 		$input = $request->all();
 		$category = Category::findOrFail($id);
 		$category->update($input);
+
+		notify()->flash('Tu Categoría se modificó con éxito!!', 'success', [
+			'timer' => 3000,
+			'text' => 'Ya puedes accesar a ella desde el panel de Categorías.',
+		]);
+
 		return redirect('/categories');
 	}
 

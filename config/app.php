@@ -171,6 +171,7 @@ return [
 		Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
 		Laraveles\Spanish\SpanishServiceProvider::class,
+		Codecourse\Notify\NotifyServiceProvider::class,
 		/*
 			         * Application Service Providers...
 		*/

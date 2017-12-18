@@ -2,6 +2,10 @@
 
 @section('content')
 
+@section('assets')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}"/>
+@endsection
+
 @include('partials.meta-static')
 
     <div class="container">
@@ -10,26 +14,37 @@
         <div class="divider"></div>
 
         <div style="margin-top: 2em;" class="row">
+            {{-- <div class="col s12">
+                @if(Session::has('flash_message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ Session::get('flash_message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+            </div> --}}
 
             @foreach ($blogs as $blog)
 
                 <div class="col s12 m6">
-                    <div class="card large">
-                        <div class="card-image">
+                    <div class="card medium">
+                        <div class="card-image waves-effect waves-block waves-light">
                             @if ($blog->photob)
-                                <img class="materialboxed responsive-img" data-caption="{{ $blog->title }}" src="/images/{{ $blog->photob ? $blog->photob->photob : '' }}" alt="{{ str_limit($blog->title, 50) }}" />
-                                <a href="{{ action('BlogController@show', [$blog->id]) }}"><span class="card-title">{{ $blog->title }}</span></a>
+                                <img class="activator" data-caption="{{ $blog->title }}" src="/images/{{ $blog->photob ? $blog->photob->photob : '' }}" alt="{{ str_limit($blog->title, 50) }}" />
                             @else
-                                <img src="{{ asset('images/bg.jpg') }}">
-                                <a href="{{ action('BlogController@show', [$blog->id]) }}"><span class="card-title">{{ $blog->title }}</span></a>
+                                <img class="activator" src="{{ asset('images/bg.jpg') }}">
                             @endif
                         </div>
                         <div class="card-content">
-                            <p><b>Creado: </b>{{ $blog->updated_at->diffForHumans() }}</p>
-                            <p class="flow-text">{!! str_limit($blog->body, 75) !!}</p>
+                            <span class="card-title activator grey-text text-darken-4">{{ $blog->title }}<i class="material-icons right">more_vert</i></span>
+                            <br>
+                            <p align="center"><a class="btn" href="{{ action('BlogController@show', [$blog->id]) }}">Leer</a></p>
                         </div>
-                        <div class="card-action valign-wrapper">
-                            <a class="flow-text btn-large" href="{{ action('BlogController@show', [$blog->id]) }}">Leer</a>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{ $blog->title }}<i class="material-icons right">close</i></span>
+                            <p><b>Creado: </b>{{ $blog->updated_at->diffForHumans() }}</p>
+                            <p>{!! str_limit($blog->body, 500) !!}</p>
                         </div>
                     </div>
                 </div>
@@ -39,5 +54,20 @@
         </div>
 
     </div>
+
+    <script src="{{asset('/js/sweetalert2.js') }}" type="text/javascript" charset="utf-8"></script>
+    @if (notify()->ready())
+        <script>
+            swal({
+                title: "{!! notify()->message() !!}",
+                text: "{!! notify()->option('text') !!}",
+                type: "{{ notify()->type() }}",
+                @if (notify()->option('timer'))
+                    timer: {{ notify()->option('timer') }},
+                    showConfirmButton: false
+                @endif
+            });
+        </script>
+    @endif
 
 @endsection

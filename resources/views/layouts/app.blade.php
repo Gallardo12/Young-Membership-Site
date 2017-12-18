@@ -128,6 +128,7 @@
             </div>
         </header>
         <main>
+            @yield('assets')
             @yield('content')
             @yield('javascript')
         </main>
@@ -160,7 +161,10 @@
         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-        <script src="{{asset('/js/app.js') }}" type="text/javascript" charset="utf-8" async defer></script>
+        <script src="{{asset('/js/app.js') }}" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <script type="text/javascript">
             $('#tag_list').select2();
@@ -202,7 +206,6 @@
 
             tinymce.init(editor_config);
         </script>
-
 
     </body>
 
