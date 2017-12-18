@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller {
 
 	public function __construct() {
-		$this->middleware('admin');
+		$this->middleware('auth');
 	}
 
 	/**
@@ -79,7 +79,13 @@ class UserController extends Controller {
 		$input = $request->all();
 		$user = User::findOrFail($id);
 		$user->update($input);
-		return redirect('users');
+
+		notify()->flash('El Usuario se modificó con éxito!!', 'success', [
+			'timer' => 6000,
+			'text' => 'Puedes visualizar los cambios en el Panel de Usuarios.',
+		]);
+
+		return redirect('userslist');
 	}
 
 	/**

@@ -7,6 +7,7 @@ use App\Photo;
 use App\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller {
 	/**
@@ -74,6 +75,7 @@ class ServiceController extends Controller {
 		$input = $request->all();
 		$input['slug'] = str_slug($request->title);
 		$input['meta_title'] = $request->title;
+		$input['user_id'] = Auth::user()->id;
 		if ($file = $request->file('photo_id')) {
 			$name = Carbon::now() . '.' . $file->getClientOriginalName();
 			$file->move('images', $name);
@@ -99,8 +101,8 @@ class ServiceController extends Controller {
 	 * @param  \App\Service  $service
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id) {
-		$service = Service::findOrFail($id);
+	public function show($slug) {
+		$service = Service::whereSlug($slug)->first();
 		return view('services.show', compact('service'));
 	}
 
@@ -125,7 +127,7 @@ class ServiceController extends Controller {
 	 */
 	public function update(Request $request, $id) {
 		$rules = [
-			'title' => ['required', 'min:20', 'max:200', 'unique:services'],
+			'title' => ['required', 'min:20', 'max:200'],
 			'description' => ['required', 'min:200'],
 			'photo_id' => ['mimes:jpeg,jpg,png', 'max:5000'],
 			'location' => ['required'],
@@ -183,7 +185,7 @@ class ServiceController extends Controller {
 		$service->update($input);
 
 		notify()->flash('El status del Servicio ha sido cambiado con éxito!!', 'success', [
-			'timer' => 6000,
+			'timer' => 3000,
 			'text' => 'Se enviará un correo al Emprendedor.',
 		]);
 

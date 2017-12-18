@@ -13,7 +13,7 @@
 
 View::share('service', App\Service::all());
 View::share('users', App\User::all());
-View::share('categories', App\Category::all());
+View::share('categories', App\Category::latest()->get());
 View::share('blog', App\Blog::all());
 
 Route::patch('/services/{id}', 'ServiceController@publish');
@@ -59,7 +59,7 @@ Route::delete('/blog/{id}', 'BlogController@destroy');
 Route::get('/services', 'ServiceController@index');
 Route::get('/services/create', 'ServiceController@create');
 Route::post('/services/store', 'ServiceController@store');
-Route::get('/services/{id}', 'ServiceController@show');
+Route::get('/services/{slug}', 'ServiceController@show');
 Route::get('/services/{id}/edit', 'ServiceController@edit');
 Route::put('/services/{id}', 'ServiceController@update');
 Route::delete('/services/{id}', 'ServiceController@destroy');

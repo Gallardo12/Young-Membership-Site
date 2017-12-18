@@ -39,7 +39,7 @@
                                     @foreach ($service as $service)
                                         <tr>
                                             <td class="center">{{ $service->title }}</td>
-                                            <td class="center">Admin</td>
+                                            <td class="center">{{ $service->user->name }}</td>
                                             <td class="center">
                                                 @if($service->status == 0)
                                                         Borrador
@@ -63,7 +63,7 @@
                                                 </div>
                                             </td>
                                             <td class="center">
-                                                <a href="{{ action('ServiceController@show', [$service->id]) }}" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver Servicio"><i class="material-icons">remove_red_eye</i></a>
+                                                <a href="{{ action('ServiceController@show', [$service->slug]) }}" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver Servicio"><i class="material-icons">remove_red_eye</i></a>
                                                 <a href="{{ action('ServiceController@edit', [$service->id]) }}" class="btn-floating btn-large waves-effect waves-light blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Servicio"><i class="material-icons">mode_edit</i></a>
                                                 <a href="{{ action('ServiceController@destroy', [$service->id]) }}" class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar Servicio"><i class="material-icons">delete</i></a>
                                             </td>
@@ -104,7 +104,7 @@
                                     @foreach ($blog as $blog)
                                         <tr>
                                             <td class="center">{{ $blog->title }}</td>
-                                            <td class="center">Admin</td>
+                                            <td class="center">{{ $blog->user->name }}</td>
                                             <td class="center">{{ $blog->updated_at->diffForHumans() }}</td>
                                             <td class="center">
                                                 <a href="{{ action('BlogController@show', [$blog->id]) }}" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver Servicio"><i class="material-icons">remove_red_eye</i></a>

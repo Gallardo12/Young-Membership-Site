@@ -6,6 +6,7 @@ use App\Blog;
 use App\Photob;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller {
 	/**
@@ -64,6 +65,7 @@ class BlogController extends Controller {
 		$this->validate($request, $rules, $message);
 
 		$input = $request->all();
+		$input['user_id'] = Auth::user()->id;
 		if ($file = $request->file('photob_id')) {
 			$name = Carbon::now() . '.' . $file->getClientOriginalName();
 			$file->move('images', $name);

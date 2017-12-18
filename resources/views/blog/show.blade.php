@@ -15,6 +15,7 @@
 			<b>Creado: </b><em>{{ $blog->updated_at->diffForHumans() }}</em>
 		</p>
 		<p>{!! $blog->body !!}</p>
+		<p><b>Author: </b><a href="#">{{ $blog->user->name }}</a></p>
 		<p>
 			<a href="{{ action('BlogController@edit', [$blog->id]) }}" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">mode_edit</i></a>
 		</p>

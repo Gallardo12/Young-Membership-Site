@@ -12,26 +12,26 @@
 
         <div style="margin-top: 2em;" class="row">
             @foreach ($category->service as $service)
-                <div class="col s12 m6">
-                    <div class="card large">
-                        <div class="card-image">
+                <div class="col s12 m6 l4">
+                    <div class="card medium">
+                        <div class="card-image waves-effect waves-block waves-light">
                             @if ($service->photo)
-                                <img class="materialboxed responsive-img" data-caption="{{ $service->title }}" src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
-                                <a href="{{ action('ServiceController@show', [$service->id]) }}"><span class="card-title">{{ $service->title }}</span></a>
+                                <img class="activator" src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />
                             @else
-                                <img src="{{ asset('images/bg.jpg') }}">
-                                <a href="{{ action('ServiceController@show', [$service->id]) }}"><span class="card-title">{{ $service->title }}</span></a>
+                                <img class="activator" src="{{ asset('images/bg.jpg') }}">
                             @endif
                         </div>
                         <div class="card-content">
-                            <p class="flow-text">
-                                <b>Costo: </b>${{ $service->cost }} MXN <br>
-                                <b>Ubicación: </b>{{ $service->location }}
-                            </p>
+                            <span class="card-title activator grey-text text-darken-4">{{ $service->title }}<i class="material-icons right">more_vert</i></span>
+                            <br>
+                            <p align="center"><a class="btn" href="{{ action('ServiceController@show', [$service->slug]) }}">Más</a></p>
                         </div>
-                        <div class="card-action valign-wrapper">
-                            <a class="flow-text btn-large" href="{{ action('ServiceController@show', [$service->id]) }}">Más</a>
-                            <p style="margin-left: 2em;" class="right-align"><b>Creado: </b><em>{{ $service->updated_at->diffForHumans() }}</em></p>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons right">close</i></span>
+                            <p><i class="material-icons">account_circle</i><b>Emprendedor: </b><a href="#">{{ $service->user->name }}</a></p>
+                            <p><i class="material-icons">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
+                            <p><i class="material-icons">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
+                            <p><i class="material-icons">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
                         </div>
                     </div>
                 </div>

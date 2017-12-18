@@ -27,13 +27,30 @@
     <body>
         <header>
             <div class="navbar-fixed">
+                <!-- Dropdown Structure -->
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="/services">Servicios</a></li>
+                    <li class="divider"></li>
+                    @foreach ($categories as $category)
+                        @if ($category->service->count() > 0)
+                            <li><a href="{{ action('CategoryController@show', [$category->slug]) }}">{{ $category->name }}</a></li>
+                        @endif
+                    @endforeach
+                </ul>
+                <ul id="dropdown2" class="dropdown-content">
+                    <li><a href="/services">Servicios</a></li>
+                    <li class="divider"></li>
+                    @foreach ($categories as $category)
+                        <li><a href="{{ action('CategoryController@show', [$category->slug]) }}">{{ $category->name }}</a></li>
+                    @endforeach
+                </ul>
                 <nav class="white">
                     <div class="nav-wrapper">
                         <a href="/" class="brand-logo">Young<span class="textoTeal">México</span></a>
                         <a href="#" data-activates="mobile-demo" class="button-collapse grey-text text-darken-4"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
                             <li><a href="/">Young<span class="textoTeal">México</span></a></li>
-                            <li><a href="/services">Servicios</a></li>
+                            <li><a class="dropdown-button1" href="#" data-activates="dropdown1">Servicios<i class="material-icons right">arrow_drop_down</i></a></li>
                             <li><a href="/blog">Noticias</a></li>
                             <li><a href="/contact">Contáctanos</a></li>
                             <!-- Authentication Links -->
@@ -51,7 +68,7 @@
                                     </li>
                                 @endif
                                 <li>
-                                    <a href="/home">{{ Auth::user()->name }} </a>
+                                    <a href="/users">{{ Auth::user()->name }}</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('logout') }}"
@@ -70,7 +87,7 @@
                             <!-- Authentication Links -->
                             @guest
                                 <li><a href="/">Young<span class="textoTeal">México</span></a></li>
-                                <li><a href="/services">Servicios</a></li>
+                                <li><a class="dropdown-button" href="#" data-activates="dropdown2">Servicios<i class="material-icons right">arrow_drop_down</i></a></li>
                                 <li><a href="/blog">Noticias</a></li>
                                 <li><a href="/contact">Contáctanos</a></li>
                                 <li>
@@ -85,14 +102,14 @@
                                         <div class="background">
                                             <img class="responsive-img" src="{{ asset('images/pic04.jpg') }}">
                                         </div>
-                                        <a href="#!user"><img class="circle" src="{{ asset('images/user.png') }}"></a>
-                                        <a href="#!name"><span class="white-text name">{{ Auth::user()->name }}</span></a>
-                                        <a href="#!email"><span class="white-text email">{{ Auth::user()->email }}</span></a>
+                                        <a href="/users"><img class="circle" src="{{ asset('images/user.png') }}"></a>
+                                        <a href="/users"><span class="white-text name">{{ Auth::user()->name }}</span></a>
+                                        <a href="/users"><span class="white-text email">{{ Auth::user()->email }}</span></a>
                                     </div>
                                 </li>
                                 <li><a href="/">Young<span class="textoTeal">México</span></a></li>
                                 <div class="divider"></div>
-                                <li><a href="/services">Servicios</a></li>
+                                <li><a class="dropdown-button" href="#" data-activates="dropdown2">Servicios<i class="material-icons right">arrow_drop_down</i></a></li>
                                 <li><a href="/blog">Noticias</a></li>
                                 <li><a href="/contact">Contáctanos</a></li>
                                 @if(Auth::user()->role_id == 1)
