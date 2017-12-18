@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class isEntrepreneur {
+class isBoth {
 	/**
 	 * Handle an incoming request.
 	 *
@@ -14,7 +14,7 @@ class isEntrepreneur {
 	 */
 	public function handle($request, Closure $next) {
 		$user = $request->user();
-		if ($user->role->name == 'Emprendedor') {
+		if ($user->role->name == 'Administrador' || $user->role->name == 'Emprendedor') {
 			return $next($request);
 		}
 		return $next($request);

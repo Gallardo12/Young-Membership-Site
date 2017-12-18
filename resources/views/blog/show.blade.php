@@ -16,10 +16,19 @@
 		</p>
 		<p>{!! $blog->body !!}</p>
 		<p><b>Author: </b><a href="#">{{ $blog->user->name }}</a></p>
-		<p>
-			<a href="{{ action('BlogController@edit', [$blog->id]) }}" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">mode_edit</i></a>
-		</p>
+		@guest
 
+		@else
+			@if(Auth::user()->role_id == 1 || Auth::user()->id == $blog->user_id)
+				<div class="row">
+					<div class="divider"></div>
+						<p align="center">
+							<a href="{{ action('BlogController@edit', [$blog->id]) }}" class="waves-effect waves-light btn-large">Editar</a>
+						</p>
+					<div class="divider"></div>
+				</div>
+			@endif
+		@endguest
 	</div>
 
 @endsection

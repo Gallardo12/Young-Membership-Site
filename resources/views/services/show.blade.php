@@ -47,13 +47,19 @@
 				<b>Publicado: </b><em>{{ $service->updated_at->diffForHumans() }}</em>
 			</p>
 		</div>
-		<div class="row">
-			<div class="divider"></div>
-			<p align="center">
-				<a href="{{ action('ServiceController@edit', [$service->id]) }}" class="waves-effect waves-light btn-large">Editar</a>
-			</p>
-			<div class="divider"></div>
-		</div>
+		@guest
+
+		@else
+			@if(Auth::user()->role_id == 1 || Auth::user()->id == $service->user_id)
+				<div class="row">
+					<div class="divider"></div>
+						<p align="center">
+							<a href="{{ action('ServiceController@edit', [$service->id]) }}" class="waves-effect waves-light btn-large">Editar</a>
+						</p>
+					<div class="divider"></div>
+				</div>
+			@endif
+		@endguest
 	</div>
 
 @endsection
