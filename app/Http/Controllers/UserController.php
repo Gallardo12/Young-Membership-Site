@@ -85,7 +85,7 @@ class UserController extends Controller {
 			'text' => 'Puedes visualizar los cambios en el Panel de Usuarios.',
 		]);
 
-		return redirect('userslist');
+		return back();
 	}
 
 	/**
