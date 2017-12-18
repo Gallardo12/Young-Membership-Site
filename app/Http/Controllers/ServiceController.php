@@ -17,9 +17,8 @@ class ServiceController extends Controller {
 	 */
 
 	public function __construct() {
-		$this->middleware('auth')->except('index', 'show');
-		// $this->middleware('entrepreneur')->except('index', 'show', 'edit', 'create', 'destroy');
-		// $this->middleware('admin')->except('index', 'show', 'edit', 'create', 'destroy', 'bin');
+		$this->middleware('both', ['only' => ['create', 'store', 'edit', 'update']]);
+		$this->middleware('admin', ['only' => ['publish', 'destroy', 'bin', 'restore', 'destroyBlog']]);
 	}
 
 	public function index() {
