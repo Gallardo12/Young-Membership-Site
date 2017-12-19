@@ -19,6 +19,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
         <!-- Compiled and minified CSS -->
         <!--Import Google Icon Font-->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}"/>
@@ -153,9 +154,9 @@
               <div class="col l4 offset-l2 s12">
                 <h5 class="textoColor center">Búscanos en las Redes Sociales...</h5>
                 <ul class="center">
-                  <li><a class="grey-text text-darken-4" href="https://www.twitter.com/youngmentorship/" target="_blank">Twitter</a></li>
-                  <li><a class="grey-text text-darken-4" href="https://www.facebook.com/YOUNGMEXIC0/" target="_blank">Facebook</a></li>
-                  <li><a class="grey-text text-darken-4" href="https://www.instagram.com/youngmentorship/" target="_blank">Instagram</a></li>
+                    <li><a class="waves-effect waves-light btn social facebook" href="https://www.facebook.com/YOUNGMEXIC0/" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
+                    <li><a class="waves-effect waves-light btn social twitter" href="https://www.twitter.com/youngmentorship/" target="_blank"><i class="fa fa-twitter"></i> Twitter</a></li>
+                    <li><a class="waves-effect waves-light btn social instagram" href="https://www.instagram.com/youngmentorship/" target="_blank"><i class="fa fa-instagram"></i> Instagram</a></li>
                 </ul>
               </div>
             </div>

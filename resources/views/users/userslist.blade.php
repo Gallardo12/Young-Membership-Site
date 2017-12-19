@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Young Mentorship - Servicios')
+@section('title', 'Young Mentorship - Usuarios')
 
 @section('content')
 
@@ -28,7 +28,7 @@
 			        <tbody>
 			        	@foreach ($users as $user)
 				          	<tr>
-				            	<td>{{ $user->name }}</td>
+				            	<td><a href="{{ route('users.show', $user->name) }}">{{ $user->name }}</a></td>
 				            	<td>{{ $user->email }}</td>
 				            	<td>{{ $user->created_at->diffForHumans() }}</td>
 				            	<td>
