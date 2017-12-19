@@ -40,13 +40,17 @@
 					<i class="material-icons">location_on</i>
 					<b>Ubicación: </b>{{ $service->location }}
 				</p>
-				<p class="flow-text">
-					{{ Form::model($service, ['method' => 'PATCH', 'action' => ['ServiceController@postService', $service]]) }}
-                        <input id="input-1" name="rate" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="{{ $service->userAverageRating }}" data-size="xs">
-				        <input type="hidden" name="id" required="" value="{{ $service->id }}">
-                        {{ Form::submit('Calificar', ['class' => 'waves-effect waves-light btn']) }}
-                    {{ Form::close() }}
-				</p>
+				@guest
+					<input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $service->averageRating }}" data-size="xs" disabled="">
+				@else
+					<p class="flow-text">
+						{{ Form::model($service, ['method' => 'PATCH', 'action' => ['ServiceController@postService', $service]]) }}
+	                        <input id="input-1" name="rate" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="{{ $service->userAverageRating }}" data-size="xs">
+					        <input type="hidden" name="id" required="" value="{{ $service->id }}">
+	                        {{ Form::submit('Calificar', ['class' => 'waves-effect waves-light btn']) }}
+	                    {{ Form::close() }}
+					</p>
+				@endguest
 			</div>
 		</div>
 		<div class="row">
