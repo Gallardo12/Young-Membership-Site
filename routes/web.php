@@ -17,6 +17,7 @@ View::share('categories', App\Category::latest()->get());
 View::share('blog', App\Blog::all());
 
 Route::patch('/services/{id}', 'ServiceController@publish');
+Route::patch('/services/{id}', 'ServiceController@postService');
 
 Auth::routes();
 

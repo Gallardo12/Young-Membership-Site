@@ -105,6 +105,21 @@ class ServiceController extends Controller {
 		return view('services.show', compact('service'));
 	}
 
+	public function postService(Request $request) {
+		request()->validate(['rate' => 'required']);
+		$service = Service::find($request->id);
+		$rating = new \willvincent\Rateable\Rating;
+		$rating->rating = $request->rate;
+		$rating->user_id = auth()->user()->id;
+		$service->ratings()->save($rating);
+		return back();
+
+		notify()->flash('Gracias por calificar el servicio!!', 'success', [
+			'timer' => 3000,
+			'text' => 'Tu calificación se añadirá a la base de datos.',
+		]);
+	}
+
 	/**
 	 * Show the form for editing the specified resource.
 	 *

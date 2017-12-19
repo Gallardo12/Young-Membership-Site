@@ -14,7 +14,8 @@
         "laravelcollective/html": "^5.4.0",
         "laraveles/spanish": "^1.0",
         "nesbot/carbon": "^1.22",
-        "unisharp/laravel-filemanager": "~1.8"
+        "unisharp/laravel-filemanager": "~1.8",
+        "willvincent/laravel-rateable": "~1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

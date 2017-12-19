@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use willvincent\Rateable\Rateable;
 
 class Service extends Model {
 
 	use SoftDeletes;
+	use Rateable;
 
 	protected $dates = ['deleted_at'];
 
