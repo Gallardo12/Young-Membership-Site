@@ -4,6 +4,7 @@
 
 @section('assets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
 @endsection
 
 @include('partials.meta-static')
@@ -48,8 +49,9 @@
                             <p><i class="material-icons">account_circle</i><b>Emprendedor: </b><a href="#">{{ $service->user->name }}</a></p>
                             <p><i class="material-icons">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
                             <p><i class="material-icons">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
+                            <p><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $service->averageRating }}" data-size="xs" disabled=""></p>
                             <p><i class="material-icons">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
-                            <p>
+                            <p align="center">
                                 <em>
                                     @foreach ($service->category as $category)
                                         <a href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
@@ -77,5 +79,11 @@
             });
         </script>
     @endif
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript" src="{{asset('/js/sweetalert2.js') }}"></script>
+    <script type="text/javascript" src="{{asset('/js/rateable.js') }}"></script>
+    <script type="text/javascript">
+        $("#input-id").rating();
+    </script>
 
 @endsection

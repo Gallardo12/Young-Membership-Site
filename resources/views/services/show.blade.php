@@ -2,6 +2,11 @@
 
 @section('content')
 
+@section('assets')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+@endsection
+
 @include('partials.meta-dynamic')
 
 	<div class="container">
@@ -34,6 +39,13 @@
 				<p class="flow-text">
 					<i class="material-icons">location_on</i>
 					<b>Ubicación: </b>{{ $service->location }}
+				</p>
+				<p class="flow-text">
+					{{ Form::model($service, ['method' => 'PATCH', 'action' => ['ServiceController@postService', $service]]) }}
+                        <input id="input-1" name="rate" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="{{ $service->userAverageRating }}" data-size="xs">
+				        <input type="hidden" name="id" required="" value="{{ $service->id }}">
+                        {{ Form::submit('Calificar', ['class' => 'waves-effect waves-light btn']) }}
+                    {{ Form::close() }}
 				</p>
 			</div>
 		</div>
@@ -85,5 +97,25 @@
 	</div>
 
 	<script id="dsq-count-scr" src="//youngmexico.disqus.com/count.js" async></script>
+	<script src="{{asset('/js/sweetalert2.js') }}" type="text/javascript" charset="utf-8"></script>
+    @if (notify()->ready())
+        <script>
+            swal({
+                title: "{!! notify()->message() !!}",
+                text: "{!! notify()->option('text') !!}",
+                type: "{{ notify()->type() }}",
+                @if (notify()->option('timer'))
+                    timer: {{ notify()->option('timer') }},
+                    showConfirmButton: false
+                @endif
+            });
+        </script>
+    @endif
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript" src="{{asset('/js/sweetalert2.js') }}"></script>
+    <script type="text/javascript" src="{{asset('/js/rateable.js') }}"></script>
+    <script type="text/javascript">
+        $("#input-id").rating();
+    </script>
 @endsection
 

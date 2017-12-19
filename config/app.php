@@ -172,6 +172,7 @@ return [
 		Intervention\Image\ImageServiceProvider::class,
 		Laraveles\Spanish\SpanishServiceProvider::class,
 		Codecourse\Notify\NotifyServiceProvider::class,
+		willvincent\Rateable\RateableServiceProvider::class,
 		/*
 			         * Application Service Providers...
 		*/
