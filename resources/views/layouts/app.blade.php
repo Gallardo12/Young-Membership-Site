@@ -11,7 +11,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>@yield('meta-title') - Young México</title>
+        <title>Young México - @yield('meta-title')</title>
         <meta name="description" content="@yield('meta-desc')">
         <meta name="author" content="@yield('meta-author')">
 
@@ -69,7 +69,7 @@
                                     </li>
                                 @endif
                                 <li>
-                                    <a href="/users">{{ Auth::user()->name }}</a>
+                                    <a href="/users">{{ Auth::user()->username }}</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('logout') }}"
@@ -104,8 +104,8 @@
                                             <img class="responsive-img" src="{{ asset('images/pic04.jpg') }}">
                                         </div>
                                         <a href="/users"><img class="circle" src="{{ asset('images/user.png') }}"></a>
-                                        <a href="/users"><span class="white-text name">{{ Auth::user()->name }}</span></a>
-                                        <a href="/users"><span class="white-text email">{{ Auth::user()->role->name }}</span></a>
+                                        <a href="/users"><span class="white-text name">{{ Auth::user()->username }}</span></a>
+                                        <a href="/users"><span class="white-text email">{{ Auth::user()->name }}</span></a>
                                     </div>
                                 </li>
                                 <li><a href="/">Young<span class="textoTeal">México</span></a></li>

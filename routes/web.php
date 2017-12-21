@@ -81,3 +81,5 @@ Route::resource('media2', 'PhotobsController');
 
 Route::get('userslist', 'UserController@userslist');
 Route::resource('users', 'UserController');
+
+Route::get('/{username?}', array('as' => 'show', 'uses' => 'UserController@show'));

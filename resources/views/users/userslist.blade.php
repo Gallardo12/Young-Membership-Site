@@ -19,6 +19,7 @@
 			        <thead>
 			          	<tr>
 			              	<th>Nombre</th>
+			              	<th>Usuario</th>
 			              	<th>Email</th>
 			              	<th>Fecha Registro</th>
 			              	<th>Rol</th>
@@ -28,7 +29,8 @@
 			        <tbody>
 			        	@foreach ($users as $user)
 				          	<tr>
-				            	<td><a href="{{ route('users.show', $user->name) }}">{{ $user->name }}</a></td>
+				            	<td><a href="{{ route('users.show', $user->username) }}">{{ $user->name }}</a></td>
+				            	<td>{{ $user->username }}</td>
 				            	<td>{{ $user->email }}</td>
 				            	<td>{{ $user->created_at->diffForHumans() }}</td>
 				            	<td>

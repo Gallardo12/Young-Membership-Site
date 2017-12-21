@@ -39,7 +39,7 @@
                                     @foreach ($service as $service)
                                         <tr>
                                             <td class="center">{{ $service->title }}</td>
-                                            <td class="center">{{ $service->user->name }}</td>
+                                            <td class="center"><a href="{{ route('users.show', $service->user->username) }}">{{ $service->user->name }}</a></td>
                                             <td class="center">
                                                 @if($service->status == 0)
                                                         Borrador
@@ -108,7 +108,7 @@
                                     @foreach ($blog as $blog)
                                         <tr>
                                             <td class="center">{{ $blog->title }}</td>
-                                            <td class="center">{{ $blog->user->name }}</td>
+                                            <td class="center"><a href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a></td>
                                             <td class="center">{{ $blog->updated_at->diffForHumans() }}</td>
                                             <td class="center">
                                                 <a href="{{ action('BlogController@show', [$blog->id]) }}" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver Servicio"><i class="material-icons">remove_red_eye</i></a>
@@ -192,7 +192,7 @@
                                     <tbody>
                                         @foreach ($users as $user)
                                             <tr>
-                                                <td>{{ $user->name }}</td>
+                                                <td><a href="{{ route('users.show', $user->username) }}">{{ $user->name }}</a></td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->created_at->diffForHumans() }}</td>
                                                 <td>{{ $user->role->name}}</td>
