@@ -46,7 +46,7 @@
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons right">close</i></span>
-                            <p><i class="material-icons">account_circle</i><b>Emprendedor: </b><a href="#">{{ $service->user->name }}</a></p>
+                            <p><i class="material-icons">account_circle</i><b>Emprendedor: </b><a href="{{ route('users.show', $service->user->username) }}">{{ $service->user->name }}</a></p>
                             <p><i class="material-icons">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
                             <p><i class="material-icons">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
                             <p><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $service->averageRating }}" data-size="xs" disabled=""></p>

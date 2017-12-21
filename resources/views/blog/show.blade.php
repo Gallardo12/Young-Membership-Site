@@ -4,18 +4,17 @@
 
 @section('content')
 
-@include('partials.meta-static')
+@include('partials.meta-dynamic2')
 
 	<div class="container">
 
 		<h2 class="center">{{ $blog->title }}</h2>
 		<div class="divider"></div>
-
-		<p style="margin-top: 2em;" class="flow-text" align="center">
-			<b>Creado: </b><em>{{ $blog->updated_at->diffForHumans() }}</em>
-		</p>
 		<p>{!! $blog->body !!}</p>
-		<p><b>Author: </b><a href="#">{{ $blog->user->name }}</a></p>
+		<div class="divider"></div>
+		<p style="margin-top: 2em;" class="flow-text" align="center">
+			<b>Creado: </b>{{ $blog->updated_at->diffForHumans() }} por <a href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a>
+		</p>
 		@guest
 
 		@else

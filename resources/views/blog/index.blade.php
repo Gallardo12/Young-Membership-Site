@@ -43,7 +43,7 @@
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">{{ $blog->title }}<i class="material-icons right">close</i></span>
-                            <p><b>Creado: </b>{{ $blog->updated_at->diffForHumans() }}</p>
+                            <p><b>Creado: </b>{{ $blog->updated_at->diffForHumans() }} por <a href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a></p>
                             <p>{!! str_limit($blog->body, 500) !!}</p>
                         </div>
                     </div>

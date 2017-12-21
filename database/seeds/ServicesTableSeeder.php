@@ -11,7 +11,7 @@ class ServicesTableSeeder extends Seeder {
 	 */
 	public function run() {
 		$service1 = new Service();
-		$service1->photo_id = 1;
+		$service1->photo_id = 0;
 		$service1->user_id = 1;
 		$service1->title = 'Entrega de Paquetes a Domicilio';
 		$service1->slug = 'entrega-de-paquetes-a-domicilio';
@@ -24,7 +24,7 @@ class ServicesTableSeeder extends Seeder {
 		$service1->save();
 
 		$service2 = new Service();
-		$service2->photo_id = 1;
+		$service2->photo_id = 0;
 		$service2->user_id = 1;
 		$service2->title = 'Reparación de Computadoras';
 		$service2->slug = 'reparacion-de-computadoras';
@@ -37,7 +37,7 @@ class ServicesTableSeeder extends Seeder {
 		$service2->save();
 
 		$service3 = new Service();
-		$service3->photo_id = 1;
+		$service3->photo_id = 0;
 		$service3->user_id = 1;
 		$service3->title = 'Repartidor de Comida a Domicilio';
 		$service3->slug = 'repartidor-de-comida-a-domicilio';
@@ -50,7 +50,7 @@ class ServicesTableSeeder extends Seeder {
 		$service3->save();
 
 		$service4 = new Service();
-		$service4->photo_id = 1;
+		$service4->photo_id = 0;
 		$service4->user_id = 1;
 		$service4->title = 'Creación de Logotipos';
 		$service4->slug = 'creacion-de-logotipos';
@@ -63,7 +63,7 @@ class ServicesTableSeeder extends Seeder {
 		$service4->save();
 
 		$service5 = new Service();
-		$service5->photo_id = 1;
+		$service5->photo_id = 0;
 		$service5->user_id = 1;
 		$service5->title = 'Impresión de Playeras';
 		$service5->slug = 'impresion-de-playeras';

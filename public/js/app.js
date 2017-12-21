@@ -7,6 +7,7 @@
     $('.collapsible').collapsible();
     $('.materialboxed').materialbox();
     $('.tooltipped').tooltip({delay: 50});
+    $('.carousel').carousel();
     $('.dropdown-button').dropdown({
       	inDuration: 300,
       	outDuration: 225,

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller {
 
 	public function __construct() {
-		$this->middleware('auth');
+		$this->middleware('auth')->except('show');
 	}
 
 	/**
@@ -54,8 +54,8 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($name) {
-		$user = User::whereName($name)->first();
+	public function show($username) {
+		$user = User::whereUsername($username)->first();
 		return view('users.show', compact('user'));
 	}
 
