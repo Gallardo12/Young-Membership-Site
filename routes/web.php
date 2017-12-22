@@ -16,6 +16,9 @@ View::share('user', App\User::all());
 View::share('categories', App\Category::latest()->get());
 View::share('blog', App\Blog::all());
 
+Route::get('/contact', 'MailController@contact');
+Route::post('/contact/send', 'MailController@send');
+
 Route::patch('/services/{id}', 'ServiceController@publish');
 
 Auth::routes();
@@ -31,20 +34,6 @@ Route::get('/services/bin/{id}/destroyservice', 'ServiceController@destroyServic
 Route::get('/', function () {
 	return view('welcome');
 });
-
-Route::get('/services', function () {
-	return view('services');
-});
-
-Route::get('/contact', function () {
-	return view('contact');
-});
-
-Route::get('/contact-us', 'ContactUSController@contactUS');
-
-Route::post('/contact-us', ['as' => 'contact-us.store', 'uses' => 'ContactUSController@contactUSPost']);
-
-// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController@index');
 
@@ -83,5 +72,3 @@ Route::get('userslist', 'UserController@userslist');
 Route::resource('users', 'UserController');
 
 Route::get('/{username?}', array('as' => 'show', 'uses' => 'UserController@show'));
-
-Route::get('contact', 'MailController@contact');

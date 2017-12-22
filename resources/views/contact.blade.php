@@ -2,6 +2,10 @@
 
 @section('content')
 
+@section('assets')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}"/>
+@endsection
+
 @include('partials.meta-static')
 
     <div class="parallax-container">
@@ -25,34 +29,57 @@
         <div class="divider"></div>
         <h4 class="center">Afiliate a Young<span class="textoTeal">México</span></h4>
         <div class="row">
-            <form class="alt" method="POST" action="{{ route('contact-us.store') }}">
-                {{ csrf_field() }}
+            {{ Form::open(['method' => 'POST', 'action' => 'MailController@send']) }}
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s8 col offset-s2">
                         <i class="material-icons prefix">account_circle</i>
-                        <label for="name">Nombre Completo</label>
-                        <input type="text" name="name" id="name" value="" />
+                        {{ Form::label("name", "Nombre") }}
+                        {{ Form::text("name", null, ['class' => '']) }}
                     </div>
-                    <div class="input-field col s12">
+                </div>
+                <div class="row">
+                    <div class="input-field col s8 col offset-s2">
                         <i class="material-icons prefix">email</i>
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" name="email" id="email" value="" />
+                        {{ Form::label("email", "Correo Electrónico") }}
+                        {{ Form::email("email", null, ['class' => '']) }}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s8 col offset-s2">
+                        <i class="material-icons prefix">subject</i>
+                        {{ Form::label("subject", "Asunto") }}
+                        {{ Form::text("subject", null, ['class' => '']) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8 col offset-s2">
                         <i class="material-icons prefix">message</i>
-                        <label for="message">Mensaje</label>
-                        <textarea name="message" id="message" class="materialize-textarea" rows="10"></textarea>
+                        {{ Form::label("mail_message", "Mensaje") }}
+                        {{ Form::textarea("mail_message", null, ['class' => 'materialize-textarea']) }}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12 center">
-                        <input type="submit" value="Enviar Mensaje" class="waves-effect waves-light btn-large" name="submit" />
+                    <div class="input-field col s12 center-align">
+                        {{ Form::submit("Enviar Mensaje", ['class' => 'waves-effect waves-light btn-large']) }}
                     </div>
                 </div>
-            </form>
+            {{ Form::close() }}
         </div>
     </div>
+
+    <script src="{{asset('/js/sweetalert2.js') }}" type="text/javascript" charset="utf-8"></script>
+    @if (notify()->ready())
+        <script>
+            swal({
+                title: "{!! notify()->message() !!}",
+                text: "{!! notify()->option('text') !!}",
+                type: "{{ notify()->type() }}",
+                @if (notify()->option('timer'))
+                    timer: {{ notify()->option('timer') }},
+                    showConfirmButton: false
+                @endif
+            });
+        </script>
+    @endif
 
 @endsection
