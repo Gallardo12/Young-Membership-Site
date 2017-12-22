@@ -15,13 +15,15 @@
                 </div><br><br>
                 <nav>
                     <div class="nav-wrapper">
-                        <form>
+                        {!! Form::open(['action' => 'ServiceController@index', 'method' => 'GET', 'role' => 'search', 'id' => 'term']) !!}
                             <div class="input-field teal">
-                                <input id="search" type="search" placeholder="Todo al alcance de un click..." required>
+                                <!--input id="term" name="term" type="search" placeholder="Qué servicio estas buscando...??" required-->
+                                {!! Form::search('term', Request::get('term'), ['class' => '', 'placeholder' => 'Qué servicio estas buscando...???']) !!}
                                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                 <i class="material-icons">close</i>
+
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </nav>
             </div>
