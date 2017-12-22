@@ -127,6 +127,14 @@ class UserController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id) {
-		//
+		$user = User::findOrFail($id);
+		$user->delete();
+
+		notify()->flash('El Usuario se elimino con éxito!!', 'success', [
+			'timer' => 3000,
+			'text' => 'Puedes visualizar los cambios en el Panel de Usuarios.',
+		]);
+
+		return back();
 	}
 }
