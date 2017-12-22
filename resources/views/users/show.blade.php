@@ -17,7 +17,11 @@
       		<div class="container">
       			<div class="row">
       				<p align="center">
-      					<img class="circle responsive-img" src="{{ asset('images/user.png') }}">
+      					@if ($user->photo)
+                            <img class="responsive-img circle" height="200" width="200" src="/images/{{ $user->photo ? $user->photo->photo : '' }}" alt="{{ str_limit($user->name, 50) }}" />
+                        @else
+                            <img class="responsive-img" src="{{ asset('images/user.png') }}">
+                        @endif
       				</p>
                     <p class="textoTeal flow-text" align="center"><b>{{ $user->name }}</b></p>
                     <p class="textoTeal" align="center"><b>{{ $user->username }}</b></p>
@@ -32,17 +36,17 @@
                     <div class="divider"></div>
                     <p>
                         @if($user->website)
-                            <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-globe textoTeal" aria-hidden="true"></i><em>   <a href="{{ $user->website }}" target="_blank">{{ $user->website }}</a></em></p>
+                            <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-globe textoTeal" aria-hidden="true"></i><em>   <a class="textoTeal" href="{{ $user->website }}" target="_blank">{{ $user->website }}</a></em></p>
                         @endif
                     </p>
                     <p>
                         @if($user->facebook)
-                            <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-facebook textoTeal" aria-hidden="true"></i><em>    <a href="https://www.facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a></em></p>
+                            <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-facebook textoTeal" aria-hidden="true"></i><em>    <a class="textoTeal" href="https://www.facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a></em></p>
                         @endif
                     </p>
                     <p>
                         @if($user->twitter)
-                            <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-twitter textoTeal" aria-hidden="true"></i><em>    <a href="https://twitter.com/{{ $user->twitter }}" target="_blank">{{ $user->twitter }}</a></em></p>
+                            <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-twitter textoTeal" aria-hidden="true"></i><em>    <a class="textoTeal" href="https://twitter.com/{{ $user->twitter }}" target="_blank">{{ $user->twitter }}</a></em></p>
                         @endif
                     </p>
                     <div class="divider"></div>
@@ -78,15 +82,15 @@
                                         </div>
                                         <div class="card-reveal">
                                             <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoTeal right">close</i></span>
-                                            <p><i class="material-icons textoTeal">account_circle</i><b>Emprendedor: </b><a href="{{ route('users.show', $user->username) }}">{{ $service->user->name }}</a></p>
+                                            <p><i class="material-icons textoTeal">account_circle</i><b>Emprendedor: </b><a class="textoTeal" href="{{ route('users.show', $user->username) }}">{{ $service->user->name }}</a></p>
                                             <p><i class="material-icons textoTeal">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
                                             <p><i class="material-icons textoTeal">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
                                             <p><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $service->averageRating }}" data-size="xs" disabled=""></p>
                                             <p><i class="material-icons textoTeal">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
-                                            <p>
+                                            <p align="center">
                                                 <em>
                                                     @foreach ($service->category as $category)
-                                                        <a href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
+                                                        <a class="textoTeal" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
                                                     @endforeach
                                                 </em>
                                             </p>

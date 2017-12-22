@@ -68,7 +68,6 @@ class BlogController extends Controller {
 			$name = Carbon::now() . '.' . $file->getClientOriginalName();
 			$file->move('images', $name);
 			$photo = Photob::create(['photob' => $name, 'title' => $name]);
-			var_dump($photo);
 			$input['photob_id'] = $photo->id;
 		}
 		Blog::create($input);

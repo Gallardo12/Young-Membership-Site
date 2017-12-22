@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Photo;
 use App\Role;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {
 
@@ -78,8 +81,35 @@ class UserController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, $username) {
+		$rules = [
+			'name' => ['min:1', 'max:32'],
+			'about' => ['min:20', 'max:2000'],
+			'photo_id' => ['mimes:jpeg,jpg,png', 'max:5000'],
+		];
+		$message = [
+			'name.min' => 'El nombre debe contener 1 caracter como mínimo',
+			'name.max' => 'El nombre debe contener 32 caracteres como máximo',
+			'about.min' => 'Acerca de, debe contener 20 caracteres como mínimo',
+			'about.max' => 'Acerca de, debe contener 2000 caracteres como máximo',
+			'photo_id.mimes' => 'La imagen debe ser jepg, jpg o png.',
+			'photo_id.max' => 'El tamaño de la imagen debe ser menor a 1GB.',
+		];
+		$this->validate($request, $rules, $message);
+
 		$input = $request->all();
 		$user = User::whereUsername($username)->first();
+		if (Auth::user()->id == $user->id) {
+			if ($file = $request->file('photo_id')) {
+				if ($user->photo) {
+					unlink('images/' . $user->photo->photo);
+					$user->photo()->delete('photo');
+				}
+				$name = Carbon::now() . '.' . $file->getClientOriginalName();
+				$file->move('images', $name);
+				$photo = Photo::create(['photo' => $name, 'title' => $name]);
+				$input['photo_id'] = $photo->id;
+			}
+		}
 		$user->update($input);
 
 		notify()->flash('El Usuario se modificó con éxito!!', 'success', [

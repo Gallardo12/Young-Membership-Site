@@ -9,15 +9,29 @@
 	<div class="container">
 		<h2 class="center">Panel de Usuario</h2>
 	    <div class="divider"></div>
-
-	    <p style="margin-top: 2em;" class="flow-text" align="center">
-	    	<strong>Bienvenido</strong> {{ Auth::user()->name }}<br>
-	    	{{ Auth::user()->username }}<br>
-	    </p>
-	    <p align="center">
-	    	<a class="waves-effect waves-light btn" href="{{ action('UserController@edit', [Auth::user()->username]) }}">Editar</a>
-	    	<a class="waves-effect waves-light btn" href="{{ route('users.show', Auth::user()->username) }}">Perfil Público</a>
-	    </p>
+	    <div class="row">
+	    	<div class="col s12 m5">
+		    	<p align="center">
+			    	@if (Auth::user()->photo)
+		                <img class="responsive-img circle" width="200" src="/images/{{ Auth::user()->photo ? Auth::user()->photo->photo : '' }}" alt="{{ str_limit(Auth::user()->name, 50) }}" />
+		            @else
+		                <img class="responsive-img circle" src="{{ asset('images/user.png') }}">
+		            @endif
+		            <p align="center" class="flow-text">
+		            	{{ Auth::user()->username }}
+		            </p>
+			    </p>
+		    </div>
+		    <div class="col s12 m7">
+		    	<p style="margin-top: 2em;" class="flow-text" align="center">
+			    	<strong>Bienvenido</strong> {{ Auth::user()->name }}
+			    </p>
+			    <p align="center">
+			    	<a class="waves-effect waves-light btn" href="{{ action('UserController@edit', [Auth::user()->username]) }}">Editar</a>
+			    	<a class="waves-effect waves-light btn" href="{{ route('users.show', Auth::user()->username) }}">Perfil Público</a>
+			    </p>
+		    </div>
+	    </div>
 
 	    <div class="row">
     		<div class="col s12">
@@ -50,15 +64,15 @@
 				                            </p>
 				                        </div>
 				                        <div class="card-reveal">
-				                            <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons right">close</i></span>
-				                            <p><i class="material-icons">account_circle</i><b>Emprendedor: </b><a href="#">{{ $service->user->name }}</a></p>
-				                            <p><i class="material-icons">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
-				                            <p><i class="material-icons">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
-				                            <p><i class="material-icons">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
+				                            <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoTeal right">close</i></span>
+				                            <p><i class="material-icons textoTeal">account_circle</i><b>Emprendedor: </b><a class="textoTeal" href="#">{{ $service->user->name }}</a></p>
+				                            <p><i class="material-icons textoTeal">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
+				                            <p><i class="material-icons textoTeal">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
+				                            <p><i class="material-icons textoTeal">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
 				                            <p>
 				                                <em>
 				                                    @foreach ($service->category as $category)
-				                                        <a href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
+				                                        <a class="textoTeal" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
 				                                    @endforeach
 				                                </em>
 				                            </p>
