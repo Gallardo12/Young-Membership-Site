@@ -23,6 +23,7 @@
 			              	<th>Email</th>
 			              	<th>Fecha Registro</th>
 			              	<th>Rol</th>
+			              	<th>Acciones</th>
 			          	</tr>
 			        </thead>
 
@@ -40,6 +41,15 @@
                                             {{ Form::submit('Aplicar', ['class' => 'waves-effect waves-light btn']) }}
                                         {{ Form::close() }}
                                     </div>
+                                </td>
+                                <td>
+                                	<div class="container">
+                                		{!! Form::open(['method' => 'DELETE', 'action' => ['UserController@destroy', $user->id]]) !!}
+                                            <button class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar Usuario" type="submit" name="action">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        {!! Form::close() !!}
+                                	</div>
                                 </td>
 				          	</tr>
 			          	@endforeach
