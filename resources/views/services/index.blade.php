@@ -63,6 +63,9 @@
                 </div>
             @endforeach
         </div>
+        <div class="center-align">
+            {!! $services->links() !!}
+        </div>
     </div>
 
     <script src="{{asset('/js/sweetalert2.js') }}" type="text/javascript" charset="utf-8"></script>
