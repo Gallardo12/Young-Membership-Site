@@ -190,7 +190,7 @@
                                     </thead>
 
                                     <tbody>
-                                        @foreach ($users as $user)
+                                        @foreach ($user as $user)
                                             <tr>
                                                 <td><a href="{{ route('users.show', $user->username) }}">{{ $user->name }}</a></td>
                                                 <td>{{ $user->email }}</td>
