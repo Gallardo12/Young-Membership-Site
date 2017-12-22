@@ -26,6 +26,11 @@
 		    	<p style="margin-top: 2em;" class="flow-text" align="center">
 			    	<strong>Bienvenido</strong> {{ Auth::user()->name }}
 			    </p>
+			    <div class="divider"></div>
+			    <p align="center">
+			    	<em>{{ Auth::user()->role->name }}</em>
+			    </p>
+			    <div class="divider"></div>
 			    <p align="center">
 			    	<a class="waves-effect waves-light btn" href="{{ action('UserController@edit', [Auth::user()->username]) }}">Editar</a>
 			    	<a class="waves-effect waves-light btn" href="{{ route('users.show', Auth::user()->username) }}">Perfil Público</a>

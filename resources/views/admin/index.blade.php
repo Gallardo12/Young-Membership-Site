@@ -194,7 +194,13 @@
                                     <tbody>
                                         @foreach ($user as $user)
                                             <tr>
-                                                <td><a href="{{ route('users.show', $user->username) }}">{{ $user->name }}</a></td>
+                                                <td>
+                                                    @if ($user->photo)
+                                                        <img class="responsive-img circle" width="30" src="/images/{{ $user->photo ? $user->photo->photo : '' }}" alt="{{ str_limit($user->name, 50) }}" />
+                                                    @else
+                                                        <img class="responsive-img circle" width="30" src="{{ asset('images/user.png') }}">
+                                                    @endif
+                                                    <a href="{{ route('users.show', $user->username) }}">{{ $user->name }}</a></td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->created_at->diffForHumans() }}</td>
                                                 <td>{{ $user->role->name}}</td>

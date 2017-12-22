@@ -69,7 +69,13 @@
                                     </li>
                                 @endif
                                 <li>
-                                    <a href="/users">{{ Auth::user()->username }}</a>
+                                    @if (Auth::user()->photo)
+                                        <a href="/users"><img class="responsive-img circle" width="30" src="/images/{{ Auth::user()->photo ? Auth::user()->photo->photo : '' }}" alt="{{ str_limit(Auth::user()->name, 50) }}" />
+                                        {{ Auth::user()->username }}</a>
+                                    @else
+                                        <a href="/users"><img class="responsive-img circle" width="30" src="{{ asset('images/user.png') }}">
+                                        {{ Auth::user()->username }}</a>
+                                    @endif
                                 </li>
                                 <li>
                                     <a href="{{ route('logout') }}"
