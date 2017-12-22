@@ -15,7 +15,7 @@
 		<h2 class="center">{{ $service->title }}</h2>
 		<p class="flow-text" align="center">
 			@foreach ($service->category as $category)
-				<a href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
+				<a class="textoTeal" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
 			@endforeach
 		</p>
 		<div class="divider"></div>
@@ -29,15 +29,15 @@
 			</div>
 			<div class="col s12 m7">
 				<p class="flow-text">
-					<i class="material-icons">account_circle</i>
-					<b>Emprendedor: </b><a href="#">{{ $service->user->name }}</a>
+					<i class="material-icons textoTeal">account_circle</i>
+					<b>Emprendedor: </b><a class="textoTeal" href="{{ route('users.show', $service->user->username) }}">{{ $service->user->name }}</a>
 				</p>
 				<p class="flow-text">
-					<i class="material-icons">monetization_on</i>
+					<i class="material-icons textoTeal">monetization_on</i>
 					<b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN
 				</p>
 				<p class="flow-text">
-					<i class="material-icons">location_on</i>
+					<i class="material-icons textoTeal">location_on</i>
 					<b>Ubicación: </b>{{ $service->location }}
 				</p>
 				@guest
@@ -57,11 +57,11 @@
 		</div>
 		<div class="row">
 			<div class="divider"></div>
-			<h4 class="center"><i class="material-icons">description</i>Descripción</h4>
+			<h4 class="center"><i class="material-icons textoTeal">description</i>Descripción</h4>
 			<p class="flow-text">{!! $service->description !!}</p>
 			<div class="divider"></div>
 			<p class="center flow-text">
-				<i class="material-icons">date_range</i>
+				<i class="material-icons textoTeal">date_range</i>
 				<b>Publicado: </b><em>{{ $service->updated_at->diffForHumans() }}</em>
 			</p>
 		</div>

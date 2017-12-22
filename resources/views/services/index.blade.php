@@ -33,7 +33,7 @@
         <div class="row">
             @foreach ($services as $service)
                 <div class="col s12 m6 l4">
-                    <div class="card medium">
+                    <div class="card large">
                         <div class="card-image waves-effect waves-block waves-light">
                             @if ($service->photo)
                                 <img class="activator" src="/images/{{ $service->photo ? $service->photo->photo : '' }}" alt="{{ str_limit($service->title, 50) }}" />

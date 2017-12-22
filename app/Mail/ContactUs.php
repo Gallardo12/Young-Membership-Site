@@ -28,7 +28,7 @@ class ContactUs extends Mailable {
 
 		$address = 'contacto@youngmentorship.com';
 
-		$name = 'Young Mentorship';
+		$name = 'YoungMéxico';
 
 		$subject = 'Contacto';
 

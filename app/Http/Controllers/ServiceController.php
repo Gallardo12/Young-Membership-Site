@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Photo;
 use App\Service;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ServiceController extends Controller {
 	/**
@@ -98,6 +100,13 @@ class ServiceController extends Controller {
 		$service = Service::create($input);
 		if ($categoryIds = $request->category_id) {
 			$service->category()->sync($categoryIds);
+		}
+
+		$users = User::where('get_email', 1)->get();
+		foreach ($users as $user) {
+			Mail::send('emails.newservice', ['service' => $service, 'user' => $user], function ($message) use ($user) {
+				$message->to($user->email)->from('no-reply@youngmentorship.com', 'YoungMéxico')->subject('Un nuevo servicio ha sido publicado!!');
+			});
 		}
 
 		notify()->flash('Tu servicio ha creado con éxito!!', 'success', [
