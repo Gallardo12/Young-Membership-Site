@@ -21,8 +21,21 @@ class ServiceController extends Controller {
 		$this->middleware('admin', ['only' => ['publish', 'destroy', 'bin', 'restore', 'destroyBlog']]);
 	}
 
-	public function index() {
-		$services = Service::where('status', 1)->latest()->paginate(3);
+	/*
+		public function index() {
+			$services = Service::where('status', 1)->latest()->paginate(3);
+			return view('services.index', compact('services'));
+		}
+	*/
+
+	public function index(Request $request) {
+		$services = Service::where(function ($query) use ($request) {
+			if (($term = $request->get('term'))) {
+				$query->orWhere('title', 'like', '%' . $term . '%');
+			}
+		})
+			->orderBy('id', 'desc')
+			->paginate(3);
 		return view('services.index', compact('services'));
 	}
 
