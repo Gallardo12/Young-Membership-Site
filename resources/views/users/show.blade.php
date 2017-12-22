@@ -17,7 +17,7 @@
       		<div class="container">
       			<div class="row">
       				<p align="center">
-      					@if (Auth::user()->photo)
+      					@if ($user->photo)
                             <img class="responsive-img circle" height="200" width="200" src="/images/{{ $user->photo ? $user->photo->photo : '' }}" alt="{{ str_limit($user->name, 50) }}" />
                         @else
                             <img class="responsive-img" src="{{ asset('images/user.png') }}">

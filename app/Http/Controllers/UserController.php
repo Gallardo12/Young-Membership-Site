@@ -100,6 +100,10 @@ class UserController extends Controller {
 		$user = User::whereUsername($username)->first();
 		if (Auth::user()->id == $user->id) {
 			if ($file = $request->file('photo_id')) {
+				if ($user->photo) {
+					unlink('images/' . $user->photo->photo);
+					$user->photo()->delete('photo');
+				}
 				$name = Carbon::now() . '.' . $file->getClientOriginalName();
 				$file->move('images', $name);
 				$photo = Photo::create(['photo' => $name, 'title' => $name]);
