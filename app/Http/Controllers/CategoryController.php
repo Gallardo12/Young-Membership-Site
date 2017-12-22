@@ -39,11 +39,11 @@ class CategoryController extends Controller {
 	 */
 	public function store(Request $request) {
 		$rules = [
-			'name' => ['required', 'min:5', 'max:50', 'unique:categories'],
+			'name' => ['required', 'min:1', 'max:50', 'unique:categories'],
 		];
 		$message = [
 			'name.required' => 'El nombre es obligatorio.',
-			'name.min' => 'El nombre debe contener al menos 5 caracteres.',
+			'name.min' => 'El nombre debe contener al menos 1 caracter.',
 			'name.max' => 'El nombre debe contener 50 caracteres como máximo.',
 			'name.unique' => 'Esa categoría ya está en uso.',
 		];
@@ -123,6 +123,12 @@ class CategoryController extends Controller {
 	public function destroy(Request $request, $id) {
 		$category = Category::findOrFail($id);
 		$category->delete($request->all());
+
+		notify()->flash('La Categoría se ha eliminado con éxito!!', 'success', [
+			'timer' => 3000,
+			'text' => 'Puedes verificar los cambios en el panel de Categorías.',
+		]);
+
 		return redirect('/categories');
 	}
 }
