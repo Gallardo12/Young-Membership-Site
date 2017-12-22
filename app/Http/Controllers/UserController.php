@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller {
 
 	public function __construct() {
-		$this->middleware('auth')->except('show');
+		$this->middleware('admin', ['only' => ['userlist', 'destroy']]);
 	}
 
 	/**
@@ -70,7 +70,12 @@ class UserController extends Controller {
 	 */
 	public function edit($username) {
 		$user = User::whereUsername($username)->first();
-		return view('users.edit', ['user' => $user]);
+		if (Auth::user()->id == $user->id) {
+			return view('users.edit', ['user' => $user]);
+		} else {
+			return back();
+		}
+
 	}
 
 	/**
@@ -83,7 +88,7 @@ class UserController extends Controller {
 	public function update(Request $request, $username) {
 		$rules = [
 			'name' => ['min:1', 'max:32'],
-			'about' => ['min:20', 'max:2000'],
+			'about' => ['min:20', 'max:20000'],
 			'photo_id' => ['mimes:jpeg,jpg,png', 'max:5000'],
 		];
 		$message = [

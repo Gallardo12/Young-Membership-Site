@@ -6,6 +6,11 @@ use App\Photob;
 use Illuminate\Http\Request;
 
 class PhotobsController extends Controller {
+
+	public function __construct() {
+		$this->middleware('admin')->except('show');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

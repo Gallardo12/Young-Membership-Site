@@ -15,7 +15,7 @@
                 <div style="margin-top: 2em;" class="input-field col s12 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <i class="material-icons prefix">email</i>
                     <label for="email">Correo Electrónico</label>
-                    <input id="email" type="email" data-error="wrong" data-success="right" name="email" value="{{ old('email') }}" required autofocus>
+                    <input id="email" type="email" data-error="wrong" data-success="right" name="email" value="{{ old('email') }}" autofocus>
                     @if ($errors->has('email'))
                         <span>
                             <strong class="red-text">{{ $errors->first('email') }}</strong>
@@ -27,7 +27,7 @@
                 <div class="input-field col s12 form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <i class="material-icons prefix">lock</i>
                     <label for="password">Contraseña</label>
-                    <input id="password" type="password" name="password" required>
+                    <input id="password" type="password" name="password">
                     @if ($errors->has('password'))
                         <span>
                             <strong class="red-text">{{ $errors->first('password') }}</strong>

@@ -6,6 +6,11 @@ use App\Photo;
 use Illuminate\Http\Request;
 
 class PhotosController extends Controller {
+
+	public function __construct() {
+		$this->middleware('admin')->except('show');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

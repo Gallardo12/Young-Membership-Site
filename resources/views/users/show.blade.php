@@ -23,9 +23,15 @@
                             <img class="responsive-img" src="{{ asset('images/user.png') }}">
                         @endif
       				</p>
-                    <p class="textoTeal flow-text" align="center"><b>{{ $user->name }}</b></p>
-                    <p class="textoTeal" align="center"><b>{{ $user->username }}</b></p>
-                    <p class="textoTeal" align="center"><b>{{ $user->role->name }}</b></p>
+                    <p class="textoTeal flow-text" align="center">
+                        <b>{{ $user->name }}</b>
+                    </p>
+                    <p class="textoTeal" align="center">
+                        <b>{{ $user->username }}</b>
+                    </p>
+                    <p class="textoTeal" align="center">
+                        <b>{{ $user->role->name }}</b>
+                    </p>
                     <div class="divider"></div>
                     <p>
                         @if($user->about)
@@ -52,6 +58,9 @@
                     <div class="divider"></div>
                     <p class="grey-text text-darken-4" align="center">
                         <b><span class="textoTeal">Usuario desde </span></b>{{ $user->created_at->diffForHumans() }}
+                        <span class="new badge" data-badge-caption="Servicios">
+                            {{ $user->service->count() }}
+                        </span>
                     </p>
       			</div>
       		</div>
