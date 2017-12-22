@@ -105,7 +105,7 @@
 		    </div>
 		    <div id="test2" class="col s12">
 		    	<div class="row">
-		    		@if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+		    		@if (Auth::user()->role_id == 1)
 			    		@foreach ($blog as $blog)
 				    		@if ($blog->user_id == Auth::user()->id)
 				                <div class="col s12 m6">
@@ -132,13 +132,13 @@
 				            @endif
 			            @endforeach
 			        @else
-			        	<p class="flow-text" align="center">Debes ser parte de Young<span class="textoTeal">México</span> para publicar noticias.</p>
+			        	<p class="flow-text" align="center">Debes ser parte del equipo de Young<span class="textoTeal">México</span> para publicar noticias.</p>
 			        	<p align="center">
-			        		<a href="/contact" class="btn">Se parte de YoungMéxico</a>
+			        		<a href="/contact" class="btn">Se parte del equipo de YoungMéxico</a>
 			        	</p>
 			        @endif
 		    	</div>
-		    	@if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+		    	@if (Auth::user()->role_id == 1)
 		            <div class="row">
 						<div class="divider"></div>
 							<p align="center">

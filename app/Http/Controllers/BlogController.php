@@ -16,7 +16,7 @@ class BlogController extends Controller {
 	 */
 
 	public function __construct() {
-		$this->middleware('both')->except('index', 'show');
+		$this->middleware('admin')->except('index', 'show');
 	}
 
 	public function index() {
