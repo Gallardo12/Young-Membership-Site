@@ -42,8 +42,8 @@
                             <p align="center"><a class="btn" href="{{ action('BlogController@show', [$blog->id]) }}">Leer</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">{{ $blog->title }}<i class="material-icons right">close</i></span>
-                            <p><b>Creado: </b>{{ $blog->updated_at->diffForHumans() }} por <a href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a></p>
+                            <span class="card-title grey-text text-darken-4 textoTeal">{{ $blog->title }}<i class="material-icons right">close</i></span>
+                            <p><i class="material-icons textoTeal">date_range</i><b>Creado: </b>{{ $blog->updated_at->diffForHumans() }} por <a class="textoTeal" href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a></p>
                             <p>{!! str_limit($blog->body, 500) !!}</p>
                         </div>
                     </div>

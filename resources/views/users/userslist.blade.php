@@ -35,7 +35,7 @@
 				            	<td>{{ $user->created_at->diffForHumans() }}</td>
 				            	<td>
                                     <div class="container">
-                                        {{ Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->id]]) }}
+                                        {{ Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->username]]) }}
                                             {{ Form::select('role_id', ['1' => 'Administrador', '2' => 'Emprendedor', '3' => 'Usuario'], null, ['class' => '']) }}
                                             {{ Form::submit('Aplicar', ['class' => 'waves-effect waves-light btn']) }}
                                         {{ Form::close() }}

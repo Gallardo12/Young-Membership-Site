@@ -12,7 +12,11 @@
 
 	    <p style="margin-top: 2em;" class="flow-text" align="center">
 	    	<strong>Bienvenido</strong> {{ Auth::user()->name }}<br>
-	    	{{ Auth::user()->role->name }}
+	    	{{ Auth::user()->username }}<br>
+	    </p>
+	    <p align="center">
+	    	<a class="waves-effect waves-light btn" href="{{ action('UserController@edit', [Auth::user()->username]) }}">Editar</a>
+	    	<a class="waves-effect waves-light btn" href="{{ route('users.show', Auth::user()->username) }}">Perfil Público</a>
 	    </p>
 
 	    <div class="row">
@@ -64,7 +68,10 @@
 			               	@endif
 			            @endforeach
 			        @else
-			        	Usuario normal
+			        	<p class="flow-text" align="center">Debes ser parte de Young<span class="textoTeal">México</span> para publicar tus servicios.</p>
+			        	<p align="center">
+			        		<a href="/contact" class="btn">Se parte de YoungMéxico</a>
+			        	</p>
 			        @endif
 		    	</div>
 		    	@if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
@@ -106,7 +113,10 @@
 				            @endif
 			            @endforeach
 			        @else
-			        	Usuario normal
+			        	<p class="flow-text" align="center">Debes ser parte de Young<span class="textoTeal">México</span> para publicar noticias.</p>
+			        	<p align="center">
+			        		<a href="/contact" class="btn">Se parte de YoungMéxico</a>
+			        	</p>
 			        @endif
 		    	</div>
 		    	@if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)

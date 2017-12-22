@@ -16,6 +16,10 @@ class CreateUsersTable extends Migration {
 			$table->integer('role_id');
 			$table->string('username');
 			$table->string('name');
+			$table->text('about')->nullable();
+			$table->text('website')->nullable();
+			$table->text('facebook')->nullable();
+			$table->text('twitter')->nullable();
 			$table->string('email')->unique();
 			$table->string('password');
 			$table->rememberToken();
