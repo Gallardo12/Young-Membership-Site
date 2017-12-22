@@ -103,7 +103,13 @@
                                         <div class="background">
                                             <img class="responsive-img" src="{{ asset('images/pic04.jpg') }}">
                                         </div>
-                                        <a href="/users"><img class="circle" src="{{ asset('images/user.png') }}"></a>
+                                        <a class="center" href="/users">
+                                            @if (Auth::user()->photo)
+                                                <img class="responsive-img circle" src="/images/{{ Auth::user()->photo ? Auth::user()->photo->photo : '' }}" alt="{{ str_limit(Auth::user()->name, 50) }}" />
+                                            @else
+                                                <img class="responsive-img circle" src="{{ asset('images/user.png') }}">
+                                            @endif
+                                        </a>
                                         <a href="/users"><span class="white-text name">{{ Auth::user()->username }}</span></a>
                                         <a href="/users"><span class="white-text email">{{ Auth::user()->name }}</span></a>
                                     </div>

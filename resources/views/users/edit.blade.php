@@ -16,7 +16,7 @@
     <div class="row">
     	<div class="col s12 m8">
     		<p class="flow-text textoTeal" align="center">Aquí puedes realizar los cambios a tu perfil!!</p>
-    		{!! Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->username]]) !!}
+    		{!! Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->username], 'files' => true]) !!}
 	    		<div class="row">
 	    			<div style="margin-top: 2em;" class="input-field col s10 form-group{{ $errors->has('username') ? ' has-error' : '' }}">
 	    				{!! Form::label('username', 'Usuario') !!}
@@ -50,6 +50,22 @@
                         </span>
                     @endif
 	    		</div>
+	    		<div class="row">
+					<div class="file-field input-field col s10">
+				      	<div class="btn">
+				        	<span>Foto de Perfil</span>
+				        	{!! Form::file('photo_id', ['class' => '', 'type' => 'file']) !!}
+				      	</div>
+				      	<div class="file-path-wrapper">
+				      		<input class="file-path validate" type="text">
+				      	</div>
+				      	@if ($errors->has('photo_id'))
+	                        <span>
+	                            <strong class="red-text">* {{ $errors->first('photo_id') }}</strong>
+	                        </span>
+	                    @endif
+				    </div>
+				</div>
 	    		<div class="row">
 					<div class="input-field col col s10">
 						{!! Form::label('about', 'Acerca de tí') !!}
