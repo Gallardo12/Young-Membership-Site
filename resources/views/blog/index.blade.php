@@ -52,6 +52,9 @@
             @endforeach
 
         </div>
+        <div class="center-align">
+            {!! $blogs->links() !!}
+        </div>
 
     </div>
 

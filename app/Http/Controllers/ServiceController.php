@@ -22,7 +22,7 @@ class ServiceController extends Controller {
 	}
 
 	public function index() {
-		$services = Service::where('status', 1)->latest()->get();
+		$services = Service::where('status', 1)->latest()->paginate(3);
 		return view('services.index', compact('services'));
 	}
 
