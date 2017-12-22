@@ -111,6 +111,17 @@
                     @endif
 	    		</div>
 	    		<div class="row">
+	    			<p>Deseas recibir notificaciones vía Correo Electrónico?</p>
+    				<div class="switch">
+    					<label>
+    						No
+    						{{ Form::checkbox('get_email', 1, null, ['class' => '']) }}
+    						<span class="lever"></span>
+    						Si
+    					</label>
+    				</div>
+	    		</div>
+	    		<div class="row">
 	    			<div class="input-field col s12 m6">
 	    				{!! Form::submit('Guardar Cambios', ['class' => 'waves-effect waves-light btn']) !!}
 	    			</div>
@@ -118,7 +129,55 @@
 	    	{!! Form::close() !!}
     	</div>
 	    <div class="col s12 m4">
-	    	<h5>hola</h5>
+	    	<p align="center">
+	    		@if (Auth::user()->photo)
+	                <img class="responsive-img circle" width="200" src="/images/{{ Auth::user()->photo ? Auth::user()->photo->photo : '' }}" alt="{{ str_limit(Auth::user()->name, 50) }}" />
+	            @else
+	                <img class="responsive-img circle" src="{{ asset('images/user.png') }}">
+	            @endif
+	            <p align="center" class="flow-text">
+	            	{{ Auth::user()->username }}
+	            </p>
+	            <p class="textoTeal flow-text" align="center">
+                    <b>{{ $user->name }}</b>
+                </p>
+                <p class="textoTeal" align="center">
+                    <b>{{ $user->username }}</b>
+                </p>
+                <p class="textoTeal" align="center">
+                    <b>{{ $user->role->name }}</b>
+                </p>
+                <div class="divider"></div>
+                <p>
+                    @if($user->about)
+                        <h4 class="grey-text text-darken-4 center">Acerca de mi</h4>
+                        <p class="grey-text text-darken-4" align="center"><em>{{ $user->about }}</em></p>
+                    @endif
+                </p>
+                <div class="divider"></div>
+                <p>
+                    @if($user->website)
+                        <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-globe textoTeal" aria-hidden="true"></i><em>   <a class="textoTeal" href="{{ $user->website }}" target="_blank">{{ $user->website }}</a></em></p>
+                    @endif
+                </p>
+                <p>
+                    @if($user->facebook)
+                        <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-facebook textoTeal" aria-hidden="true"></i><em>    <a class="textoTeal" href="https://www.facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a></em></p>
+                    @endif
+                </p>
+                <p>
+                    @if($user->twitter)
+                        <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-twitter textoTeal" aria-hidden="true"></i><em>    <a class="textoTeal" href="https://twitter.com/{{ $user->twitter }}" target="_blank">{{ $user->twitter }}</a></em></p>
+                    @endif
+                </p>
+                <div class="divider"></div>
+                <p class="grey-text text-darken-4" align="center">
+                    <b><span class="textoTeal">Usuario desde </span></b>{{ $user->created_at->diffForHumans() }}
+                    <span class="new badge" data-badge-caption="Servicios">
+                        {{ $user->service->count() }}
+                    </span>
+                </p>
+	    	</p>
 	    </div>
     </div>
 

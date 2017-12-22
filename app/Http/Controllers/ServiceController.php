@@ -102,7 +102,7 @@ class ServiceController extends Controller {
 			$service->category()->sync($categoryIds);
 		}
 
-		$users = User::all();
+		$users = User::where('get_email', 1)->get();
 		foreach ($users as $user) {
 			Mail::send('emails.newservice', ['service' => $service, 'user' => $user], function ($message) use ($user) {
 				$message->to($user->email)->from('no-reply@youngmentorship.com', 'YoungMéxico')->subject('Un nuevo servicio ha sido publicado!!');

@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration {
 			$table->integer('role_id');
 			$table->integer('photo_id')->nullable();
 			$table->string('username');
+			$table->integer('get_email')->default(1);
 			$table->string('name');
 			$table->text('about')->nullable();
 			$table->text('website')->nullable();
