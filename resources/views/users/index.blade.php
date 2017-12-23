@@ -2,7 +2,14 @@
 
 @section('title', 'Young Mentorship - Servicios')
 
+@section('assets')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+@endsection
+
 @section('content')
+
+
 
 @include('partials.meta-static')
 
@@ -43,7 +50,7 @@
       			<ul class="tabs tabs-fixed-width">
 			        <li class="tab col s3"><a class="active" href="#test1">Servicios</a></li>
 			        <li class="tab col s3"><a href="#test2">Noticias</a></li>
-			        <li class="tab col s3"><a href="#test3">Mensajes</a></li>
+			        <li class="tab col s3"><a href="#test3">Mensajes @include('messenger.unread-count')</a></li>
       			</ul>
     		</div>
 		    <div id="test1" class="col s12">
@@ -149,9 +156,32 @@
 				@endif
 		    </div>
 		    <div id="test3" class="col s12">
-		    	Mensajes
+		    	<div class="row"></div>
+		    	<div class="divider"></div>
+		    	<p align="center">
+		    		<a href="/messages" class="waves-effect waves-light btn-large">Ver Mensajes</a>
+			    	@if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+			    		<a href="/messages/create" class="waves-effect waves-light btn-large">Nuevo Mensaje</a>
+			    	@endif
+		    	</p>
+		    	<div class="divider"></div>
 		    </div>
   		</div>
 	</div>
+
+	<script src="{{asset('/js/sweetalert2.js') }}" type="text/javascript" charset="utf-8"></script>
+    @if (notify()->ready())
+        <script>
+            swal({
+                title: "{!! notify()->message() !!}",
+                text: "{!! notify()->option('text') !!}",
+                type: "{{ notify()->type() }}",
+                @if (notify()->option('timer'))
+                    timer: {{ notify()->option('timer') }},
+                    showConfirmButton: false
+                @endif
+            });
+        </script>
+    @endif
 
 @endsection

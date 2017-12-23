@@ -71,10 +71,10 @@
                                 <li>
                                     @if (Auth::user()->photo)
                                         <a href="/users"><img class="responsive-img circle" width="30" src="/images/{{ Auth::user()->photo ? Auth::user()->photo->photo : '' }}" alt="{{ str_limit(Auth::user()->name, 50) }}" />
-                                        {{ Auth::user()->username }}</a>
+                                        {{ Auth::user()->username }}@include('messenger.unread-count')</a>
                                     @else
                                         <a href="/users"><img class="responsive-img circle" width="30" src="{{ asset('images/user.png') }}">
-                                        {{ Auth::user()->username }}</a>
+                                        {{ Auth::user()->username }} @include('messenger.unread-count')</a>
                                     @endif
                                 </li>
                                 <li>
@@ -125,6 +125,7 @@
                                 <li><a class="dropdown-button" href="#" data-activates="dropdown2">Servicios<i class="material-icons right">arrow_drop_down</i></a></li>
                                 <li><a href="/blog">Noticias</a></li>
                                 <li><a href="/contact">Contáctanos</a></li>
+                                <li><a href="/messages">Mensajes @include('messenger.unread-count')</a></li>
                                 @if(Auth::user()->role_id == 1)
                                     <div class="divider"></div>
                                     <li>

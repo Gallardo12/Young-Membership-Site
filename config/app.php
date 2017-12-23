@@ -173,6 +173,7 @@ return [
 		Laraveles\Spanish\SpanishServiceProvider::class,
 		Codecourse\Notify\NotifyServiceProvider::class,
 		willvincent\Rateable\RateableServiceProvider::class,
+		Cmgmyr\Messenger\MessengerServiceProvider::class,
 		/*
 			         * Application Service Providers...
 		*/
