@@ -30,55 +30,55 @@
             <div class="navbar-fixed">
                 <!-- Dropdown Structure -->
                 <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="/services">Servicios</a></li>
+                    <li><a href="/services" class="textoAmber">Servicios</a></li>
                     <li class="divider"></li>
                     @foreach ($categories as $category)
                         @if ($category->service->count() > 0)
-                            <li><a href="{{ action('CategoryController@show', [$category->slug]) }}">{{ $category->name }}</a></li>
+                            <li><a href="{{ action('CategoryController@show', [$category->slug]) }}" class="textoAmber">{{ $category->name }}</a></li>
                         @endif
                     @endforeach
                 </ul>
                 <ul id="dropdown2" class="dropdown-content">
-                    <li><a href="/services">Servicios</a></li>
+                    <li><a href="/services" class="textoAmber">Servicios</a></li>
                     <li class="divider"></li>
                     @foreach ($categories as $category)
-                        <li><a href="{{ action('CategoryController@show', [$category->slug]) }}">{{ $category->name }}</a></li>
+                        <li><a href="{{ action('CategoryController@show', [$category->slug]) }}" class="textoAmber">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
-                <nav class="white">
+                <nav class="black">
                     <div class="nav-wrapper">
-                        <a href="/" class="brand-logo">Young<span class="textoTeal">México</span></a>
-                        <a href="#" data-activates="mobile-demo" class="button-collapse grey-text text-darken-4"><i class="material-icons">menu</i></a>
+                        <a href="/" class="brand-logo white-text">Young<span class="textoAmber">México</span></a>
+                        <a href="#" data-activates="mobile-demo" class="button-collapse white-text"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
-                            <li><a href="/">Young<span class="textoTeal">México</span></a></li>
-                            <li><a class="dropdown-button1" href="#" data-activates="dropdown1">Servicios<i class="material-icons right">arrow_drop_down</i></a></li>
-                            <li><a href="/blog">Noticias</a></li>
-                            <li><a href="/contact">Contáctanos</a></li>
+                            <li><a href="/" class="white-text">Young<span class="textoAmber">México</span></a></li>
+                            <li><a class="dropdown-button1 white-text" href="#" data-activates="dropdown1">Servicios<i class="material-icons right">arrow_drop_down</i></a></li>
+                            <li><a href="/blog" class="white-text">Noticias</a></li>
+                            <li><a href="/contact" class="white-text">Contáctanos</a></li>
                             <!-- Authentication Links -->
                             @guest
                                 <li>
-                                    <a href="{{ route('login') }}">Ingresar</a>
+                                    <a href="{{ route('login') }}" class="white-text">Ingresar</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('register') }}">Registrarse</a>
+                                    <a href="{{ route('register') }}" class="white-text">Registrarse</a>
                                 </li>
                             @else
                                 @if(Auth::user()->role_id == 1)
                                     <li>
-                                        <a href="/admin">Admin</a>
+                                        <a href="/admin" class="white-text">Admin</a>
                                     </li>
                                 @endif
                                 <li>
                                     @if (Auth::user()->photo)
-                                        <a href="/users"><img class="responsive-img circle" width="30" src="/images/{{ Auth::user()->photo ? Auth::user()->photo->photo : '' }}" alt="{{ str_limit(Auth::user()->name, 50) }}" />
+                                        <a href="/users" class="white-text"><img class="responsive-img circle" width="30" src="/images/{{ Auth::user()->photo ? Auth::user()->photo->photo : '' }}" alt="{{ str_limit(Auth::user()->name, 50) }}" />
                                         {{ Auth::user()->username }}@include('messenger.unread-count')</a>
                                     @else
-                                        <a href="/users"><img class="responsive-img circle" width="30" src="{{ asset('images/user.png') }}">
+                                        <a href="/users" class="white-text"><img class="responsive-img circle" width="30" src="{{ asset('images/user.png') }}">
                                         {{ Auth::user()->username }} @include('messenger.unread-count')</a>
                                     @endif
                                 </li>
                                 <li>
-                                    <a href="{{ route('logout') }}"
+                                    <a class="white-text" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         Salir
@@ -93,7 +93,7 @@
                         <ul class="side-nav" id="mobile-demo">
                             <!-- Authentication Links -->
                             @guest
-                                <li><a href="/">Young<span class="textoTeal">México</span></a></li>
+                                <li><a href="/">Young<span class="textoAmber">México</span></a></li>
                                 <li><a class="dropdown-button" href="#" data-activates="dropdown2">Servicios<i class="material-icons right">arrow_drop_down</i></a></li>
                                 <li><a href="/blog">Noticias</a></li>
                                 <li><a href="/contact">Contáctanos</a></li>
@@ -120,7 +120,7 @@
                                         <a href="/users"><span class="white-text email">{{ Auth::user()->name }}</span></a>
                                     </div>
                                 </li>
-                                <li><a href="/">Young<span class="textoTeal">México</span></a></li>
+                                <li><a href="/">Young<span class="textoAmber">México</span></a></li>
                                 <div class="divider"></div>
                                 <li><a class="dropdown-button" href="#" data-activates="dropdown2">Servicios<i class="material-icons right">arrow_drop_down</i></a></li>
                                 <li><a href="/blog">Noticias</a></li>
@@ -176,8 +176,8 @@
           </div>
           <div class="footer-copyright">
             <div class="container textoColor">
-            © 2017 Young<span class="textoTeal">México</span>
-            <a class="grey-text text-darken-4 right" href="#!">by Hex<span class="textoTeal">Code</span></a>
+            © 2017 Young<span class="textoAmber">México</span>
+            <a class="grey-text text-darken-4 right" href="#!">by Hex<span class="textoAmber">Code</span></a>
             </div>
           </div>
         </footer>

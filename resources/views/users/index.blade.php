@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Young Mentorship - Servicios')
+@section('title', 'Young Mentorship - Usuario')
 
 @section('assets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}"/>
@@ -39,8 +39,8 @@
 			    </p>
 			    <div class="divider"></div>
 			    <p align="center">
-			    	<a class="waves-effect waves-light btn" href="{{ action('UserController@edit', [Auth::user()->username]) }}">Editar</a>
-			    	<a class="waves-effect waves-light btn" href="{{ route('users.show', Auth::user()->username) }}">Perfil Público</a>
+			    	<a class="waves-effect waves-light btn black" href="{{ action('UserController@edit', [Auth::user()->username]) }}">Editar</a>
+			    	<a class="waves-effect waves-light btn black" href="{{ route('users.show', Auth::user()->username) }}">Perfil Público</a>
 			    </p>
 		    </div>
 	    </div>
