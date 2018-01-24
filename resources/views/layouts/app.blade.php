@@ -235,6 +235,11 @@
 
             tinymce.init(editor_config);
         </script>
+        <script type="text/javascript">
+            $(window).on('load',function(){
+                $('#myModal').modal('open');
+            });
+        </script>
 
     </body>
 

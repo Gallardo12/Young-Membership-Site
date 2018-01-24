@@ -6,6 +6,22 @@
 
 @include('partials.meta-static')
 
+	<div id="myModal" class="modal modal-fixed-footer">
+    	<div class="modal-content">
+      		<h4 class="center">Young<span class="textoAmber">México</span></h4>
+      		<p class="flow-text">Para crear un nuevo servicio y que este sea válidado correctamente, debe cumplir con ciertos requisitos:</p>
+      		<ol>
+      			<li>El texto debe ser legible y no debe contener palabras altisonantes, racistas o despectivas.</li>
+      			<li>Las imágenes deben ser de buena calidad, relacionadas con el servicio que se esta ofreciendo y no deben tener contenidos violentos, sexuales u ofensivos.</li>
+      			<li>Una vez validada la información y el contenido del servicio, un administrador publicará su servicio y será notificado vía correo electrónico.</li>
+      		</ol>
+      		<p class="flow-text">Bienvenido...</p>
+    	</div>
+    	<div class="modal-footer">
+      		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">De acuerdo</a>
+    	</div>
+  	</div>
+
 	<div class="container">
 
 		<h2 class="center">Nuevo Servicio</h2>
@@ -152,5 +168,9 @@
 		</div>
 
 	</div>
+
+@endsection
+
+@section('javascript')
 
 @endsection

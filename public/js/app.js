@@ -8,6 +8,7 @@
     $('.materialboxed').materialbox();
     $('.tooltipped').tooltip({delay: 50});
     $('.carousel').carousel();
+    $('#myModal').modal();
     $('.dropdown-button').dropdown({
       	inDuration: 300,
       	outDuration: 225,
