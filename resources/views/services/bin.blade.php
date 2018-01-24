@@ -30,7 +30,7 @@
                             <div class="divider"></div>
                         </div>
                         <div class="card-action text-teal">
-                            <a class="flow-text btn-large" href="{{ action('ServiceController@restore', [$service->id]) }}">Restaurar</a>
+                            <a class="flow-text btn-large black" href="{{ action('ServiceController@restore', [$service->id]) }}">Restaurar</a>
                             <a class="flow-text btn-large red" href="{{ action('ServiceController@destroyService', [$service->id]) }}">Eliminar</a>
                         </div>
                     </div>

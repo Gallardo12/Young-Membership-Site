@@ -30,7 +30,7 @@
 			        <tbody>
 			        	@foreach ($users as $user)
 				          	<tr>
-				            	<td><a href="{{ route('users.show', $user->username) }}">{{ $user->name }}</a></td>
+				            	<td><a class="textoAmber" href="{{ route('users.show', $user->username) }}">{{ $user->name }}</a></td>
 				            	<td>{{ $user->username }}</td>
 				            	<td>{{ $user->email }}</td>
 				            	<td>{{ $user->created_at->diffForHumans() }}</td>
@@ -38,7 +38,7 @@
                                     <div class="container">
                                         {{ Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->username]]) }}
                                             {{ Form::select('role_id', ['1' => 'Administrador', '2' => 'Emprendedor', '3' => 'Usuario'], null, ['class' => '']) }}
-                                            {{ Form::submit('Aplicar', ['class' => 'waves-effect waves-light btn']) }}
+                                            {{ Form::submit('Aplicar', ['class' => 'waves-effect waves-light btn black']) }}
                                         {{ Form::close() }}
                                     </div>
                                 </td>

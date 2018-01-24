@@ -16,10 +16,10 @@
                 <nav>
                     <div class="nav-wrapper">
                         {!! Form::open(['action' => 'ServiceController@index', 'method' => 'GET', 'role' => 'search', 'id' => 'term']) !!}
-                            <div class="input-field teal">
+                            <div class="input-field white">
                                 <!--input id="term" name="term" type="search" placeholder="Qué servicio estas buscando...??" required-->
                                 {!! Form::search('term', Request::get('term'), ['class' => '', 'placeholder' => 'Qué servicio estas buscando...???']) !!}
-                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
                                 <i class="material-icons">close</i>
 
                             </div>
@@ -42,21 +42,21 @@
                             @endif
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoTeal right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoAmber right">more_vert</i></span>
                             <br>
-                            <p align="center"><a class="btn" href="{{ action('ServiceController@show', [$service->slug]) }}">Más</a></p>
+                            <p align="center"><a class="btn black" href="{{ action('ServiceController@show', [$service->slug]) }}">Más</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoTeal right">close</i></span>
-                            <p><i class="material-icons textoTeal">account_circle</i><b>Emprendedor: </b><a class="textoTeal" href="{{ route('users.show', $service->user->username) }}">{{ $service->user->name }}</a></p>
-                            <p><i class="material-icons textoTeal">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
-                            <p><i class="material-icons textoTeal">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
+                            <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoAmber right">close</i></span>
+                            <p><i class="material-icons textoAmber">account_circle</i><b>Emprendedor: </b><a class="textoAmber" href="{{ route('users.show', $service->user->username) }}">{{ $service->user->name }}</a></p>
+                            <p><i class="material-icons textoAmber">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
+                            <p><i class="material-icons textoAmber">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
                             <p><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $service->averageRating }}" data-size="xs" disabled=""></p>
-                            <p><i class="material-icons textoTeal">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
+                            <p><i class="material-icons textoAmber">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
                             <p align="center">
                                 <em>
                                     @foreach ($service->category as $category)
-                                        <a class="textoTeal" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
+                                        <a class="textoAmber" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
                                     @endforeach
                                 </em>
                             </p>

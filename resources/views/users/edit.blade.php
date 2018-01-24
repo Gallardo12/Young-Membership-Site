@@ -15,7 +15,7 @@
 
     <div class="row">
     	<div class="col s12 m8">
-    		<p class="flow-text textoTeal" align="center">Aquí puedes realizar los cambios a tu perfil!!</p>
+    		<p class="flow-text textoAmber" align="center">Aquí puedes realizar los cambios a tu perfil!!</p>
     		{!! Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->username], 'files' => true]) !!}
 	    		<div class="row">
 	    			<div style="margin-top: 2em;" class="input-field col s10 form-group{{ $errors->has('username') ? ' has-error' : '' }}">
@@ -52,7 +52,7 @@
 	    		</div>
 	    		<div class="row">
 					<div class="file-field input-field col s10">
-				      	<div class="btn">
+				      	<div class="btn black">
 				        	<span>Foto de Perfil</span>
 				        	{!! Form::file('photo_id', ['class' => '', 'type' => 'file']) !!}
 				      	</div>
@@ -115,7 +115,7 @@
     				<div class="switch">
     					<label>
     						No
-    						{{ Form::checkbox('get_email', 1, null, ['class' => '']) }}
+    						{{ Form::checkbox('get_email', 1, null, ['class' => 'textoAmber']) }}
     						<span class="lever"></span>
     						Si
     					</label>
@@ -123,7 +123,7 @@
 	    		</div>
 	    		<div class="row">
 	    			<div class="input-field col s12 m6">
-	    				{!! Form::submit('Guardar Cambios', ['class' => 'waves-effect waves-light btn']) !!}
+	    				{!! Form::submit('Guardar Cambios', ['class' => 'waves-effect waves-light btn black']) !!}
 	    			</div>
 	    		</div>
 	    	{!! Form::close() !!}
@@ -138,13 +138,13 @@
 	            <p align="center" class="flow-text">
 	            	{{ Auth::user()->username }}
 	            </p>
-	            <p class="textoTeal flow-text" align="center">
+	            <p class="textoAmber flow-text" align="center">
                     <b>{{ $user->name }}</b>
                 </p>
-                <p class="textoTeal" align="center">
+                <p class="textoAmber" align="center">
                     <b>{{ $user->username }}</b>
                 </p>
-                <p class="textoTeal" align="center">
+                <p class="textoAmber" align="center">
                     <b>{{ $user->role->name }}</b>
                 </p>
                 <div class="divider"></div>
@@ -157,23 +157,23 @@
                 <div class="divider"></div>
                 <p>
                     @if($user->website)
-                        <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-globe textoTeal" aria-hidden="true"></i><em>   <a class="textoTeal" href="{{ $user->website }}" target="_blank">{{ $user->website }}</a></em></p>
+                        <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-globe textoAmber" aria-hidden="true"></i><em>   <a class="black-text" href="{{ $user->website }}" target="_blank">{{ $user->website }}</a></em></p>
                     @endif
                 </p>
                 <p>
                     @if($user->facebook)
-                        <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-facebook textoTeal" aria-hidden="true"></i><em>    <a class="textoTeal" href="https://www.facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a></em></p>
+                        <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-facebook textoAmber" aria-hidden="true"></i><em>    <a class="black-text" href="https://www.facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a></em></p>
                     @endif
                 </p>
                 <p>
                     @if($user->twitter)
-                        <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-twitter textoTeal" aria-hidden="true"></i><em>    <a class="textoTeal" href="https://twitter.com/{{ $user->twitter }}" target="_blank">{{ $user->twitter }}</a></em></p>
+                        <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-twitter textoAmber" aria-hidden="true"></i><em>    <a class="black-text" href="https://twitter.com/{{ $user->twitter }}" target="_blank">{{ $user->twitter }}</a></em></p>
                     @endif
                 </p>
                 <div class="divider"></div>
                 <p class="grey-text text-darken-4" align="center">
-                    <b><span class="textoTeal">Usuario desde </span></b>{{ $user->created_at->diffForHumans() }}
-                    <span class="new badge" data-badge-caption="Servicios">
+                    <b><span class="textoAmber">Usuario desde </span></b>{{ $user->created_at->diffForHumans() }}
+                    <span class="new badge amber accent-2" data-badge-caption="Servicios">
                         {{ $user->service->count() }}
                     </span>
                 </p>

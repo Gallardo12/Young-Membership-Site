@@ -31,10 +31,12 @@
 
 					@foreach ($categories as $category)
 
-						<tr>
-							<td class="center"><a class="flow-text" href="{{ action('CategoryController@show', [$category->slug]) }}">{{ $category->name }}</a></td>
+						<tr class="center-align">
+							<td class="center">
+								<a class="flow-text textoAmber" href="{{ action('CategoryController@show', [$category->slug]) }}">{{ $category->name }}</a>
+							</td>
 							<td class="center" style="display: inline-flex;">
-								<a href="{{ action('CategoryController@edit', [$category->id]) }}" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Categoría"><i class="material-icons">mode_edit</i></a>
+								<a href="{{ action('CategoryController@edit', [$category->id]) }}" class="btn-floating btn-large waves-effect waves-light tooltipped black" data-position="bottom" data-delay="50" data-tooltip="Editar Categoría"><i class="material-icons">mode_edit</i></a>
 								{!! Form::open(['method' => 'DELETE', 'action' => ['CategoryController@destroy', $category->id]]) !!}
                                     <button class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Eliminar Categoría" type="submit" name="action">
                                         <i class="material-icons">delete</i>

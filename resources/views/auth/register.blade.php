@@ -5,7 +5,7 @@
 @include('partials.meta-static')
 
 <div class="container">
-    <h2 class="center-align">Se parte de Young<span class="textoTeal">México</span></h2>
+    <h2 class="center-align">Se parte de Young<span class="textoAmber">México</span></h2>
     <div class="divider"></div>
 
     <div class="row">
@@ -67,9 +67,9 @@
                     <input id="password-confirm" type="password" name="password_confirmation">
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12 m6">
-                    <input type="submit" value="Registrarse" class="waves-effect waves-light btn" />
+            <div class="row center-align">
+                <div class="input-field col s12">
+                    <input type="submit" value="Registrarse" class="waves-effect waves-light btn black" />
                 </div>
             </div>
         </form>

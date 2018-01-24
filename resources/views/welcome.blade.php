@@ -28,7 +28,7 @@
                 </nav>
             </div>
         </div>
-        <div class="parallax"><img style="-webkit-filter: grayscale(400%) saturate(800%); filter: grayscale(400%) saturate(800%);" src="{{ asset('images/pic01.jpg') }}"></div>
+        <div class="parallax"><img class="responsive-img" style="-webkit-filter: grayscale(400%) saturate(800%); filter: grayscale(400%) saturate(800%);" src="{{ asset('images/pic01.jpg') }}"></div>
     </div>
 
     <div class="container">
@@ -39,7 +39,7 @@
                 Un servicio de emprendedores para emprendedores.
             </h4>
             <p class="center">
-                <img style="-webkit-filter: grayscale(400%); filter: grayscale(400%);" src="{{ asset('images/pic03.jpg') }}" class="responsive-img"/>
+                <img style="-webkit-filter: grayscale(400%) saturate(800%); filter: grayscale(400%) saturate(800%);" src="{{ asset('images/pic03.jpg') }}" class="responsive-img"/>
             </p>
             <p class="flow-text" align="center">Young Mentorship es un servicio web el cual apoya a las personas emprendedoras y freelancers que desean destacar en el ambito laboral, esta herramienta te permitirá encontrar el servicio que buscas a los mejores precios por nuestros propios emprendedores. Incluso puedes ser uno de ellos y promocionar tu servicio en este sitio.</p>
         </div>

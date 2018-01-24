@@ -24,10 +24,10 @@
                         </div>
                         <div class="card-content">
                             <p><b>Creado el: </b>{{ $blog->updated_at->diffForHumans() }}</p>
-                            <p class="flow-text">{!! str_limit($blog->body, 75) !!}</p>
+                            <p class="">{!! str_limit($blog->body, 75) !!}</p>
                         </div>
                         <div class="card-action text-teal">
-                            <a class="flow-text btn-large" href="{{ action('BlogController@restore', [$blog->id]) }}">Restaurar</a>
+                            <a class="flow-text btn-large black" href="{{ action('BlogController@restore', [$blog->id]) }}">Restaurar</a>
                             <a class="flow-text btn-large red" href="{{ action('BlogController@destroyBlog', [$blog->id]) }}">Eliminar</a>
                         </div>
                     </div>

@@ -43,7 +43,7 @@
 
 				<div class="row">
 					<div class="file-field input-field col s12">
-				      	<div class="btn">
+				      	<div class="btn black">
 				        	<span>Foto</span>
 				        	{!! Form::file('photob_id', ['class' => '', 'type' => 'file']) !!}
 				      	</div>
@@ -60,7 +60,7 @@
 
 				<div class="row">
 	                <div class="input-field col s12 m6">
-	                    <input type="submit" value="Editar" class="waves-effect waves-light btn" />
+	                    <input type="submit" value="Editar" class="waves-effect waves-light btn black" />
 	                </div>
 	            </div>
 			</form>

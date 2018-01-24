@@ -13,7 +13,7 @@
 
 	<!-- Page Layout here -->
     <div class="row">
-      	<div class="col s12 m5 l4 grey lighten-3">
+      	<div style="height: 100%; margin: 0px; padding: 0px;" class="col s12 m5 l4 grey white-text">
       		<div class="container">
       			<div class="row">
       				<p align="center">
@@ -23,41 +23,41 @@
                             <img class="responsive-img" src="{{ asset('images/user.png') }}">
                         @endif
       				</p>
-                    <p class="textoTeal flow-text" align="center">
-                        <b>{{ $user->name }}</b>
+                    <p class="flow-text" align="center">
+                        <b class="textoAmber">Nombre: </b><em>{{ $user->name }}</em>
                     </p>
-                    <p class="textoTeal" align="center">
-                        <b>{{ $user->username }}</b>
+                    <p class="flow-text" align="center">
+                        <b class="textoAmber">Usuario: </b><em>{{ $user->username }}</em>
                     </p>
-                    <p class="textoTeal" align="center">
-                        <b>{{ $user->role->name }}</b>
+                    <p class="flow-text" align="center">
+                        <b class="textoAmber">Rol: </b><em>{{ $user->role->name }}</em>
                     </p>
                     <div class="divider"></div>
                     <p>
                         @if($user->about)
-                            <h4 class="grey-text text-darken-4 center">Acerca de mi</h4>
-                            <p class="grey-text text-darken-4" align="center"><em>{{ $user->about }}</em></p>
+                            <h4 class="white-text center">Acerca de mi</h4>
+                            <p class="white-text" align="center"><em>{{ $user->about }}</em></p>
                         @endif
                     </p>
                     <div class="divider"></div>
                     <p>
                         @if($user->website)
-                            <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-globe textoTeal" aria-hidden="true"></i><em>   <a class="textoTeal" href="{{ $user->website }}" target="_blank">{{ $user->website }}</a></em></p>
+                            <p class="white-text flow-text" align="center"><i class="fa fa-globe textoAmber" aria-hidden="true"></i><em>   <a class="white-text" href="{{ $user->website }}" target="_blank">{{ $user->website }}</a></em></p>
                         @endif
                     </p>
                     <p>
                         @if($user->facebook)
-                            <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-facebook textoTeal" aria-hidden="true"></i><em>    <a class="textoTeal" href="https://www.facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a></em></p>
+                            <p class="white-text flow-text" align="center"><i class="fa fa-facebook textoAmber" aria-hidden="true"></i><em>    <a class="white-text" href="https://www.facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a></em></p>
                         @endif
                     </p>
                     <p>
                         @if($user->twitter)
-                            <p class="grey-text text-darken-4 flow-text" align="center"><i class="fa fa-twitter textoTeal" aria-hidden="true"></i><em>    <a class="textoTeal" href="https://twitter.com/{{ $user->twitter }}" target="_blank">{{ $user->twitter }}</a></em></p>
+                            <p class="white-text flow-text" align="center"><i class="fa fa-twitter textoAmber" aria-hidden="true"></i><em>    <a class="white-text" href="https://twitter.com/{{ $user->twitter }}" target="_blank">{{ $user->twitter }}</a></em></p>
                         @endif
                     </p>
                     <div class="divider"></div>
-                    <p class="grey-text text-darken-4" align="center">
-                        <b><span class="textoTeal">Usuario desde </span></b>{{ $user->created_at->diffForHumans() }}
+                    <p class="white-text" align="center">
+                        <b><span class="textoAmber">Usuario desde </span></b>{{ $user->created_at->diffForHumans() }}
                     </p>
       			</div>
       		</div>
@@ -80,23 +80,23 @@
                                             @endif
                                         </div>
                                         <div class="card-content">
-                                            <span class="card-title activator grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoTeal right">more_vert</i></span>
+                                            <span class="card-title activator grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoAmber right">more_vert</i></span>
                                             <br>
                                             <p align="center">
-                                                <a class="btn" href="{{ action('ServiceController@show', [$service->slug]) }}">Más</a>
+                                                <a class="btn black" href="{{ action('ServiceController@show', [$service->slug]) }}">Más</a>
                                             </p>
                                         </div>
                                         <div class="card-reveal">
-                                            <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoTeal right">close</i></span>
-                                            <p><i class="material-icons textoTeal">account_circle</i><b>Emprendedor: </b><a class="textoTeal" href="{{ route('users.show', $user->username) }}">{{ $service->user->name }}</a></p>
-                                            <p><i class="material-icons textoTeal">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
-                                            <p><i class="material-icons textoTeal">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
+                                            <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoAmber right">close</i></span>
+                                            <p><i class="material-icons textoAmber">account_circle</i><b>Emprendedor: </b><a class="textoAmber" href="{{ route('users.show', $user->username) }}">{{ $service->user->name }}</a></p>
+                                            <p><i class="material-icons textoAmber">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
+                                            <p><i class="material-icons textoAmber">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
                                             <p><input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="{{ $service->averageRating }}" data-size="xs" disabled=""></p>
-                                            <p><i class="material-icons textoTeal">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
+                                            <p><i class="material-icons textoAmber">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
                                             <p align="center">
                                                 <em>
                                                     @foreach ($service->category as $category)
-                                                        <a class="textoTeal" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
+                                                        <a class="textoAmber" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
                                                     @endforeach
                                                 </em>
                                             </p>
@@ -111,9 +111,9 @@
                 @if($user->role->name == 'Administrador' || $user->role->name == 'Emprendedor')
                     <p class="flow-text" align="center">{{ $user->username }} no tiene servicios publicados aún...</p>
                 @else
-                    <p class="flow-text" align="center">Debes ser parte de Young<span class="textoTeal">México</span> para publicar tus servicios.</p>
+                    <p class="flow-text" align="center">Debes ser parte de Young<span class="textoAmber">México</span> para publicar tus servicios.</p>
                     <p align="center">
-                        <a href="/contact" class="btn">Se parte de YoungMéxico</a>
+                        <a href="/contact" class="btn black">Se parte de YoungMéxico</a>
                     </p>
                 @endif
             @endif
@@ -133,13 +133,13 @@
                                         @endif
                                     </div>
                                     <div class="card-content">
-                                        <span class="card-title activator grey-text text-darken-4">{{ $blog->title }}<i class="material-icons textoTeal right">more_vert</i></span>
+                                        <span class="card-title activator grey-text text-darken-4">{{ $blog->title }}<i class="material-icons textoAmber right">more_vert</i></span>
                                         <br>
-                                        <p align="center"><a class="btn" href="{{ action('BlogController@show', [$blog->id]) }}">Leer</a></p>
+                                        <p align="center"><a class="btn black" href="{{ action('BlogController@show', [$blog->id]) }}">Leer</a></p>
                                     </div>
                                     <div class="card-reveal">
-                                        <span class="card-title grey-text text-darken-4">{{ $blog->title }}<i class="material-icons textoTeal right">close</i></span>
-                                        <p><b>Creado: </b>{{ $blog->updated_at->diffForHumans() }} por <a href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a></p>
+                                        <span class="card-title grey-text text-darken-4">{{ $blog->title }}<i class="material-icons textoAmber right">close</i></span>
+                                        <p><b>Creado: </b>{{ $blog->updated_at->diffForHumans() }} por <a class="textoAmber" href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a></p>
                                         <p>{!! str_limit($blog->body, 500) !!}</p>
                                     </div>
                                 </div>
@@ -151,9 +151,9 @@
                 @if($user->role->name == 'Administrador' || $user->role->name == 'Emprendedor')
                     <p class="flow-text" align="center">{{ $user->username }} no tiene noticias publicadas aún...</p>
                 @else
-                    <p class="flow-text" align="center">Debes ser parte de Young<span class="textoTeal">México</span> para publicar tus servicios.</p>
+                    <p class="flow-text" align="center">Debes ser parte de Young<span class="textoAmber">México</span> para publicar tus servicios.</p>
                     <p align="center">
-                        <a href="/contact" class="btn">Se parte de YoungMéxico</a>
+                        <a href="/contact" class="btn black">Se parte de YoungMéxico</a>
                     </p>
                 @endif
             @endif

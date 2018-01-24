@@ -29,25 +29,29 @@
         <header>
             <div class="navbar-fixed">
                 <!-- Dropdown Structure -->
-                <ul id="dropdown1" class="dropdown-content">
+                <ul id="dropdown1" class="dropdown-content textoAmber">
                     <li><a href="/services" class="textoAmber">Servicios</a></li>
                     <li class="divider"></li>
                     @foreach ($categories as $category)
                         @if ($category->service->count() > 0)
-                            <li><a href="{{ action('CategoryController@show', [$category->slug]) }}" class="textoAmber">{{ $category->name }}</a></li>
+                            <li class="textoAmber"><a href="{{ action('CategoryController@show', [$category->slug]) }}" class="textoAmber">{{ $category->name }}</a></li>
                         @endif
                     @endforeach
                 </ul>
-                <ul id="dropdown2" class="dropdown-content">
+                <ul id="dropdown2" class="dropdown-content textoAmber">
                     <li><a href="/services" class="textoAmber">Servicios</a></li>
                     <li class="divider"></li>
                     @foreach ($categories as $category)
-                        <li><a href="{{ action('CategoryController@show', [$category->slug]) }}" class="textoAmber">{{ $category->name }}</a></li>
+                        <li class="textoAmber"><a href="{{ action('CategoryController@show', [$category->slug]) }}" class="textoAmber">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
                 <nav class="black">
                     <div class="nav-wrapper">
-                        <a href="/" class="brand-logo white-text">Young<span class="textoAmber">México</span></a>
+                        <a href="/" class="brand-logo white-text">
+                            <div class="valign-wrapper">
+                                <img class="responsive-img" style="height: 54px; padding-top: 5px;" src="{{ asset('images/ym.png') }}" alt="">
+                            </div>
+                        </a>
                         <a href="#" data-activates="mobile-demo" class="button-collapse white-text"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
                             <li><a href="/" class="white-text">Young<span class="textoAmber">México</span></a></li>

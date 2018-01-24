@@ -20,7 +20,7 @@
         <div class="row">
             <ul class="collapsible popout" data-collapsible="accordion">
                 <li>
-                    <div class="collapsible-header flow-text"><i class="material-icons">room_service</i>Servicios</div>
+                    <div class="collapsible-header flow-text"><i class="material-icons amber-text text-accent-4">room_service</i>Servicios</div>
                     <div class="collapsible-body">
                         <div class="row">
                             <h5 class="center">Servicios Recientes</h5>
@@ -39,7 +39,7 @@
                                     @foreach ($service as $service)
                                         <tr>
                                             <td class="center">{{ $service->title }}</td>
-                                            <td class="center"><a href="{{ route('users.show', $service->user->username) }}">{{ $service->user->name }}</a></td>
+                                            <td class="center"><a class="textoAmber" href="{{ route('users.show', $service->user->username) }}">{{ $service->user->name }}</a></td>
                                             <td class="center">
                                                 @if($service->status == 0)
                                                         Borrador
@@ -52,12 +52,12 @@
                                                     @if($service->status == 0)
                                                         {{ Form::model($service, ['method' => 'PATCH', 'action' => ['ServiceController@publish', $service->id]]) }}
                                                             {{ Form::select('status', ['0' => 'Borrador', '1' => 'Publicado'], null, ['class' => '']) }}
-                                                            {{ Form::submit('Aplicar', ['class' => 'waves-effect waves-light btn']) }}
+                                                            {{ Form::submit('Aplicar', ['class' => 'waves-effect waves-light btn black']) }}
                                                         {{ Form::close() }}
                                                     @else
                                                         {{ Form::model($service, ['method' => 'PATCH', 'action' => ['ServiceController@publish', $service->id]]) }}
                                                             {{ Form::select('status', ['0' => 'Borrador', '1' => 'Publicado'], null, ['class' => '']) }}
-                                                            {{ Form::submit('Aplicar', ['class' => 'waves-effect waves-light btn']) }}
+                                                            {{ Form::submit('Aplicar', ['class' => 'waves-effect waves-light btn black']) }}
                                                         {{ Form::close() }}
                                                     @endif
                                                 </div>
@@ -80,19 +80,19 @@
                         </div>
                         <div class="row">
                             <div class="col s12 m4 center">
-                                <a href="/services/" class="waves-effect waves-light btn-large"><i class="material-icons left">list</i>Ver</a>
+                                <a href="/services/" class="waves-effect waves-light btn-large black"><i class="material-icons left">list</i>Ver</a>
                             </div>
                             <div class="col s12 m4 center">
-                                <a href="/services/create" class="waves-effect waves-light btn-large"><i class="material-icons left">add_circle_outline</i>Nuevo</a>
+                                <a href="/services/create" class="waves-effect waves-light btn-large black"><i class="material-icons left">add_circle_outline</i>Nuevo</a>
                             </div>
                             <div class="col s12 m4 center">
-                                <a href="/services/bin" class="waves-effect waves-light btn-large"><i class="material-icons left">delete</i>Papelera</a>
+                                <a href="/services/bin" class="waves-effect waves-light btn-large black"><i class="material-icons left">delete</i>Papelera</a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header flow-text"><i class="material-icons">fiber_new</i>Noticias</div>
+                    <div class="collapsible-header flow-text"><i class="material-icons amber-text text-accent-4">fiber_new</i>Noticias</div>
                     <div class="collapsible-body">
                         <div class="row">
                             <h5 class="center">Noticias Recientes</h5>
@@ -110,7 +110,7 @@
                                     @foreach ($blog as $blog)
                                         <tr>
                                             <td class="center">{{ $blog->title }}</td>
-                                            <td class="center"><a href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a></td>
+                                            <td class="center"><a class="textoAmber" href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a></td>
                                             <td class="center">{{ $blog->updated_at->diffForHumans() }}</td>
                                             <td class="center">
                                                 <a href="{{ action('BlogController@show', [$blog->id]) }}" class="btn-floating btn-large waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ver Servicio"><i class="material-icons">remove_red_eye</i></a>
@@ -130,19 +130,19 @@
                         </div>
                         <div class="row">
                             <div class="col s12 m4 center">
-                                <a href="/blog/" class="waves-effect waves-light btn-large"><i class="material-icons left">list</i>Ver</a>
+                                <a href="/blog/" class="waves-effect waves-light btn-large black"><i class="material-icons left">list</i>Ver</a>
                             </div>
                             <div class="col s12 m4 center">
-                                <a href="/blog/create" class="waves-effect waves-light btn-large"><i class="material-icons left">add_circle_outline</i>Nuevo</a>
+                                <a href="/blog/create" class="waves-effect waves-light btn-large black"><i class="material-icons left">add_circle_outline</i>Nuevo</a>
                             </div>
                             <div class="col s12 m4 center">
-                                <a href="/blog/bin" class="waves-effect waves-light btn-large"><i class="material-icons left">delete</i>Papelera</a>
+                                <a href="/blog/bin" class="waves-effect waves-light btn-large black"><i class="material-icons left">delete</i>Papelera</a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header flow-text"><i class="material-icons">view_list</i>Categorias</div>
+                    <div class="collapsible-header flow-text"><i class="material-icons amber-text text-accent-4">view_list</i>Categorias</div>
                     <div class="collapsible-body">
                         <h5 class="center">Categorías Recientes</h5>
 
@@ -167,16 +167,16 @@
                         </div>
                         <div class="row">
                             <div class="col s12 m6 center">
-                                <a href="/categories" class="waves-effect waves-light btn-large"><i class="material-icons left">list</i>Ver</a>
+                                <a href="/categories" class="waves-effect waves-light btn-large black"><i class="material-icons left">list</i>Ver</a>
                             </div>
                             <div class="col s12 m6 center">
-                                <a href="/categories/create" class="waves-effect waves-light btn-large"><i class="material-icons left">add_circle_outline</i>Nuevo</a>
+                                <a href="/categories/create" class="waves-effect waves-light btn-large black"><i class="material-icons left">add_circle_outline</i>Nuevo</a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li>
-                    <div class="collapsible-header flow-text"><i class="material-icons">supervisor_account</i>Usuarios</div>
+                    <div class="collapsible-header flow-text"><i class="material-icons amber-text text-accent-4">supervisor_account</i>Usuarios</div>
                     <div class="collapsible-body">
                         <div class="row">
                             <h5 class="center">Usuarios Recientes</h5>
@@ -200,7 +200,7 @@
                                                     @else
                                                         <img class="responsive-img circle" width="30" src="{{ asset('images/user.png') }}">
                                                     @endif
-                                                    <a href="{{ route('users.show', $user->username) }}">{{ $user->name }}</a></td>
+                                                    <a class="textoAmber" href="{{ route('users.show', $user->username) }}">{{ $user->name }}</a></td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->created_at->diffForHumans() }}</td>
                                                 <td>{{ $user->role->name}}</td>
@@ -212,7 +212,7 @@
                         </div>
                         <div class="row">
                             <div class="col s12 center">
-                                <a href="/userslist" class="waves-effect waves-light btn-large"><i class="material-icons left">list</i>Ver</a>
+                                <a href="/userslist" class="waves-effect waves-light btn-large black"><i class="material-icons left">list</i>Ver</a>
                             </div>
                         </div>
                     </div>

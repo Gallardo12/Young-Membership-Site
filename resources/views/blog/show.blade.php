@@ -13,7 +13,7 @@
 		<p>{!! $blog->body !!}</p>
 		<div class="divider"></div>
 		<p style="margin-top: 2em;" class="flow-text" align="center">
-			<b>Creado: </b>{{ $blog->updated_at->diffForHumans() }} por <a href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a>
+			<b>Creado: </b>{{ $blog->updated_at->diffForHumans() }} por <a class="textoAmber" href="{{ route('users.show', $blog->user->username) }}">{{ $blog->user->name }}</a>
 		</p>
 		@guest
 
@@ -22,7 +22,7 @@
 				<div class="row">
 					<div class="divider"></div>
 						<p align="center">
-							<a href="{{ action('BlogController@edit', [$blog->id]) }}" class="waves-effect waves-light btn-large">Editar</a>
+							<a href="{{ action('BlogController@edit', [$blog->id]) }}" class="waves-effect waves-light btn-large black">Editar</a>
 						</p>
 					<div class="divider"></div>
 				</div>

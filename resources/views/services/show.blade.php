@@ -15,7 +15,7 @@
 		<h2 class="center">{{ $service->title }}</h2>
 		<p class="flow-text" align="center">
 			@foreach ($service->category as $category)
-				<a class="textoTeal" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
+				<a class="textoAmber" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
 			@endforeach
 		</p>
 		<div class="divider"></div>
@@ -29,15 +29,15 @@
 			</div>
 			<div class="col s12 m7">
 				<p class="flow-text">
-					<i class="material-icons textoTeal">account_circle</i>
-					<b>Emprendedor: </b><a class="textoTeal" href="{{ route('users.show', $service->user->username) }}">{{ $service->user->name }}</a>
+					<i class="material-icons textoAmber">account_circle</i>
+					<b>Emprendedor: </b><a class="textoAmber" href="{{ route('users.show', $service->user->username) }}">{{ $service->user->name }}</a>
 				</p>
 				<p class="flow-text">
-					<i class="material-icons textoTeal">monetization_on</i>
+					<i class="material-icons textoAmber">monetization_on</i>
 					<b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN
 				</p>
 				<p class="flow-text">
-					<i class="material-icons textoTeal">location_on</i>
+					<i class="material-icons textoAmber">location_on</i>
 					<b>Ubicación: </b>{{ $service->location }}
 				</p>
 				@guest
@@ -49,7 +49,7 @@
 					        {{ method_field('PATCH') }}
 					        <input id="input-1" name="rate" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="{{ $service->userAverageRating }}" data-size="xs">
 					        <input type="hidden" name="id" required="" value="{{ $service->id }}">
-					        <button type="submit" class="waves-effect waves-light btn">Calificar</button>
+					        <button type="submit" class="waves-effect waves-light btn black">Calificar</button>
 					    </form>
 					</p>
 				@endguest
@@ -57,11 +57,11 @@
 		</div>
 		<div class="row">
 			<div class="divider"></div>
-			<h4 class="center"><i class="material-icons textoTeal">description</i>Descripción</h4>
+			<h4 class="center"><i class="material-icons textoAmber">description</i>Descripción</h4>
 			<p class="flow-text">{!! $service->description !!}</p>
 			<div class="divider"></div>
 			<p class="center flow-text">
-				<i class="material-icons textoTeal">date_range</i>
+				<i class="material-icons textoAmber">date_range</i>
 				<b>Publicado: </b><em>{{ $service->updated_at->diffForHumans() }}</em>
 			</p>
 		</div>
@@ -72,7 +72,7 @@
 				<div class="row">
 					<div class="divider"></div>
 						<p align="center">
-							<a href="{{ action('ServiceController@edit', [$service->id]) }}" class="waves-effect waves-light btn-large">Editar</a>
+							<a href="{{ action('ServiceController@edit', [$service->id]) }}" class="waves-effect waves-light btn-large black">Editar</a>
 						</p>
 					<div class="divider"></div>
 				</div>

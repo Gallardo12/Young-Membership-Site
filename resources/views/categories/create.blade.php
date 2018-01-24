@@ -32,7 +32,7 @@
 
 					<div class="row">
 		                <div class="input-field col s12 m6">
-		                    <input type="submit" value="Guardar" class="waves-effect waves-light btn" />
+		                    <input type="submit" value="Guardar" class="waves-effect waves-light btn black" />
 		                </div>
 		            </div>
 
@@ -44,7 +44,7 @@
 					<div class="divider"></div>
 					<ul style="list-style-type: none;" class="center">
 						@foreach($categories as $category)
-							<li class="flow-text"><a class="flow-text" href="{{ action('CategoryController@show', [$category->slug]) }}">{{ $category->name }}</a></li>
+							<li class="flow-text"><a class="flow-text textoAmber" href="{{ action('CategoryController@show', [$category->slug]) }}">{{ $category->name }}</a></li>
 						@endforeach
 					</ul>
 				</div>

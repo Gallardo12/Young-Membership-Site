@@ -35,7 +35,7 @@
 			    </p>
 			    <div class="divider"></div>
 			    <p align="center">
-			    	<em>{{ Auth::user()->role->name }}</em>
+			    	<em class="flow-text">{{ Auth::user()->role->name }}</em>
 			    </p>
 			    <div class="divider"></div>
 			    <p align="center">
@@ -71,20 +71,20 @@
 				                            <span class="card-title activator grey-text text-darken-4">{{ $service->title }}<i class="material-icons right">more_vert</i></span>
 				                            <br>
 				                            <p align="center">
-				                            	<a class="btn" href="{{ action('ServiceController@show', [$service->slug]) }}">Más</a>
-				                            	<span class="new badge" data-badge-caption="@if ($service->status == 0)Borrador @else Publicado @endif"></span>
+				                            	<a class="btn black" href="{{ action('ServiceController@show', [$service->slug]) }}">Más</a>
+				                            	<span class="new badge amber accent-2" data-badge-caption="@if ($service->status == 0)Borrador @else Publicado @endif"></span>
 				                            </p>
 				                        </div>
 				                        <div class="card-reveal">
-				                            <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoTeal right">close</i></span>
-				                            <p><i class="material-icons textoTeal">account_circle</i><b>Emprendedor: </b><a class="textoTeal" href="#">{{ $service->user->name }}</a></p>
-				                            <p><i class="material-icons textoTeal">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
-				                            <p><i class="material-icons textoTeal">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
-				                            <p><i class="material-icons textoTeal">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
+				                            <span class="card-title grey-text text-darken-4">{{ $service->title }}<i class="material-icons textoAmber right">close</i></span>
+				                            <p><i class="material-icons textoAmber">account_circle</i><b>Emprendedor: </b><a class="textoAmber" href="#">{{ $service->user->name }}</a></p>
+				                            <p><i class="material-icons textoAmber">monetization_on</i><b>Costo: </b>${{ money_format('%.2n', $service->cost) }} MXN</p>
+				                            <p><i class="material-icons textoAmber">location_on</i><b>Ubicación: </b>{{ $service->location }}</p>
+				                            <p><i class="material-icons textoAmber">date_range</i><b>Creado: </b>{{ $service->updated_at->diffForHumans() }}</p>
 				                            <p>
 				                                <em>
 				                                    @foreach ($service->category as $category)
-				                                        <a class="textoTeal" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
+				                                        <a class="textoAmber" href="{{ action('CategoryController@show', [$category->slug]) }}">|{{ $category->name }}|</a>
 				                                    @endforeach
 				                                </em>
 				                            </p>
@@ -94,7 +94,7 @@
 			               	@endif
 			            @endforeach
 			        @else
-			        	<p class="flow-text" align="center">Debes ser parte de Young<span class="textoTeal">México</span> para publicar tus servicios.</p>
+			        	<p class="flow-text" align="center">Debes ser parte de Young<span class="textoAmber">México</span> para publicar tus servicios.</p>
 			        	<p align="center">
 			        		<a href="/contact" class="btn">Se parte de YoungMéxico</a>
 			        	</p>
@@ -104,7 +104,7 @@
 		            <div class="row">
 						<div class="divider"></div>
 							<p align="center">
-								<a href="/services/create" class="waves-effect waves-light btn-large">Nuevo Servicio</a>
+								<a href="/services/create" class="waves-effect waves-light btn-large black">Nuevo Servicio</a>
 							</p>
 						<div class="divider"></div>
 					</div>
@@ -127,7 +127,7 @@
 				                        <div class="card-content">
 				                            <span class="card-title activator grey-text text-darken-4">{{ $blog->title }}<i class="material-icons right">more_vert</i></span>
 				                            <br>
-				                            <p align="center"><a class="btn" href="{{ action('BlogController@show', [$blog->id]) }}">Leer</a></p>
+				                            <p align="center"><a class="btn black" href="{{ action('BlogController@show', [$blog->id]) }}">Leer</a></p>
 				                        </div>
 				                        <div class="card-reveal">
 				                            <span class="card-title grey-text text-darken-4">{{ $blog->title }}<i class="material-icons right">close</i></span>
@@ -139,9 +139,9 @@
 				            @endif
 			            @endforeach
 			        @else
-			        	<p class="flow-text" align="center">Debes ser parte del equipo de Young<span class="textoTeal">México</span> para publicar noticias.</p>
+			        	<p class="flow-text" align="center">Debes ser parte del equipo de Young<span class="textoAmber">México</span> para publicar noticias.</p>
 			        	<p align="center">
-			        		<a href="/contact" class="btn">Se parte del equipo de YoungMéxico</a>
+			        		<a href="/contact" class="btn black">Se parte del equipo de YoungMéxico</a>
 			        	</p>
 			        @endif
 		    	</div>
@@ -149,7 +149,7 @@
 		            <div class="row">
 						<div class="divider"></div>
 							<p align="center">
-								<a href="/blog/create" class="waves-effect waves-light btn-large">Nueva Noticia</a>
+								<a href="/blog/create" class="waves-effect waves-light btn-large black">Nueva Noticia</a>
 							</p>
 						<div class="divider"></div>
 					</div>
@@ -159,9 +159,9 @@
 		    	<div class="row"></div>
 		    	<div class="divider"></div>
 		    	<p align="center">
-		    		<a href="/messages" class="waves-effect waves-light btn-large">Ver Mensajes</a>
+		    		<a href="/messages" class="waves-effect waves-light btn-large black">Ver Mensajes</a>
 			    	@if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
-			    		<a href="/messages/create" class="waves-effect waves-light btn-large">Nuevo Mensaje</a>
+			    		<a href="/messages/create" class="waves-effect waves-light btn-large black">Nuevo Mensaje</a>
 			    	@endif
 		    	</p>
 		    	<div class="divider"></div>
