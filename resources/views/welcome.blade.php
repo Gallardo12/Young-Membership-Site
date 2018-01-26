@@ -28,7 +28,7 @@
                 </nav>
             </div>
         </div>
-        <div class="parallax"><img class="responsive-img" style="-webkit-filter: grayscale(400%) saturate(800%); filter: grayscale(400%) saturate(800%);" src="{{ asset('images/pic01.jpg') }}"></div>
+        <div class="parallax"><img class="" style="-webkit-filter: grayscale(400%) saturate(800%); filter: grayscale(400%) saturate(800%);" src="{{ asset('images/pic01.jpg') }}"></div>
     </div>
 
     <div class="container">

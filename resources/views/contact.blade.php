@@ -12,9 +12,9 @@
         <div class="section">
             <div class="container">
                 <br><br>
-                <h2 class="header center">Contacto Young<span class="textoAmber">México</span></h2>
+                <h2 class="header center white-text">Contacto Young<span class="textoAmber">México</span></h2>
                 <div class="row center">
-                    <h5 class="header col s12 white-text flow-text">Encuentra el servicio que necesites y contacta con los emprendedores.<br/>Tenemos la solución a lo que estas buscando.</h5>
+                    <h3 class="header col s12 white-text flow-text">Encuentra el servicio que necesites y contacta con los emprendedores.<br/>Tenemos la solución a lo que estas buscando.</h3>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
         <h2 class="center">Uneté como Emprendedor</h2>
         <p class="flow-text" align="center">¿Estas interesado en ser un emprendedor en Young<span class="textoAmber">México</span>? Aplica para ser el siguiente emprendedor y comienza a vender tus sercivios como afiliado a la plataforma.</p>
         <div class="divider"></div>
-        <h4 class="center">Afiliate a Young<span class="textoAmber">México</span></h4>
+        <h3 class="center">Afiliate a Young<span class="textoAmber">México</span></h4>
         <div class="row">
             {{ Form::open(['method' => 'POST', 'action' => 'MailController@send']) }}
                 <div class="row">
