@@ -58,7 +58,7 @@
 		<div class="row">
 			<div class="divider"></div>
 			<h4 class="center"><i class="material-icons textoAmber">description</i>Descripción</h4>
-			<p class="flow-text">{!! $service->description !!}</p>
+			<p class="">{!! $service->description !!}</p>
 			<div class="divider"></div>
 			<p class="center flow-text">
 				<i class="material-icons textoAmber">date_range</i>

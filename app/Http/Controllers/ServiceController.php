@@ -36,6 +36,7 @@ class ServiceController extends Controller {
 				$query->orWhere('title', 'like', '%' . $term . '%');
 			}
 		})
+			->where('status', '=', '1')
 			->orderBy('id', 'desc')
 			->paginate(3);
 		return view('services.index', compact('services'));
