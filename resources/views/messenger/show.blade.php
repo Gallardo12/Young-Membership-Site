@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Young Mentorship - Mensajes')
+
 @section('content')
 
 @include('partials.meta-static')

@@ -96,7 +96,7 @@
 			        @else
 			        	<p class="flow-text" align="center">Debes ser parte de Young<span class="textoAmber">México</span> para publicar tus servicios.</p>
 			        	<p align="center">
-			        		<a href="/contact" class="btn">Se parte de YoungMéxico</a>
+			        		<a href="/contact" class="btn black">Se parte de YoungMéxico</a>
 			        	</p>
 			        @endif
 		    	</div>

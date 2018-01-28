@@ -32,7 +32,7 @@
                 @endif
                 <div class="row center-align">
                     <div class="col s12">
-                        <button type="submit" class="waves-effect waves-light btn">Enviar</button>
+                        <button type="submit" class="waves-effect waves-light btn black">Enviar</button>
                     </div>
                 </div>
             </form>

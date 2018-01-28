@@ -1,3 +1,7 @@
+@section('title', 'Young Mentorship')
+
+@section('title', 'Young Mentorship - Mensajes')
+
 @section('assets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Young Mentorship - Mensajes')
+
 @section('content')
     @include('messenger.partials.flash')
 	@if(Auth::user()->role_id == 1)

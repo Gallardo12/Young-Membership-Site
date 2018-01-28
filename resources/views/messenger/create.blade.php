@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Young Mentorship - Mensajes')
+
 @section('content')
 
 @include('partials.meta-static')
@@ -41,7 +43,7 @@
                 </div>
                 <div class="row">
                     <div class="col s10 offset-s1">
-                        <button type="submit" class="waves-effect waves-light btn">Enviar</button>
+                        <button type="submit" class="waves-effect waves-light btn black">Enviar</button>
                     </div>
                 </div>
             </form>
